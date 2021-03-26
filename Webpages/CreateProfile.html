@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Profile</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="/jquery-3.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body class="container-fluid">
+    <h1>Create a Profile </h1>
+    <form action="" method="POST">
+        <br/>
+        First name 
+        <br/> 
+        <input type="text" name="firstName" placeholder="First Name" size="25"> 
+        <br/>
+        Last name 
+        <br/>
+        <input type="text" name="lastName" placeholder="Last Name" size="25">
+        <br/>
+        Email
+        <br/>
+        <input type="email" name="email" placeholder="Email" size="25">
+        <br/>
+        Create Password
+        <br/>
+        <input type="password" name="passwordCreate" placeholder="Password" size="25">
+        <br/>
+        Confirm Password
+        <br/>
+        <input type="password" name="passwordConfirm" placeholder="Password" size="25">
+        <br/>
+        Street Address
+        <br/>
+        <input type="text" name="Address" placeholder="Street Address" size="30">
+        <br/>
+        City
+        <br/>
+        <input type="text" name="City" placeholder="City " size="25">
+        <br/>
+        State
+        <br/>
+        <select name="State" id="">
+            <option value="VA" selected>
+                Virginia
+            </option>
+            <option value="VA">
+                Maryland
+            </option>
+            <option value="VA">
+                DC
+            </option>
+        </select>
+        <br>
+        Tutor or Student?
+        <br>
+        <input type="radio" name="student">Student
+        <input type="radio" name="tutor">Tutor
+        <input type="radio" name="tutor">Employee
+        <br/>
+        <input type="submit" name="Create Account" value="Create Account"/>
+        <input type="reset" name="Clear Entry" value="Clear Entry"/>
+        <br>
+        Already have an Account?<a href="/LogIn.html">Log In</a>
+    </form>
+</body>
+</html>
