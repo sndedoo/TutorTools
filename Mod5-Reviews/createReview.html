@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>Create a Review</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <!--Bootstrap-->
+        <script src="jquery-3.1.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <!--navigation bar-->
+            <nav>
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">New Service Request</a></li>
+                    <li role="presentation" class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                      role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="createReview.html">Create A Review</a></li>
+                        <li><a href="myReviews.html">My Reviews</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">View Schedule</a></li>
+                    <li><a href="#">View My Profile</a></li>
+                    <li><a href="#">Edit/Create My Profile</a></li>
+                  </ul>
+            </nav>
+
+            <h1>Create a Review</h1> 
+            
+            <form method="post" action="APX_Home.html" autocomplete="on">
+                <input type="hidden" name="department" value="BIT" />
+                <p>&emsp;
+                    <label for="name">
+                        <Strong>Review Reciepient: </Strong>
+                        <input type="text" id="name" name="name" size="25" placeholder="John Doe" autofocus required/>
+                    </label>
+                </p>
+                
+                <p>&emsp;
+                    <label><strong>Overall Rating: </strong>
+                        <select name="overall">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </label>
+                </p>
+
+                <p>&emsp;<label><strong>Rate Features: </strong></label></p>
+                    <p>&emsp;&emsp;
+                        <label>Attutude: 
+                            <select name="attitude">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </label>
+                    </p>
+
+                    <p>&emsp;&emsp;
+                        <label>Explainability: 
+                            <select name="explain">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </label>
+                    </p>
+
+                    <p>&emsp;&emsp;
+                        <label>Helpfulness: 
+                            <select name="help">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </label>
+                    </p>
+                
+                <p>&emsp;
+                    <label><strong>Review Heading: </strong>
+                        <input name="name" type="text" size="25" />
+                    </label>
+                </p>
+    
+                <p>&emsp;
+                    <label><strong>Review: </strong>
+                        <br />&emsp;
+                        <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
+                    </label>
+                </p>
+
+                <p>
+                    <a href="#"><input type="button" value="Home" /></a>
+                    <input type="submit" value="Submit" />
+                    <input type="reset" value="Clear" />
+                </p>
+            </form>
+
+            <section>
+                <footer>&copy; 1nfinite Loop 2021. Blacksburg, VA 24060</footer>
+            </section>
+        </div>
+    </body>
+</html>
