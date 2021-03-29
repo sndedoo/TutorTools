@@ -2,16 +2,23 @@
 
 <html>
     <head>
-        <title>Review List</title>
+        <title>My Reviews</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>My first Bootstrap 3 demo</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <!--Bootstrap-->
         <script src="jquery-3.1.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <style> 
+          p {
+            min-height: 30px;
+            width: 250px;
+            background-color: lightblue;
+          }
+          p:review { display: none; }
+        </style>
     </head>
 
     <body>
@@ -22,22 +29,42 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#">New Service Request</a></li>
                     <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                    role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="mod5-createReview.html">Create A Review</a></li>
-                        <li><a href="mod5-myReviews.html">My Reviews</a></li>
-                    </ul>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="mod5-createReview.html">Create A Review</a></li>
+                            <li><a href="mod5-myReviews.html">My Reviews</a></li>
+                            <li><a href="mod5-reviewList.html">Tutor Reviews</a></li>
+                        </ul>   
                     </li>
                     <li><a href="#">View Schedule</a></li>
                     <li><a href="#">View My Profile</a></li>
                     <li><a href="#">Edit/Create My Profile</a></li>
-                </ul>
+                  </ul>
             </nav>
             
             <h1>Review List</h1> 
-            
 
+            <br />
+
+            <h3>Search for a Tutor/Student</h3>
+            <div class="search-container">
+                <form action="/action_page.php">
+                  <input type="text" placeholder="Search..." name="search">
+                  <button type="submit">Search</button>
+                  <button><a href="mod5-reviewAnalysis.html">Average Ranking</a></button>
+                </form>
+            </div>
+
+            <br />
+            <div class="review">
+              <p><strong>Tutor Name</strong> Rating:__
+                <br />
+                <u>Title of Review</u>
+                <br />
+                Review Content  
+              </p>
+            </div>
         </div>
     </body>
 </html>
