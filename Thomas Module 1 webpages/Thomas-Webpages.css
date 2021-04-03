@@ -2,23 +2,23 @@ html{
     font-size: 10px;
 }
 body{
-    background-color: black;
+    background-color: #8B1F41;
 }
 #homepageTitle{
     text-align: center;
     font-weight: bold;
-    color: skyblue;
-    background-color: white;
+    color: #8B1F41;
+    background-color: #E87722;
     border-width: .3em;
     border-style: solid;
-    border-color: skyblue;
+    border-color: #E87722;
     margin: 1em;
     
 
 }
 li.pillItem{
     font-size: .95em;
-    border-color:skyblue;
+    border-color:#E87722;
     border-width: .05em;
     border-style: solid;
 }
@@ -35,16 +35,16 @@ p{
     font-weight: bold;
     font-style: italic;
     margin: 2em;
-    border-color: skyblue;
+    border-color: #E87722;
     border-width: .4em;
     border-style: solid;
-    background-color: white;
+    background-color: #E87722;
     padding: 1em;
-    box-shadow: .6em .6em 1em whitesmoke;  
+    box-shadow: .6em .6em 1em #E87722;
 }
 nav{
     font-weight:bold;
-    background-color: lightblue;
+    background-color:  #8B1F41;
     border-width: .2em;
     border-style: solid;
     border-color:black;
@@ -55,10 +55,10 @@ nav{
     margin-left: auto;
     margin-right: auto;
     display:block;
-    color: white;
+    color: #75787B;
 }
 nav.navbar{
-    display:block;
+    display: inline-block;
     border-width: .1em;
     border-style: solid; 
 }
@@ -85,7 +85,7 @@ h2:hover ul{
     display: block;
 }
 nav ul li {
-    background-color: white;
+    background-color: #75787B;
     border-width: 1em;
     border-top: .2em solid black;
     color: black;
@@ -143,4 +143,8 @@ td{
     text-align:center;
     width: 150%; 
 }
-
+#companyLogo{
+    height: 55px;
+    width: 80px;
+    display: inline-block;
+}

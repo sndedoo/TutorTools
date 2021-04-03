@@ -1,0 +1,62 @@
+    div p {
+    background-color: lightgrey;
+    width: 900px;
+    padding: 32px;
+    border: 5px solid blue;
+    margin: 12px;
+    text-align: justify;
+    box-shadow: 8px 8px 25px white;
+    }
+
+    p {font-size: 16px;
+    font-family: arial,helvetica,sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    }
+    
+    .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+
+    h1.blue{color:blue;
+        text-align:center;
+        text-indent:0px;
+    }
+
+    h2.blue{color: blue;
+        text-decoration:underline;
+        text-align:left;
+        text-indent:0px;
+    }
+
+    .nav-pills > li > a{
+        background-color: lightskyblue; color: blue;
+    }
+
+    .nav-pills > li.active > a{
+        background-color: lightblue;
+    }
+
+    .nav-pills > li.active > a:hover{
+        background-color: lightblue;
+    }
+
+    .nav-pills > li > a:hover{
+        background-color: lightblue;
+    }
+
+    .tbl {
+        margin-left: .25in;
+        margin-top: .25in;
+    }
+
+    div.inline {
+        display: inline-block; 
+    }
+
+    div.inline_2 {
+        display: inline-block;
+    }
