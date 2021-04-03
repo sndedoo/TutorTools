@@ -58,7 +58,7 @@ nav{
     color: white;
 }
 nav.navbar{
-    display:block;
+    display: inline-block;
     border-width: .1em;
     border-style: solid; 
 }
@@ -144,7 +144,7 @@ td{
     width: 150%; 
 }
 #companyLogo{
-    height: 100px;
-    width: 100px;
-    display: block;
+    height: 55px;
+    width: 80px;
+    display: inline-block;
 }
