@@ -143,4 +143,8 @@ td{
     text-align:center;
     width: 150%; 
 }
-
+#companyLogo{
+    height: 100px;
+    width: 100px;
+    display: block;
+}
