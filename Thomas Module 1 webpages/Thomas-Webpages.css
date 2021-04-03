@@ -7,18 +7,18 @@ body{
 #homepageTitle{
     text-align: center;
     font-weight: bold;
-    color: skyblue;
-    background-color: white;
+    color: #8B1F41;
+    background-color: #75787B;
     border-width: .3em;
     border-style: solid;
-    border-color: skyblue;
+    border-color: #E87722;
     margin: 1em;
     
 
 }
 li.pillItem{
     font-size: .95em;
-    border-color:skyblue;
+    border-color:#E87722;
     border-width: .05em;
     border-style: solid;
 }
@@ -35,12 +35,12 @@ p{
     font-weight: bold;
     font-style: italic;
     margin: 2em;
-    border-color: skyblue;
+    border-color: #E87722;
     border-width: .4em;
     border-style: solid;
-    background-color: white;
+    background-color: #75787B;
     padding: 1em;
-    box-shadow: .6em .6em 1em whitesmoke;  
+    box-shadow: .6em .6em 1em #75787B; 
 }
 nav{
     font-weight:bold;
