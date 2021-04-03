@@ -2,13 +2,13 @@ html{
     font-size: 10px;
 }
 body{
-    background-color: black;
+    background-color: #8B1F41;
 }
 #homepageTitle{
     text-align: center;
     font-weight: bold;
     color: #8B1F41;
-    background-color: #75787B;
+    background-color: #E87722;
     border-width: .3em;
     border-style: solid;
     border-color: #E87722;
@@ -38,13 +38,13 @@ p{
     border-color: #E87722;
     border-width: .4em;
     border-style: solid;
-    background-color: #75787B;
+    background-color: #E87722;
     padding: 1em;
-    box-shadow: .6em .6em 1em #75787B; 
+    box-shadow: .6em .6em 1em #E87722;
 }
 nav{
     font-weight:bold;
-    background-color: lightblue;
+    background-color:  #8B1F41;
     border-width: .2em;
     border-style: solid;
     border-color:black;
@@ -55,7 +55,7 @@ nav{
     margin-left: auto;
     margin-right: auto;
     display:block;
-    color: white;
+    color: #75787B;
 }
 nav.navbar{
     display: inline-block;
@@ -85,7 +85,7 @@ h2:hover ul{
     display: block;
 }
 nav ul li {
-    background-color: white;
+    background-color: #75787B;
     border-width: 1em;
     border-top: .2em solid black;
     color: black;
