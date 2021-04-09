@@ -150,8 +150,9 @@ td{
     text-align:center;
     width: 150%; 
 }
-#companyLogo{
+#companyLogo nav{
     height: 55px;
     width: 80px;
     display: inline-block;
+    vertical-align:top;
 }
