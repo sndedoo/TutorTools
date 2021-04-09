@@ -85,9 +85,13 @@ h2:hover ul{
     display: block;
 }
 nav ul li {
-    background-color: #75787B;
+    background-color: #E87722;
     border-width: 1em;
-    border-top: .2em solid black;
+    color: black;
+}
+nav ul li a{
+    background-color: #E87722;
+    border-width: 1em;
     color: black;
 }
 ul.TutorRatings{
