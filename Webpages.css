@@ -2,7 +2,7 @@ html{
     font-size: 10px;
 }
 body{
-    background-color: #8B1F41;
+    background-color:white;
 }
 #homepageTitle{
     text-align: center;
@@ -44,10 +44,10 @@ p{
 }
 nav{
     font-weight:bold;
-    background-color:  #8B1F41;
+    background-color: #E87722;
     border-width: .2em;
     border-style: solid;
-    border-color:black;
+    border-color:#8B1F41;
     width: 50em;
     text-align:center;
     font-size: 2em;
@@ -55,7 +55,7 @@ nav{
     margin-left: auto;
     margin-right: auto;
     display:block;
-    color: #75787B;
+    color: #E87722;
 }
 nav.navbar{
     display: inline-block;

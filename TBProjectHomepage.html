@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Homepage</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Thomas-Webpages.css" />
+    <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
@@ -22,41 +22,51 @@
     <div class="container-fluid">
 
 
-        <nav class="navBar" id="navStudent">
-            <ul class="nav nav-pills">
-                <li class="active pillItem"><a href="Project-Homepage.html">Homepage</a></li>
-                <li class="pillItem"><a href="Thomas-Student-Service-Request.html">New Service Request</a></li>
-                <li class="pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
-                <li class="pillItem"><a href="Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                <li class="pillItem"><a href="Thomas-EditAndBuildProfile.html">Edit/Build My Profile</a></li>
-                <li class="active pillItem"><a href="Project-Homepage.html">Home</a></li>
-                <li  role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="/Thomas-Student-Service-Request.html" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/Thomas-Student-Service-Request.html">Schedule Meeting</a></li>
-                        <li><a href="/Senya - profileSearch.html">Search By Major</a></li>
-                    </ul>
-                </li>
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                    role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="Allie-createReview.html">Create A Review</a></li>
-                        <li><a href="Allie-myReviews.html">My Reviews</a></li>
-                        <li><a href="Allie-reviewList.html">Tutor Reviews</a></li>
-                    </ul>   
-                </li>
-                <li class="pillItem"><a href="ViewStudentSchedule.html">View My Schedule</a></li>
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/Senya - EditProfile.html">Edit My Profile</a></li>
-                        <li><a href="/Senya - LogIn.html">Login</a></li>
-                        <li><a href="/Senya - CreateProfile.html">Sign Up</a></li>
-            </ul>
-        </nav>
+        <div id="navStudent">
+            <nav class="navBar">
+                <ul class="nav nav-pills">
+                    <li class="pillItem"><a href="Project-Homepage.html">Home</a></li>
+                    <li  role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/Thomas-Student-Service-Request.html" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Thomas-Student-Service-Request.html">Schedule Meeting</a></li>
+                            <li><a href="/Thomas-ViewStudentSchedule.html">View Student Schedule</a></li>
+                            <li><a href="/Senya - profileSearch.html">Search By Major</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="AM_CreateReview.html">Create A Review</a></li>
+                            <li><a href="AM_MyReviews.html">My Reviews</a></li>
+                            <li><a href="AM_ReviewList.html">Tutor Reviews</a></li>
+                        </ul>   
+                    </li>
+                    <li class="pillItem"><a href="ViewStudentSchedule.html">View My Schedule</a></li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Issues<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Kirk - createIssue.html">Report a Problem</a></li>
+                            <li><a href="/">View My Issues</a></li>
+                        </ul>
+                    </li>
+    
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
+                            <li><a href="/Senya - EditProfile.html">Edit My Profile</a></li>
+                            <li><a href="/Senya - LogIn.html">Login</a></li>
+                            <li><a href="/Senya - CreateProfile.html">Sign Up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
 
         <h1 id="homepageTitle">TutorTools Homepage</h1>
