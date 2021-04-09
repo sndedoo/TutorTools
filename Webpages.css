@@ -62,10 +62,6 @@ nav.navbar{
     border-width: .1em;
     border-style: solid; 
 }
-nav ul li:hover {
-    background-color: #8B1F41;
-    color: white;
- }
 nav.allQuestions h2{
     
     list-style: none;
