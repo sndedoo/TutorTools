@@ -1,0 +1,36 @@
+input {
+    padding: 6px;
+    font-size: 14px;
+    border-radius: 4px;
+    width: 240px;
+}
+label {
+    width: 173px;
+    display: inline-block;
+    font-weight: 1000;
+}
+.subrank {
+    width: 145px;
+    display: inline-block;
+    font-weight: 800;
+}
+textarea {
+    padding: 6px;
+    font-size: 14px;
+    width: 390px;
+    display: inline-block;
+}
+select {
+    width: 240px;
+    display: inline-block;
+}
+.button {
+    width: 125px;
+    display: inline-block;
+}
+.reviewhead {
+    padding: 6px;
+    font-size: 14px;
+    width: 390px;
+    display: inline-block;
+}

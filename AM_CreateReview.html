@@ -6,112 +6,141 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <link href="css/bootsrtap.min.css" rel="stylesheet" />
-        <!--Bootstrap-->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="Webpages.css" />
+        <link rel="stylesheet" type="text/css" href="AM_Form.css" />
         <script src="jquery-3.1.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="myScripts.js"></script>
+        <meta author="Allie Ahwee-Marrah">
+        <meta descriptions="This page allows a student to create a review for a tutor">
     </head>
 
     <body>
         <div class="container-fluid">
             <!--navigation bar-->
-            <nav>
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">New Service Request</a></li>
+            <nav class="navStudent">
+                <ul class="nav nav-pills">
+                    <li class="pillItem"><a href="TBProjectHomepage.html">Home</a></li>
+                    <li  role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/TBStudentServiceRequest.html">Schedule Meeting</a></li>
+                            <li><a href="/TBViewStudentSchedule.html">View Student Schedule</a></li>
+                            <li><a href="/SD_profileSearch.html">Search By Major</a></li>
+                        </ul>
+                    </li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                         role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="Allie-createReview.html">Create A Review</a></li>
-                            <li><a href="Allie-myReviews.html">My Reviews</a></li>
-                            <li><a href="Allie-reviewList.html">Tutor Reviews</a></li>
+                            <li><a href="AM_CreateReview.html">Create A Review</a></li>
+                            <li><a href="AM_MyReviews.html">My Reviews</a></li>
+                            <li><a href="AM_ReviewList.html">Tutor Reviews</a></li>
                         </ul>   
                     </li>
-                    <li><a href="#">View Schedule</a></li>
-                    <li><a href="#">View My Profile</a></li>
-                    <li><a href="#">Edit/Create My Profile</a></li>
-                  </ul>
+                    <li class="pillItem"><a href="ViewStudentSchedule.html">View My Schedule</a></li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Issues<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Kirk - createIssue.html">Report a Problem</a></li>
+                            <li><a href="/">View My Issues</a></li>
+                        </ul>
+                    </li>
+
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
+                            <li><a href="/Senya - EditProfile.html">Edit My Profile</a></li>
+                            <li><a href="/Senya - LogIn.html">Login</a></li>
+                            <li><a href="/Senya - CreateProfile.html">Sign Up</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </nav>
 
             <h1>Create a Review</h1> 
-            
-            <form method="post" action="Allie-myReviews.html" autocomplete="on">
+
+            <form align = left method="post" action="AM_myReviews.html" autocomplete="on">
                 <input type="hidden" name="department" value="BIT" />
-                <p>&emsp;
-                    <label for="name">
-                        <Strong>Review Reciepient: </Strong>
-                        <input type="text" id="name" name="name" size="25" placeholder="John Doe" autofocus required/>
-                    </label>
-                </p>
                 
                 <p>&emsp;
-                    <label><strong>Overall Rating: </strong>
-                        <select name="overall">
-                            <option selected>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </label>
-                </p>
+                    <label for="name">Tutor Name:</label>
+                    <input type="text" id="name" name="name" size="25" placeholder="John Doe" autofocus required/>
 
-                <p>&emsp;<label><strong>Rate Features: </strong></label></p>
-                    <p>&emsp;&emsp;
-                        <label>Attutude: 
-                            <select name="attitude">
-                                <option selected>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </label>
-                    </p>
+                    </br>&emsp;
 
-                    <p>&emsp;&emsp;
-                        <label>Explainability: 
-                            <select name="explain">
-                                <option selected>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </label>
-                    </p>
+                    <label>Overall Rating:</label>
+                    <select name="overall">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    
+                    </br>&emsp;
+                    
+                    <label>Rate Features:</label>
 
-                    <p>&emsp;&emsp;
-                        <label>Helpfulness: 
-                            <select name="help">
-                                <option selected>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </label>
-                    </p>
+                    </br>&emsp;&emsp;&emsp;
+
+                    <label class = "subrank">Attutude:</label>
+                    <select name="attitude">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    
+                    </br>&emsp;&emsp;&emsp;
+                    
+                    <label class = "subrank">Explainability: </label>
+                    <select name="explain">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                    </br>&emsp;&emsp;&emsp;
+
+                    <label class = "subrank">Helpfulness: </label>
+                    <select name="help">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                 
-                <p>&emsp;
-                    <label><strong>Review Heading: </strong>
-                        <input name="name" type="text" size="25" />
-                    </label>
-                </p>
-    
-                <p>&emsp;
-                    <label><strong>Review: </strong>
-                        <br />&emsp;
-                        <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
-                    </label>
-                </p>
+                    </br>&emsp;
 
-                <p>
-                    <a href="#"><input type="button" value="Home" /></a>
-                    <input type="submit" value="Submit" />
-                    <input type="reset" value="Clear" />
+                    <label>Review Heading:</label>
+
+                    </br>&emsp;&emsp;&emsp;
+
+                    <input class = "reviewhead" name="name" type="text" size="25" />
+
+                    </br>&emsp;
+
+                    <label>Review:</label>
+
+                    <br />&emsp;&emsp;&emsp;
+
+                    <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
+
+                    </br>&emsp;&emsp;&emsp;
+
+                    <a href="#"><input class = "button" type="button" value="Home" /></a>
+                    <input class = "button" type="submit" value="Submit" />
+                    <input class = "button" type="reset" value="Clear" />
                 </p>
             </form>
 
