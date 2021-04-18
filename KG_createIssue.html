@@ -1,3 +1,32 @@
+<?php 
+            
+            $issueName = "";
+            $issueDesc = "";
+            $err = false;
+        
+            if(isset($_POST["submit"])){
+                if(isset($_POST["issuename"])) $issueName = $_POST["issuename"];
+                if(isset($_POST["issuedesc"])) $issueDesc = $_POST["issuedesc"];
+            } else {
+                $err = true;
+            }
+            
+            //Adds record to database
+            require_once("db.php");
+            {
+                
+                $sql = "insert into issue(Issue_Name, Issue_Comment)
+                values('$issueName','$issueDesc')";
+
+                $result = $mydb->query($sql);
+
+
+                if($result = 1){echo "<p> New employee record has been created</p>";}
+            } 
+            
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,54 +70,32 @@
         autocomplete="on">
             <div class = "border container-fluid">
                 <div class = "row text-center ">
-                    <div class = "col-sm-6 auto" style = width:50%>
+                    <div class = "col-sm-12 auto" style = width:50%>
                         <label>Name:
-                            <input name = "name" type = "text" size = "25" required autofocus/>
+                            <input name = "issuename" type = "text" size = "25" required autofocus/>
+                            <?php 
+                                if ($err && empty($issuename)){
+                                    echo "<label class = 'errlbl'> Error: Please enter a title for the issue. </label>";
+                                    
+                                }
+                            ?>
                         </label>
                     </div>
-                    
-                    <div class = "col-sm-6 auto" style = width:40%>
-                        <p id = "priority" >
-                            <label>Priority:
-                                <select name = "priority">
-                                    <option selected>Low</option>
-                                    <option>Medium</option>
-                                    <option>High</option>
-                                </select>
-                            </label>
-                        </p>
-                    </div>
-                    
-
-                    
                 </div>   
-
-                <div class = "row border"> 
-                    <div class = "col-sm-6 auto" style = width:50%>
-                        <label>Deadline:  
-                            <input name = "deadline" type = "date" />
-                        </label>
-                    </div>
                     
-                    <div class = "col-sm-6 auto" style = width:40%>
-                        <p id = "status">
-                            <label>Status:
-                                <select name = "status">
-                                    <option selected>Not Started</option>
-                                    <option>Complete</option>
-                                    <option>In Progess</option>
-                                </select>
-                            </label>
-                        </p>
-                    </div>
             </div>
                 <div class = "row">
                     <div>
                         <label id ="User" style = margin-top:20px>
                             User Input Description
                         </label>
-                        <textarea name="user-desc" rows="10" cols="50">
+                        <textarea name="issuedesc" rows="10" cols="50">
                         </textarea>
+                        <?php 
+                    if ($err && empty($issueDesc)){
+                        echo "<label class = 'errlbl'> Error: Please enter a description for the issue product name </label>";
+                    }
+                ?>
                     </div>
                     
 
@@ -102,7 +109,8 @@
         
         
         </form>
-
+        
+        
 
     </body>
 
