@@ -116,7 +116,27 @@
                 </div>
             </form>
         </div>
+        <table>
+            
+                <?php
+                require_once("db.php");
+                $sql = "select Emp_first from employee";
+                $result = $mydb->query($sql);
+                $row=mysqli_fetch_array($result);
 
+                while($row = mysqli_fetch_array($result)){
+                    echo "<tr><td>".$row["Emp_first"]."</td></tr>";
+                }
+            
+
+
+               ?>
+            
+
+        </table>
+        
+        
+        
     </body>
 
 </html>
