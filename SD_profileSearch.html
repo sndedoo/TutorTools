@@ -11,29 +11,49 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
     <script>
-      $(document).ready(function(){
-      $(function() {
-          $("#navStudent").load("navpage.html#navStudent");
-      });
-  });
+  //     $(document).ready(function(){
+  //     $(function() {
+  //         $("#navStudent").load("navpage.html#navStudent");
+  //     });
+  // });
   </script>
 </head>
-<nav>
-    <ul class="nav nav-pills">
-        <li><a href="">Home</a></li>
-        <li class="active"><a href="/profileSearch.html">Find a Tutor</a></li>
-        <li><a href="">View Schedule</a></li>
-        <li><a href="/EditProfile.html">My Account</a></li>
-        <li role="presentation" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">New to Tutor Tools?<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="/LogIn.html">Login</a></li>
-                <li><a href="/CreateProfile.html">Sign Up</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+<div id="navStudent">
+  <nav class="navBar">
+      <ul class="nav nav-pills">
+          <li class="pillItem"><a href="/TBProjectHomepage.html">Home</a></li>
+          <li  role="presentation" class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a href="/TBStudentServiceRequest.html">Schedule Meeting</a></li>
+                  <li><a href="/TBViewStudentSchedule.html">View Student Schedule</a></li>
+                  <li><a href="/SD_profileSearch.html">Search By Major</a></li>
+              </ul>
+          </li>
+          <li role="presentation" class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+              role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="AM_CreateReview.html">Create A Review</a></li>
+                  <li><a href="AM_MyReviews.html">My Reviews</a></li>
+                  <li><a href="AM_ReviewList.html">Tutor Reviews</a></li>
+              </ul>   
+          </li>
+          <li class="pillItem"><a href="/TBViewStudentProfile.html">View My Schedule</a></li>
+          <li role="presentation" class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Issues<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                  <li><a href="KG_createIssue.php">Report a Problem</a></li>
+                  <li><a href="KG _viewIssues.html">View My Issues</a></li>
+                  
+
+              </ul>
+          </li>
+          </ul>
+          </nav>
+</div>
 <br>
 <form class="">
     <input type="search">
