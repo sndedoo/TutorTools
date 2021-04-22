@@ -7,8 +7,8 @@
         <meta charset = "utf-8"/>
         <meta author = "Kirk Graham"/>
 
-        <link rel = "stylesheet" href = "CSS/style.css" type = "text/css"/>
-        <link rel = "stylesheet" href = "CSS/box.css" type = "text/css"/>
+        <!--<link rel = "stylesheet" href = "CSS/style.css" type = "text/css"/>
+        <link rel = "stylesheet" href = "CSS/box.css" type = "text/css"/>-->
         
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
@@ -21,27 +21,43 @@
             
             $issueName = "";
             $issueDesc = "";
-            $err = false;
+            $pageOk = null;
+            $error = false;
         
             if(isset($_POST["submit"])){
                 if(isset($_POST["issuename"])) $issueName = $_POST["issuename"];
                 if(isset($_POST["issuedesc"])) $issueDesc = $_POST["issuedesc"];
-            } else {
-                $err = true;
-            }
+
+
+                if(empty($issueName) || empty($issueDesc)){
+                    $error = true;
+                }
+
+                if(!$error){
+                    require_once("db.php");
+                
+                
+                    $sql = "insert into issue(Issue_Name, Issue_Comment)
+                    values('$issueName','$issueDesc')";
+
+                    $result = $mydb->query($sql);
+                    
+                    if($result = 1)
+                        {
+                            echo "<p> New employee record has been created</p>";
+                        }
+                    $pageOk = true;
+                }
+
+                if($pageOk){
+                    Header("Location:KG_issuetable.html");
+                }
+            } 
+
+            
             
             //Adds record to database
-            require_once("db.php");
-            {
-                
-                $sql = "insert into issue(Issue_Name, Issue_Comment)
-                values('$issueName','$issueDesc')";
-
-                $result = $mydb->query($sql);
-
-
-                if($result = 1){echo "<p> New employee record has been created</p>";}
-            } 
+            
             
 ?>
 
@@ -66,15 +82,15 @@
         </nav>
 
 
-        <form method = "POST" action = "mailto:kirkgraham1@gmail.com" enctype="multipart/form-data" name = "emailForm"
+        <form method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" name = "emailForm"
         autocomplete="on">
             <div class = "border container-fluid">
                 <div class = "row text-center ">
                     <div class = "col-sm-12 auto" style = width:50%>
                         <label>Name:
-                            <input name = "issuename" type = "text" size = "25" required autofocus/>
+                            <input name = "issuename" type = "text" size = "25" autofocus/>
                             <?php 
-                                if ($err && empty($issuename)){
+                                if ($error && empty($issueName)){
                                     echo "<label class = 'errlbl'> Error: Please enter a title for the issue. </label>";
                                     
                                 }
@@ -92,7 +108,7 @@
                         <textarea name="issuedesc" rows="10" cols="50">
                         </textarea>
                         <?php 
-                    if ($err && empty($issueDesc)){
+                    if ($error && empty($issueDesc)){
                         echo "<label class = 'errlbl'> Error: Please enter a description for the issue product name </label>";
                     }
                 ?>
@@ -102,7 +118,7 @@
                     
                 </div>
                 <div>
-                    <input id = "sub-button" type = "submit" value = "Create">
+                    <input id = "sub-button" name = "submit" type = "submit" value = "Create" >
                     <input type = "button" onclick = "parent.location='KG_issuetable.html'" value = 'Back'>
                 </div>
         </div>
