@@ -130,6 +130,7 @@
                 $sql = "select Emp_first from employee";
                 $result = $mydb->query($sql);
                 $row=mysqli_fetch_array($result);
+<<<<<<< HEAD:KG_login.php
 
                 while($row = mysqli_fetch_array($result)){
                     echo "<tr><td>".$row["Emp_first"]."</td></tr>";
@@ -140,6 +141,18 @@
                ?>
             
 
+=======
+
+                while($row = mysqli_fetch_array($result)){
+                    echo "<tr><td>".$row["Emp_first"]."</td></tr>";
+                }
+            
+
+
+               ?>
+            
+
+>>>>>>> b53fde8736b9b7c98be565828b64ee0cc8c8cff1:KG_login.html
         </table>
         
         

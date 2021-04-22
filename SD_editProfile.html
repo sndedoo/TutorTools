@@ -5,10 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Your Profile</title>
-    <link href="/Thomas-Webpages.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="/jquery-3.1.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Webpages.css" />
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="myScripts.js"></script>
+    <script>
+        $(document).ready(function(){
+        $(function() {
+            $("#navStudent").load("navpage.html#navStudent");
+        });
+    });
+    </script>
 </head>
 <nav>
     <ul class="nav nav-pills">
@@ -30,6 +38,7 @@
 <body class="container-fluid">
     <h1>Edit Your Profile </h1>
     <form action="" method="POST">
+        <p>
         <br/>
         Display name 
         <br/> 
@@ -111,6 +120,7 @@
         <br/>
         <input type="submit" name="Update Profile" value="Update Profile"/>
         <input type="submit" name="delete" value="Delete Profile"/>
+    </p>
     </form>
 </body>
 </html>
