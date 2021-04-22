@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
     if(isset($_POST["gradYear"])) $gradYear = $_POST["gradYear"];
     if(isset($_POST["userSelect"])) $userSelect = $_POST["userSelect"];
 
-    if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $state == "" || $gradYear = "" || $userSelect = "") {
+    if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $_POST['state'] == '' || $_POST['gradYear'] == '' || $_POST['userSelect'] == '') {
         $error = true;
 
       } elseif ($_POST['userSelect'] == 'Student'){
@@ -135,7 +135,7 @@ if (isset($_POST["submit"])) {
         <option value="Maryland">Maryland</option>
         <option value="DC">DC</option>
         <?php
-        if ($error=true && ($state == "")) {
+        if ($error=true && ($_POST['state'] == '')) {
           echo "<label>Error: Please enter your State.</label>";
         }
         /*
@@ -164,7 +164,7 @@ if (isset($_POST["submit"])) {
         <option value="2024">2024</option>
         <option value="2025">2025</option>
         <?php
-        if ($error=true && ($gradYear == "")) {
+        if ($error=true && ($_POST['gradYear'] == '')) {
           echo "<label>Error: Please enter your State.</label>";
         }
         /*
@@ -190,7 +190,7 @@ if (isset($_POST["submit"])) {
         <option value="Student">Student</option>
         <option value="Tutor">Tutor</option>
         <?php
-        if ($error=true && ($userSelect == "")) {
+        if ($error=true && ($_POST['userSelect'] == '')) {
           echo "<label>Error: Please enter your user type.</label>";
         }
         ?>
