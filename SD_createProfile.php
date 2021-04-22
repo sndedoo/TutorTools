@@ -21,16 +21,18 @@ if (isset($_POST["submit"])) {
     if(isset($_POST["gradYear"])) $gradYear = $_POST["gradYear"];
     if(isset($_POST["userSelect"])) $userSelect = $_POST["userSelect"];
 
-    if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $state == "" || $gradYear = "" || $userSelect = "") {
+    if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $_POST['state'] == '' || $_POST['gradYear'] == '' || $_POST['userSelect'] == '') {
         $error = true;
-      } elseif ($userSelect == "Student"){
+
+      } elseif ($_POST['userSelect'] == 'Student'){
         require_once("db.php");
-        $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State, Student_GradYr) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state','$gradYear')";
+        echo $userSelect;
+        $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state')";
         $result=$mydb->query($sql);
 
         header("Location: TBProjectHomepage.html");
         
-      } elseif ($userSelect == "Tutor") {
+      } elseif ($_POST['userSelect'] == 'Tutor') {
         require_once("db.php");
         $sql = "insert into tutor(Tutor_First, Tutor_Last, Tutor_Email, Tutor_Password, Tutor_Street_Address, Tutor_City, Tutor_State) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state')";
         $result=$mydb->query($sql);
@@ -133,7 +135,7 @@ if (isset($_POST["submit"])) {
         <option value="Maryland">Maryland</option>
         <option value="DC">DC</option>
         <?php
-        if ($error=true && ($state == "")) {
+        if ($error=true && ($_POST['state'] == '')) {
           echo "<label>Error: Please enter your State.</label>";
         }
         /*
@@ -162,7 +164,7 @@ if (isset($_POST["submit"])) {
         <option value="2024">2024</option>
         <option value="2025">2025</option>
         <?php
-        if ($error=true && ($gradYear == "")) {
+        if ($error=true && ($_POST['gradYear'] == '')) {
           echo "<label>Error: Please enter your State.</label>";
         }
         /*
@@ -183,12 +185,12 @@ if (isset($_POST["submit"])) {
 
         Tutor or Student?
         <br>
-        <select name="userSelect" id="">
+        <select name="userSelect" >
         <option value="" selected> </option>  
         <option value="Student">Student</option>
         <option value="Tutor">Tutor</option>
         <?php
-        if ($error=true && ($userSelect == "")) {
+        if ($error=true && ($_POST['userSelect'] == '')) {
           echo "<label>Error: Please enter your user type.</label>";
         }
         ?>
