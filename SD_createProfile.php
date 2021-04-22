@@ -6,6 +6,7 @@ $password = "";
 $address = "";
 $city = "";
 $state = 0;
+$gradYear = 0;
 $error = false;
 
 if (isset($_POST["submit"])) {
@@ -16,9 +17,16 @@ if (isset($_POST["submit"])) {
     if(isset($_POST["address"])) $address = $_POST["address"];
     if(isset($_POST["city"])) $city = $_POST["city"];
     if(isset($_POST["state"])) $state = $_POST["state"];
+    if(isset($_POST["gradYear"])) $gradYear = $_POST["gradYear"];
 
     if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $state<0) {
         $error = true;
+      } else {
+        require_once("db.php");
+        $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State, Student_GradYr) values('$firstName', '$lastName', $email, '$password', '$address', '$city', '$state','$gradYear')";
+        $result=$mydb->query($sql);
+
+        header("Location: TBProjectHomepage.html");
       }
     }
 ?>
@@ -107,8 +115,16 @@ if (isset($_POST["submit"])) {
 
         State
         <br/>
-        <select name="State" id="">
+        <select name="state" id="">
+        <option value="" selected> </option>  
+        <option value="Virginia">Virginia</option>
+        <option value="Maryland">Maryland</option>
+        <option value="DC">DC</option>
         <?php
+        if ($error=true && ($state == "")) {
+          echo "<label>Error: Please enter your State.</label>";
+        }
+        /*
           echo "<option value='0'> </option>";
 
           require_once("db.php");
@@ -119,6 +135,36 @@ if (isset($_POST["submit"])) {
             //<option value='1'>1</option>
             echo "<option value='".$row["State"]."'>".$row["State"]."</option>";
           }
+          */
+        ?>
+        </select>
+        <br>
+
+        Year of Graduation
+        <br>
+        <select name="gradYear" id="">
+        <option value="" selected> </option>  
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <?php
+        if ($error=true && ($gradYear == "")) {
+          echo "<label>Error: Please enter your State.</label>";
+        }
+        /*
+          echo "<option value='0'> </option>";
+
+          require_once("db.php");
+          $sql="select Student_GradYr from student order by Student_GradYr";
+          //execute the $sql statement and get the $result back
+
+          while($row=mysqli_fetch_array($result)){
+            //<option value='1'>1</option>
+            echo "<option value='".$row["Student_GradYr"]."'>".$row["Student_GradYr"]."</option>";
+          }
+          */
         ?>
         </select>
         <br>
@@ -132,7 +178,7 @@ if (isset($_POST["submit"])) {
         <input type="submit" name="submit" value="Create Account"/>
         <input type="reset" name="clear" value="Clear Entry"/>
         <br>
-        Already have an Account?<a href="/Senya - LogIn.html">Log In</a></p> 
+        Already have an Account?<a href="/SD_logIn.php">Log In</a></p> 
     </form>
 </body>
 
