@@ -1,5 +1,34 @@
-<!DOCTYPE HTML>
+<?php
+    $rid = 0;
+    $sname = "";
+    $tname = "";
+    $orank = 0;
+    $arank = 0;
+    $erank = 0;
+    $hrank = 0;
+    $rhead = "";
+    $rcomment = "";
+    $err = false;    
+    if (isset($_POST["submit"])) {
+        if(isset($_POST["id"])) $rid=$_POST["id"];
+        if(isset($_POST["studentname"])) $sname=$_POST["tutorname"];
+        if(isset($_POST["tutorname"])) $tname=$_POST["tutorname"];
+        if(isset($_POST["overall"])) $orank=$_POST["overall"];
+        if(isset($_POST["attitude"])) $arank=$_POST["attitude"];
+        if(isset($_POST["explain"])) $erank=$_POST["explain"];
+        if(isset($_POST["help"])) $hrank=$_POST["help"];
+        if(isset($_POST["heading"])) $rhead=$_POST["heading"];
+        if(isset($_POST["comment"])) $rcomment=$_POST["comment"];
+        if(!empty($tname) && !empty($rhead) && !empty($rcomment)) {
+            header("HTTP/1.1 307 Temprary Redirect"); 
+            header("Location: AM_MyReviews.php");
+        } else {
+            $err = true;
+        }
+    }
+?>
 
+<!DOCTYPE HTML>
 <html>
     <head>
         <title>Edit Review</title>
@@ -19,61 +48,22 @@
     <body>
         <div class="container-fluid">
             <!--navigation bar-->
-            <nav class="navStudent">
-                <ul class="nav nav-pills">
-                    <li class="pillItem"><a href="TBProjectHomepage.html">Home</a></li>
-                    <li  role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/TBStudentServiceRequest.html">Schedule Meeting</a></li>
-                            <li><a href="/TBViewStudentSchedule.html">View Student Schedule</a></li>
-                            <li><a href="/SD_profileSearch.html">Search By Major</a></li>
-                        </ul>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                        role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="AM_CreateReview.html">Create A Review</a></li>
-                            <li><a href="AM_MyReviews.html">My Reviews</a></li>
-                            <li><a href="AM_ReviewList.html">Tutor Reviews</a></li>
-                        </ul>   
-                    </li>
-                    <li class="pillItem"><a href="ViewStudentSchedule.html">View My Schedule</a></li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Issues<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="Kirk - createIssue.html">Report a Problem</a></li>
-                            <li><a href="/">View My Issues</a></li>
-                        </ul>
-                    </li>
 
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                            <li><a href="/Senya - EditProfile.html">Edit My Profile</a></li>
-                            <li><a href="/Senya - LogIn.html">Login</a></li>
-                            <li><a href="/Senya - CreateProfile.html">Sign Up</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            
             <h1>Edit Review</h1> 
             
             <form align = left method="post" action="AM_myReviews.html" autocomplete="on">
                 <input type="hidden" name="department" value="BIT" />
                 
                 <p>&emsp;
-                    <label for="name">Tutor Name:</label>
-                    <input type="text" id="name" name="name" size="25" placeholder="John Doe" autofocus required/>
+                    <input type="hidden" id="id" name="id" size="25"/>
+                    <label for="studentname">Your Name:</label>
+                    <input type="text" id="studentname" name="studentname" size="25" placeholder="John Doe" autofocus required/>
 
                     </br>&emsp;
+                    <label for="tutorname">Tutor Name:</label>
+                    <input type="text" id="tutorname" name="tutorname" size="25" placeholder="John Doe" required/>
 
+                    </br>&emsp;
                     <label>Overall Rating:</label>
                     <select name="overall">
                         <option selected>1</option>
@@ -82,13 +72,10 @@
                         <option>4</option>
                         <option>5</option>
                     </select>
-                    
+
                     </br>&emsp;
-                    
                     <label>Rate Features:</label>
-
                     </br>&emsp;&emsp;&emsp;
-
                     <label class = "subrank">Attutude:</label>
                     <select name="attitude">
                         <option selected>1</option>
@@ -99,7 +86,6 @@
                     </select>
                     
                     </br>&emsp;&emsp;&emsp;
-                    
                     <label class = "subrank">Explainability: </label>
                     <select name="explain">
                         <option selected>1</option>
@@ -110,7 +96,6 @@
                     </select>
 
                     </br>&emsp;&emsp;&emsp;
-
                     <label class = "subrank">Helpfulness: </label>
                     <select name="help">
                         <option selected>1</option>
@@ -119,27 +104,22 @@
                         <option>4</option>
                         <option>5</option>
                     </select>
-                
-                    </br>&emsp;
 
+                    </br>&emsp;
                     <label>Review Heading:</label>
 
                     </br>&emsp;&emsp;&emsp;
-
-                    <input class = "reviewhead" name="name" type="text" size="25" />
+                    <input class = "reviewhead" name="heading" type="text" size="25" />
 
                     </br>&emsp;
-
                     <label>Review:</label>
 
                     <br />&emsp;&emsp;&emsp;
-
                     <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
 
                     </br>&emsp;&emsp;&emsp;
-
                     <input class = "button" type="submit" value="Submit" />
-                    <input class = "button" type="reset" value="Restart" />
+                    <a href="AM_MyReviews.php"><input type="button" value="Cancel" /></a>
                 </p>
             </form>
 
