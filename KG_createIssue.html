@@ -1,4 +1,23 @@
-<?php 
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Create Issue </title>
+        <meta charset = "utf-8"/>
+        <meta author = "Kirk Graham"/>
+
+        <link rel = "stylesheet" href = "CSS/style.css" type = "text/css"/>
+        <link rel = "stylesheet" href = "CSS/box.css" type = "text/css"/>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+
+        <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
+        
+        <script src = "jquery-3.1.1.min.js"></script>
+        <script src = "js/bootstrap.min.js"></script>
+        <?php 
             
             $issueName = "";
             $issueDesc = "";
@@ -26,25 +45,6 @@
             
 ?>
 
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Create Issue </title>
-        <meta charset = "utf-8"/>
-        <meta author = "Kirk Graham"/>
-
-        <link rel = "stylesheet" href = "CSS/style.css" type = "text/css"/>
-        <link rel = "stylesheet" href = "CSS/box.css" type = "text/css"/>
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
-
-        <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
-        
-        <script src = "jquery-3.1.1.min.js"></script>
-        <script src = "js/bootstrap.min.js"></script>
-        
     </head>
 
     <body>
