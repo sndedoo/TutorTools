@@ -5,8 +5,9 @@ $email = "";
 $password = "";
 $address = "";
 $city = "";
-$state = 0;
-$gradYear = 0;
+$state = "";
+$gradYear = "";
+$userSelect = "";
 $error = false;
 
 if (isset($_POST["submit"])) {
@@ -18,16 +19,26 @@ if (isset($_POST["submit"])) {
     if(isset($_POST["city"])) $city = $_POST["city"];
     if(isset($_POST["state"])) $state = $_POST["state"];
     if(isset($_POST["gradYear"])) $gradYear = $_POST["gradYear"];
+    if(isset($_POST["userSelect"])) $userSelect = $_POST["userSelect"];
 
-    if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $state<0) {
+    if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $state == "" || $gradYear = "" || $userSelect = "") {
         $error = true;
-      } else {
+      } elseif ($userSelect == "Student"){
         require_once("db.php");
-        $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State, Student_GradYr) values('$firstName', '$lastName', $email, '$password', '$address', '$city', '$state','$gradYear')";
+        $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State, Student_GradYr) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state','$gradYear')";
         $result=$mydb->query($sql);
 
         header("Location: TBProjectHomepage.html");
+        
+      } elseif ($userSelect == "Tutor") {
+        require_once("db.php");
+        $sql = "insert into tutor(Tutor_First, Tutor_Last, Tutor_Email, Tutor_Password, Tutor_Street_Address, Tutor_City, Tutor_State) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state')";
+        $result=$mydb->query($sql);
+
+        header("Location: TBProjectHomepage.html");
+
       }
+
     }
 ?>
 
@@ -47,6 +58,7 @@ if (isset($_POST["submit"])) {
 
 <body class="container-fluid">
     <h1>Create a Profile </h1>
+
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
 
         <p>First name 
@@ -171,12 +183,20 @@ if (isset($_POST["submit"])) {
 
         Tutor or Student?
         <br>
-        <input type="radio" name="student">Student
-        <input type="radio" name="tutor">Tutor
-        <input type="radio" name="tutor">Employee
+        <select name="userSelect" id="">
+        <option value="" selected> </option>  
+        <option value="Student">Student</option>
+        <option value="Tutor">Tutor</option>
+        <?php
+        if ($error=true && ($userSelect == "")) {
+          echo "<label>Error: Please enter your user type.</label>";
+        }
+        ?>
+        </select>
         <br/>
+        <br>
+
         <input type="submit" name="submit" value="Create Account"/>
-        <input type="reset" name="clear" value="Clear Entry"/>
         <br>
         Already have an Account?<a href="/SD_logIn.php">Log In</a></p> 
     </form>
