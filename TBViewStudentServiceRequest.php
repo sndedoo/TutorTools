@@ -81,7 +81,7 @@ $tutorLastNameSelected = "";
     </form>
 
     </br>
-    
+
     <?php
     if (isset($_POST["submit"])) {
         if (isset($_POST["classSelected"])) $classSelected = $_POST["classSelected"];
@@ -100,27 +100,27 @@ $tutorLastNameSelected = "";
             echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Class Requested</th><th class='orange'>Sign Up</th></tr>
                     </thead><tbody>";
             while ($row = mysqli_fetch_array($result)) {
-                echo "<tr><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'>" . $classSelected . "</td><td class= 'lightOrange'><button>Sign Up</button></td></tr>";
+                echo "<tr><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'>" . $classSelected . "</td><td class= 'lightOrange'><a href = TBViewStudentSchedule.php><button class = SignUpButton>Sign Up</button></td></tr>";
             }
             echo "</tbody></table>";
         } else {
             $result = $mydb->query($sql);
             if ($tutorFirstNameSelected != "") {
                 echo "<table>";
-                echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th></tr>
+                echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr>
                     </thead><tbody>";
                 while ($row = mysqli_fetch_array($result)) {
 
-                    echo "<tr><td class='lightOrange'>" . $tutorFirstNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td></tr>";
+                    echo "<tr><td class='lightOrange'>" . $tutorFirstNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a href = TBViewStudentSchedule.php><button class = SignUpButton>Sign Up</button></td></tr>";
                 }
                 echo "</tbody></table>";
             } else {
                 echo "<table>";
-                echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th></tr>
+                echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr>
                         </thead><tbody>";
                 while ($row = mysqli_fetch_array($result)) {
 
-                    echo "<tr><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $tutorLastNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td></tr>";
+                    echo "<tr><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $tutorLastNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a href = TBViewStudentSchedule.php><button class = SignUpButton>Sign Up</button></td></tr>";
                 }
                 echo "</tbody></table>";
             }
