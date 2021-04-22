@@ -23,14 +23,16 @@ if (isset($_POST["submit"])) {
 
     if(empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($address) || empty($city) || $state == "" || $gradYear = "" || $userSelect = "") {
         $error = true;
-      } elseif ($userSelect == "Student"){
+
+      } elseif ($_POST['userSelect'] == 'Student'){
         require_once("db.php");
-        $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State, Student_GradYr) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state','$gradYear')";
+        echo $userSelect;
+        $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state')";
         $result=$mydb->query($sql);
 
         header("Location: TBProjectHomepage.html");
         
-      } elseif ($userSelect == "Tutor") {
+      } elseif ($_POST['userSelect'] == 'Tutor') {
         require_once("db.php");
         $sql = "insert into tutor(Tutor_First, Tutor_Last, Tutor_Email, Tutor_Password, Tutor_Street_Address, Tutor_City, Tutor_State) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state')";
         $result=$mydb->query($sql);
@@ -183,7 +185,7 @@ if (isset($_POST["submit"])) {
 
         Tutor or Student?
         <br>
-        <select name="userSelect" id="">
+        <select name="userSelect" >
         <option value="" selected> </option>  
         <option value="Student">Student</option>
         <option value="Tutor">Tutor</option>
