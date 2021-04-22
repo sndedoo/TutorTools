@@ -104,8 +104,8 @@
                     
                 </div>
                 <div>
-                    <input id = "sub-button" type = "submit" value = "Modify">
-                    <input type = "button" onclick = "parent.location='issuetable.html'" value = 'Back'>
+                    <input id = "sub-button" name = "submit" type = "submit" value = "Modify">
+                    <input type = "button" onclick = "parent.location='KG_issuetable.php'" value = 'Back'>
                     
             </form>
                 </div>

@@ -49,45 +49,45 @@
     <div class = "container-fluid">
         <div class = "row">
             <div class = "col-sm-2 border">
-                <img src = "Images/pie chart.jpg"/>
+                <img src = "Images/pie_chart.jpg"/>
                 <p><input type = "button" onclick = "parent.location='issuetable.html'" value = 'View Analytics'></p>
             </div>
             <div class = "col-sm-8" style = "background-color:gray">
                 <div class="tableFixHead">
 
                   <?php 
-                  echo "" 
+                  echo "
                     <table>
                       <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Date Created</th>
-                            <th>Date Modified</th>
-                            <th>Status</th>
+                            <th>ID</th>
+                            <th>Issue Date</th>
+                            <th>Issue Title</th>
+                            <th>Issue Description</th>
                         </tr>
-                      </thead>
-                      <!--<?php 
-                          require_once("db.php");
-                          echo
-                            "<tbody>";
+                      </thead>";
 
-                          $sql = "Select Issue_Date, Issue_Name, Issue_Comment
-                          from Issue"
-                          $result = $mydb->query($sql);
+                       
+                      require_once("db.php");
+                      echo
+                      "<tbody>";
+
+                      $sql = "Select Issue_ID, Issue_Date, Issue_Name, Issue_Comment
+                              from Issue";
+                      $result = $mydb->query($sql);
                           //Insert Rows
-                          while($row = mysqli_fetch_array($result)){
-                            echo "<tr><td class = 'orange'>".$row['Issue_Date']."</td><td class = 'light-orange'>".$row["Issue_Name"]."</td><td class = 'light-orange'>".$row["Issue_Comment"]."</td></tr>";
-                          }
+                      while($row = mysqli_fetch_array($result)){
+                        echo "<tr><td style='padding:0 15px 0 15px;' class = 'orange'>".$row['Issue_ID']."<td style='padding:0 15px 0 15px;' class = 'orange'>".$row['Issue_Date']."</td><td class = 'light-orange'>".$row["Issue_Name"]."</td><td class = 'light-orange'>".$row["Issue_Comment"]."</td></tr>";
+                      }
                           
-                          echo
-                            "</tbody">
-                            </table>";
-                      ?> -->
-                      <tbody>
+                          
+                      
                         
                       echo "</tbody>
                       </table>";
                     ?>
+                    <input type = "button" onclick = "parent.location='KG_createIssue.php'" value = 'Create Issue'>
+                    <input type = "button" onclick = "parent.location='KG_modifyIssue.php'" value = 'Modify Issue'>
                   </div>
             </div>
         </div>

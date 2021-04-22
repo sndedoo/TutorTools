@@ -40,7 +40,7 @@
         $_SESSION["sesPass"] = $emp_pass;
         $_SESSION["sesEmail"] = $emp_email;
         $_SESSION["sessDate"] = date("H:is a");
-        Header("Location:KG_issuetable.html");
+        Header("Location:KG_issuetable.php");
       }
       
     }
