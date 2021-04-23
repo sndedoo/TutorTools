@@ -48,80 +48,81 @@
     <body>
         <div class="container-fluid">
             <!--navigation bar-->
-
-            <h1>Edit Review</h1> 
-            
-            <form align = left method="post" action="AM_myReviews.html" autocomplete="on">
-                <input type="hidden" name="department" value="BIT" />
-                
-                <p>&emsp;
-                    <input type="hidden" id="id" name="id" size="25"/>
-                    <label for="studentname">Your Name:</label>
-                    <input type="text" id="studentname" name="studentname" size="25" placeholder="John Doe" autofocus required/>
-
-                    </br>&emsp;
-                    <label for="tutorname">Tutor Name:</label>
-                    <input type="text" id="tutorname" name="tutorname" size="25" placeholder="John Doe" required/>
-
-                    </br>&emsp;
-                    <label>Overall Rating:</label>
-                    <select name="overall">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-
-                    </br>&emsp;
-                    <label>Rate Features:</label>
-                    </br>&emsp;&emsp;&emsp;
-                    <label class = "subrank">Attutude:</label>
-                    <select name="attitude">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+            <div class="wallpaper">
+                <h1>Edit Review</h1> 
+                <br />
+                <form align = left method="post" action="AM_myReviews.php" autocomplete="on">
+                    <input type="hidden" name="department" value="BIT" />
                     
-                    </br>&emsp;&emsp;&emsp;
-                    <label class = "subrank">Explainability: </label>
-                    <select name="explain">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    <p>&emsp;
+                        <input type="hidden" id="id" name="id" size="25"/>
+                        <label for="studentname">Your Name:</label>
+                        <input type="text" id="studentname" name="studentname" size="25" placeholder="John Doe" autofocus required/>
 
-                    </br>&emsp;&emsp;&emsp;
-                    <label class = "subrank">Helpfulness: </label>
-                    <select name="help">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                        </br>&emsp;
+                        <label for="tutorname">Tutor Name:</label>
+                        <input type="text" id="tutorname" name="tutorname" size="25" placeholder="John Doe" required/>
 
-                    </br>&emsp;
-                    <label>Review Heading:</label>
+                        </br>&emsp;
+                        <label>Overall Rating:</label>
+                        <select name="overall">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
 
-                    </br>&emsp;&emsp;&emsp;
-                    <input class = "reviewhead" name="heading" type="text" size="25" />
+                        </br>&emsp;
+                        <label>Rate Features:</label>
+                        </br>&emsp;&emsp;&emsp;
+                        <label class = "subrank">Attutude:</label>
+                        <select name="attitude">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        
+                        </br>&emsp;&emsp;&emsp;
+                        <label class = "subrank">Explainability: </label>
+                        <select name="explain">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
 
-                    </br>&emsp;
-                    <label>Review:</label>
+                        </br>&emsp;&emsp;&emsp;
+                        <label class = "subrank">Helpfulness: </label>
+                        <select name="help">
+                            <option selected>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
 
-                    <br />&emsp;&emsp;&emsp;
-                    <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
+                        </br>&emsp;
+                        <label>Review Heading:</label>
 
-                    </br>&emsp;&emsp;&emsp;
-                    <input class = "button" type="submit" value="Submit" />
-                    <a href="AM_MyReviews.php"><input type="button" value="Cancel" /></a>
-                </p>
-            </form>
+                        </br>&emsp;&emsp;&emsp;
+                        <input class = "reviewhead" name="heading" type="text" size="25" />
+
+                        </br>&emsp;
+                        <label>Review:</label>
+
+                        <br />&emsp;&emsp;&emsp;
+                        <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
+
+                        </br>&emsp;&emsp;&emsp;
+                        <input class = "button" type="submit" value="Submit" />
+                        <a href="AM_MyReviews.php"><input type="button" value="Cancel" /></a>
+                    </p>
+                </form>
+            </div>
 
             <section>
                 <footer>&copy; 1nfinite Loop 2021. Blacksburg, VA 24060</footer>

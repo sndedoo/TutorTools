@@ -18,54 +18,12 @@
 
     <body>
         <div class="container-fluid">
-            <!--navigation bar-->
-            <nav class="navStudent">
-                <ul class="nav nav-pills">
-                    <li class="pillItem"><a href="TBProjectHomepage.html">Home</a></li>
-                    <li  role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/TBStudentServiceRequest.html">Schedule Meeting</a></li>
-                            <li><a href="/TBViewStudentSchedule.html">View Student Schedule</a></li>
-                            <li><a href="/SD_profileSearch.html">Search By Major</a></li>
-                        </ul>
-                    </li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                        role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="AM_CreateReview.html">Create A Review</a></li>
-                            <li><a href="AM_MyReviews.html">My Reviews</a></li>
-                            <li><a href="AM_ReviewList.html">Tutor Reviews</a></li>
-                        </ul>   
-                    </li>
-                    <li class="pillItem"><a href="ViewStudentSchedule.html">View My Schedule</a></li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Issues<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="Kirk - createIssue.html">Report a Problem</a></li>
-                            <li><a href="/">View My Issues</a></li>
-                        </ul>
-                    </li>
+            <div class="wallpaper">
+                <!--navigation bar-->
+                <h1>Review Analysis</h1> 
+                <br />
 
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                            <li><a href="/Senya - EditProfile.html">Edit My Profile</a></li>
-                            <li><a href="/Senya - LogIn.html">Login</a></li>
-                            <li><a href="/Senya - CreateProfile.html">Sign Up</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            
-            <h1>Review Analysis</h1> 
-            
-
+            </div>
         </div>
     </body>
 </html>

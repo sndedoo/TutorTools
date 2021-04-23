@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-
 <html>
     <head>
         <title>My Reviews</title>
@@ -18,42 +17,43 @@
 
     <body>
         <div class="container-fluid">
-            <!--navigation bar-->
+            <div class="wallpaper">
+                <!--navigation bar-->
 
-            <h1>Review List</h1> 
+                <h1>Review List</h1> 
+                <br />
+                <h3>Search for a Tutor/Student</h3>
+                <div class="search-container">
+                    <form action="/action_page.php">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit">Search</button>
+                    <button><a href="Allie-reviewAnalysis.php">Average Ranking</a></button>
+                    </form>
+                </div>
 
-            <br />
-            <h3>Search for a Tutor/Student</h3>
-            <div class="search-container">
-                <form action="/action_page.php">
-                  <input type="text" placeholder="Search..." name="search">
-                  <button type="submit">Search</button>
-                  <button><a href="Allie-reviewAnalysis.php">Average Ranking</a></button>
-                </form>
-            </div>
+                <br />
+                <div class="review">
+                    <?php
+                        $tsearch = "";
+                        if(isset($_POST["search"])) $tsearch=$_POST["search"];
 
-            <br />
-            <div class="review">
-                <?php
-                    $tsearch = "";
-                    if(isset($_POST["search"])) $tsearch=$_POST["search"];
+                        require_once("db.php");
 
-                    require_once("db.php");
-
-                    $sql = "SELECT * FROM meetingevaluation WHERE MeetingEval_tutor=$tsearch"; 
-                    $result = $mydb->query($sql);
-                    
-                    while($row = mysqli_fetch_array($result)){
-                        echo"<p>
-                                Tutor Name: $tname 
-                                Rating:$orank
-                                <br />
-                                <u>$rhead</u>
-                                <br />
-                                $rcomment  
-                            </p>";
-                    }
-                ?>
+                        $sql = "SELECT * FROM meetingevaluation WHERE MeetingEval_tutor=$tsearch"; 
+                        $result = $mydb->query($sql);
+                        
+                        while($row = mysqli_fetch_array($result)){
+                            echo"<p>
+                                    Tutor Name: $tname 
+                                    Rating:$orank
+                                    <br />
+                                    <u>$rhead</u>
+                                    <br />
+                                    $rcomment  
+                                </p>";
+                        }
+                    ?>
+                </div>
             </div>
         </div>
     </body>

@@ -8,7 +8,8 @@
     $hrank = 0;
     $rhead = "";
     $rcomment = "";
-    $err = false;    
+    $err = false;
+
     if (isset($_POST["submit"])) {
         if(isset($_POST["id"])) $rid=$_POST["id"];
         if(isset($_POST["studentname"])) $sname=$_POST["tutorname"];
@@ -49,7 +50,8 @@
         <div class="container-fluid">
             <!--Nav Bar-->
             <div class="wallpaper">
-                <h1>Create a Review</h1> 
+                <h1>Create a Review</h1>
+                <br /> 
                 <form align = left method="post" action="AM_myReviews.php" autocomplete="on">
                     <p>&emsp;
                         <input type="hidden" id="id" name="id" size="25"/>
