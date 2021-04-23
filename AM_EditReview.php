@@ -8,7 +8,8 @@
     $hrank = 0;
     $rhead = "";
     $rcomment = "";
-    $err = false;    
+    $err = false; 
+       
     if (isset($_POST["submit"])) {
         if(isset($_POST["id"])) $rid=$_POST["id"];
         if(isset($_POST["studentname"])) $sname=$_POST["tutorname"];
@@ -19,7 +20,7 @@
         if(isset($_POST["help"])) $hrank=$_POST["help"];
         if(isset($_POST["heading"])) $rhead=$_POST["heading"];
         if(isset($_POST["comment"])) $rcomment=$_POST["comment"];
-        if(!empty($tname) && !empty($rhead) && !empty($rcomment)) {
+        if(!empty($tname) && !empty($sname) && !empty($rhead) && !empty($rcomment)) {
             header("HTTP/1.1 307 Temprary Redirect"); 
             header("Location: AM_MyReviews.php");
         } else {

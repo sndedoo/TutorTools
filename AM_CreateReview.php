@@ -20,7 +20,7 @@
         if(isset($_POST["help"])) $hrank=$_POST["help"];
         if(isset($_POST["heading"])) $rhead=$_POST["heading"];
         if(isset($_POST["comment"])) $rcomment=$_POST["comment"];
-        if(!empty($tname) && !empty($rhead) && !empty($rcomment)) {
+        if(!empty($tname) && !empty($sname) && !empty($rhead) && !empty($rcomment)) {
             header("HTTP/1.1 307 Temprary Redirect"); 
             header("Location: AM_MyReviews.php");
         } else {
@@ -52,15 +52,15 @@
             <div class="wallpaper">
                 <h1>Create a Review</h1>
                 <br /> 
-                <form align = left method="post" action="AM_myReviews.php" autocomplete="on">
+                <form align = left method="post" action="AM_MyReviews.php" autocomplete="on">
                     <p>&emsp;
                         <input type="hidden" id="id" name="id" size="25"/>
                         <label for="studentname">Your Name:</label>
-                        <input type="text" id="studentname" name="studentname" size="25" placeholder="John Doe" autofocus required/>
+                        <input type="text" id="studentname" name="studentname" size="25" placeholder="Enter Your Name" autofocus required/>
 
                         </br>&emsp;
                         <label for="tutorname">Tutor Name:</label>
-                        <input type="text" id="tutorname" name="tutorname" size="25" placeholder="John Doe" required/>
+                        <input type="text" id="tutorname" name="tutorname" size="25" placeholder="Enter Tutor Name" required/>
                         
                         </br>&emsp;
                         <label>Overall Rating:</label>
