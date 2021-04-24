@@ -1,17 +1,17 @@
 <?php
     $rid = 0;
-    $sname = "";
-    $tname = "";
+    $sname = 0;
+    $tname = 0;
     $orank = 0;
     $arank = 0;
     $erank = 0;
     $hrank = 0;
     $rhead = "";
     $rcomment = "";
-    $err = false;    
+
     if (isset($_POST["submit"])) {
         if(isset($_POST["id"])) $rid=$_POST["id"];
-        if(isset($_POST["studentname"])) $sname=$_POST["tutorname"];
+        if(isset($_POST["studentname"])) $sname=$_POST["studentname"];
         if(isset($_POST["tutorname"])) $tname=$_POST["tutorname"];
         if(isset($_POST["overall"])) $orank=$_POST["overall"];
         if(isset($_POST["attitude"])) $arank=$_POST["attitude"];
@@ -19,7 +19,8 @@
         if(isset($_POST["help"])) $hrank=$_POST["help"];
         if(isset($_POST["heading"])) $rhead=$_POST["heading"];
         if(isset($_POST["comment"])) $rcomment=$_POST["comment"];
-        if(!empty($tname) && !empty($rhead) && !empty($rcomment)) {
+
+        if(($sname>0) && ($tname>0) && ($orank>0) && ($arank>0) && ($erank>0) && ($hrank>0)) {
             header("HTTP/1.1 307 Temprary Redirect"); 
             header("Location: AM_MyReviews.php");
         } else {
@@ -43,27 +44,57 @@
         <script src="myScripts.js"></script>
         <meta author="Allie Ahwee-Marrah">
         <meta descriptions="This page allows a student to create a review for a tutor">
+        <style>
+            .errlabel {color:red};
+        </style>
     </head>
 
     <body>
         <div class="container-fluid">
             <!--Nav Bar-->
             <div class="wallpaper">
-                <h1>Create a Review</h1> 
-                <form align = left method="post" action="AM_myReviews.php" autocomplete="on">
+                <h1>Create a Review</h1>
+                <br /> 
+                <form align = left method="post" action="AM_MyReviews.php" autocomplete="on">
                     <p>&emsp;
                         <input type="hidden" id="id" name="id" size="25"/>
                         <label for="studentname">Your Name:</label>
-                        <input type="text" id="studentname" name="studentname" size="25" placeholder="John Doe" autofocus required/>
+                        <!-- input type="text" id="studentname" name="studentname" size="25" placeholder="Enter Your Name" autofocus required/ -->
+                            <?php
+                                require_once("db.php");
+                                echo "<select id='studentname' name='studentname' required>";
+                                $sql = "SELECT student_num, student_first, student_last FROM Student";
+                                $result = $mydb->query($sql);
+
+                                echo "<option value=''>Select Your Name</option>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<option value='".$row["student_num"]."'>".$row["student_first"]." ".$row["student_last"]."</option>";
+                                }
+                                echo "</select>";
+                            ?>
 
                         </br>&emsp;
                         <label for="tutorname">Tutor Name:</label>
-                        <input type="text" id="tutorname" name="tutorname" size="25" placeholder="John Doe" required/>
-                        
+                        <!-- <select id='tutorname' name='tutorname' required>
+                            <option value="">Select A Tutor</option> -->
+                            <?php
+                                require_once("db.php");
+                                echo "<select id='tutorname' name='tutorname' required>";
+                                $sql = "SELECT tutor_num, tutor_first, tutor_last FROM Tutor";
+                                $result = $mydb->query($sql);
+
+                                echo "<option value=''>Select A Tutor</option>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<option value='".$row["tutor_num"]."'>".$row["tutor_first"]." ".$row["tutor_last"]."</option>";
+                                }
+                                echo "</select>";
+                            ?>
+
                         </br>&emsp;
                         <label>Overall Rating:</label>
-                        <select name="overall">
-                            <option selected>1</option>
+                        <select name="overall" required>
+                            <option selected></option>
+                            <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -74,8 +105,9 @@
                         <label>Rate Features:</label>
                         </br>&emsp;&emsp;&emsp;
                         <label class = "subrank">Attutude:</label>
-                        <select name="attitude">
-                            <option selected>1</option>
+                        <select name="attitude" required>
+                            <option selected></option>
+                            <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -84,8 +116,9 @@
                         
                         </br>&emsp;&emsp;&emsp;
                         <label class = "subrank">Explainability: </label>
-                        <select name="explain">
-                            <option selected>1</option>
+                        <select name="explain" required>
+                            <option selected></option>
+                            <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -94,8 +127,9 @@
                         
                         </br>&emsp;&emsp;&emsp;
                         <label class = "subrank">Helpfulness: </label>
-                        <select name="help">
-                            <option selected>1</option>
+                        <select name="help" required>
+                            <option selected></option>
+                            <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -106,13 +140,13 @@
                         <label>Review Heading:</label>
                         
                         </br>&emsp;&emsp;&emsp;
-                        <input class = "reviewhead" name="heading" type="text" size="25" />
+                        <textarea name="heading" rows="1" width ="1000" placeholder = "Enter title here."></textarea>
                         
                         </br>&emsp;
                         <label>Review:</label>
                         
-                        <br />&emsp;&emsp;&emsp;
-                        <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
+                        </br>&emsp;&emsp;&emsp;
+                        <textarea name="comment" rows="10" width ="1000" placeholder = "Enter comments here."></textarea>
                         
                         </br>&emsp;&emsp;&emsp;
                         <input class = "button" type="submit" value="Submit" />

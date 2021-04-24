@@ -2,6 +2,7 @@
 $classSelected = "";
 $tutorFirstNameSelected = "";
 $tutorLastNameSelected = "";
+$selection1Made = "1";
 ?>
 
 <!doctype html>
@@ -22,7 +23,7 @@ $tutorLastNameSelected = "";
     <style>
         .orange {
             color: white;
-            background-color: orange;
+            background-color: #8B1F41;
             text-align: center;
             border: 1px solid;
             border-color: black;
@@ -30,13 +31,16 @@ $tutorLastNameSelected = "";
         }
 
         .lightOrange {
-            background-color: peachpuff;
+            background-color: #E87722;
             text-align: center;
             border: 1px solid;
             border-color: black;
             padding: 5px;
         }
     </style>
+    <script>
+
+    </script>
 
 </head>
 
@@ -87,8 +91,12 @@ $tutorLastNameSelected = "";
         if (isset($_POST["classSelected"])) $classSelected = $_POST["classSelected"];
         if (isset($_POST["tutorFirstNameSelected"])) $tutorFirstNameSelected = $_POST["tutorFirstNameSelected"];
         if (isset($_POST["tutorLastNameSelected"])) $tutorLastNameSelected = $_POST["tutorLastNameSelected"];
-        require_once("db.php");
+        if (isset($_POST["SignUpButton1"])) $selection1Made = $_POST["SignUpButton1"];
+        if (isset($_POST["SignUpButton2"])) $selection2Made = $_POST["SignUpButton2"];
+        if (isset($_POST["SignUpButton3"])) $selection3Made = $_POST["SignUpButton3"];
 
+        require_once("db.php");
+        $count = 0;
         $sql = "SELECT Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Tutor_Class1, Tutor_Class2, Tutor_Class3, Tutor_Class4, Meeting.Meet_Time, Meeting.Meet_Location FROM Tutor JOIN Meeting ON Tutor.Meet_ID = Meeting.Meet_ID WHERE Tutor_Class1= '$classSelected' OR Tutor_Class2= '$classSelected'OR Tutor_Class3= '$classSelected'OR Tutor_Class4= '$classSelected'OR Tutor_First= '$tutorFirstNameSelected'OR Tutor_Last= '$tutorLastNameSelected'";
         $result = $mydb->query($sql);
         while ($row = mysqli_fetch_array($result)) {
@@ -100,8 +108,11 @@ $tutorLastNameSelected = "";
             echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Class Requested</th><th class='orange'>Sign Up</th></tr>
                     </thead><tbody>";
             while ($row = mysqli_fetch_array($result)) {
-                echo "<tr><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'>" . $classSelected . "</td><td class= 'lightOrange'><a href = TBViewStudentSchedule.php><button class = SignUpButton>Sign Up</button></td></tr>";
+                echo "<tr class = returnedRow id = $count><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'>" . $classSelected . "</td><td class= 'lightOrange'><a><button name = SignUpButton1>Sign Up</button></td></tr>";
+                $count++;
+                echo $selection1;
             }
+        
             echo "</tbody></table>";
         } else {
             $result = $mydb->query($sql);
@@ -110,8 +121,8 @@ $tutorLastNameSelected = "";
                 echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr>
                     </thead><tbody>";
                 while ($row = mysqli_fetch_array($result)) {
-
-                    echo "<tr><td class='lightOrange'>" . $tutorFirstNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a href = TBViewStudentSchedule.php><button class = SignUpButton>Sign Up</button></td></tr>";
+                    echo "<tr class = returnedRow id = $count><td class='lightOrange'>" . $tutorFirstNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a><button name = SignUpButton2>Sign Up</button></td></tr>";
+                    $count++;
                 }
                 echo "</tbody></table>";
             } else {
@@ -119,14 +130,18 @@ $tutorLastNameSelected = "";
                 echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr>
                         </thead><tbody>";
                 while ($row = mysqli_fetch_array($result)) {
-
-                    echo "<tr><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $tutorLastNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a href = TBViewStudentSchedule.php><button class = SignUpButton>Sign Up</button></td></tr>";
+                    echo "<tr class = returnedRow id = $count><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $tutorLastNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a><button name = SignUpButton3>Sign Up</button></td></tr>";
+                    $count++;
                 }
                 echo "</tbody></table>";
             }
         }
+        
+        echo $selection1Made;  
     }
     ?>
+
+
 </body>
 
 </html>

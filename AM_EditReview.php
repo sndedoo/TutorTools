@@ -8,7 +8,8 @@
     $hrank = 0;
     $rhead = "";
     $rcomment = "";
-    $err = false;    
+    $err = false; 
+       
     if (isset($_POST["submit"])) {
         if(isset($_POST["id"])) $rid=$_POST["id"];
         if(isset($_POST["studentname"])) $sname=$_POST["tutorname"];
@@ -19,7 +20,7 @@
         if(isset($_POST["help"])) $hrank=$_POST["help"];
         if(isset($_POST["heading"])) $rhead=$_POST["heading"];
         if(isset($_POST["comment"])) $rcomment=$_POST["comment"];
-        if(!empty($tname) && !empty($rhead) && !empty($rcomment)) {
+        if(!empty($tname) && !empty($sname) && !empty($rhead) && !empty($rcomment)) {
             header("HTTP/1.1 307 Temprary Redirect"); 
             header("Location: AM_MyReviews.php");
         } else {
@@ -48,81 +49,108 @@
     <body>
         <div class="container-fluid">
             <!--navigation bar-->
+            <div class="wallpaper">
+                <h1>Edit Review</h1>
+                <br /> 
+                <form align = left method="post" action="AM_MyReviews.php" autocomplete="on">
+                    <p>&emsp;
+                        <input type="hidden" id="id" name="id" value="<?php echo $rid;?>"/>
+                        <label for="studentname">Your Name:</label>
+                        <!-- input type="text" id="studentname" name="studentname" size="25" placeholder="Enter Your Name" autofocus required/ -->
+                            <?php
+                                require_once("db.php");
+                                echo "<select id='studentname' name='studentname' value=".$sname.">";
+                                $sql = "SELECT student_num, student_first, student_last FROM Student";
+                                $result = $mydb->query($sql);
 
-            <h1>Edit Review</h1> 
-            
-            <form align = left method="post" action="AM_myReviews.html" autocomplete="on">
-                <input type="hidden" name="department" value="BIT" />
-                
-                <p>&emsp;
-                    <input type="hidden" id="id" name="id" size="25"/>
-                    <label for="studentname">Your Name:</label>
-                    <input type="text" id="studentname" name="studentname" size="25" placeholder="John Doe" autofocus required/>
+                                echo "<option value=''>Select Your Name</option>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<option value='".$row["student_num"]."'>".$row["student_first"]." ".$row["student_last"]."</option>";
+                                }
+                                echo "</select>";
+                            ?>
 
-                    </br>&emsp;
-                    <label for="tutorname">Tutor Name:</label>
-                    <input type="text" id="tutorname" name="tutorname" size="25" placeholder="John Doe" required/>
+                        </br>&emsp;
+                        <label for="tutorname">Tutor Name:</label>
+                        <!-- <select id='tutorname' name='tutorname' required>
+                            <option value="">Select A Tutor</option> -->
+                            <?php
+                                require_once("db.php");
+                                echo "<select id='tutorname' name='tutorname' value=".$tname.">";
+                                $sql = "SELECT tutor_num, tutor_first, tutor_last FROM Tutor";
+                                $result = $mydb->query($sql);
 
-                    </br>&emsp;
-                    <label>Overall Rating:</label>
-                    <select name="overall">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                                echo "<option value=''>Select A Tutor</option>";
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<option value='".$row["tutor_num"]."'>".$row["tutor_first"]." ".$row["tutor_last"]."</option>";
+                                }
+                                echo "</select>";
+                            ?>
 
-                    </br>&emsp;
-                    <label>Rate Features:</label>
-                    </br>&emsp;&emsp;&emsp;
-                    <label class = "subrank">Attutude:</label>
-                    <select name="attitude">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    
-                    </br>&emsp;&emsp;&emsp;
-                    <label class = "subrank">Explainability: </label>
-                    <select name="explain">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                        </br>&emsp;
+                        <label>Overall Rating:</label>
+                        <select name="overall" value="<?php echo $orank;?>">
+                            <option selected></option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
 
-                    </br>&emsp;&emsp;&emsp;
-                    <label class = "subrank">Helpfulness: </label>
-                    <select name="help">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-
-                    </br>&emsp;
-                    <label>Review Heading:</label>
-
-                    </br>&emsp;&emsp;&emsp;
-                    <input class = "reviewhead" name="heading" type="text" size="25" />
-
-                    </br>&emsp;
-                    <label>Review:</label>
-
-                    <br />&emsp;&emsp;&emsp;
-                    <textarea name="comment" rows="10" width ="1000">Enter comments here.</textarea>
-
-                    </br>&emsp;&emsp;&emsp;
-                    <input class = "button" type="submit" value="Submit" />
-                    <a href="AM_MyReviews.php"><input type="button" value="Cancel" /></a>
-                </p>
-            </form>
-
+                        </br>&emsp;
+                        <label>Rate Features:</label>
+                        </br>&emsp;&emsp;&emsp;
+                        <label class = "subrank">Attutude:</label>
+                        <select name="attitude" value="<?php echo $arank;?>">
+                            <option selected></option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        
+                        </br>&emsp;&emsp;&emsp;
+                        <label class = "subrank">Explainability: </label>
+                        <select name="explain" value="<?php echo $erank;?>">
+                            <option selected></option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        
+                        </br>&emsp;&emsp;&emsp;
+                        <label class = "subrank">Helpfulness: </label>
+                        <select name="help" value="<?php echo $hrank;?>">
+                            <option selected></option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        
+                        </br>&emsp;
+                        <label>Review Heading:</label>
+                        
+                        </br>&emsp;&emsp;&emsp;
+                        <textarea name="heading" rows="1" width ="1000" placeholder = "Enter title here." value="<?php echo $rhead;?>"></textarea>
+                        
+                        </br>&emsp;
+                        <label>Review:</label>
+                        
+                        <br />&emsp;&emsp;&emsp;
+                        <textarea name="comment" rows="10" width ="1000" plactholder = "Enter comments here." value="<?php echo $rcomment;?>"></textarea>
+                        
+                        </br>&emsp;&emsp;&emsp;
+                        <input class = "button" type="submit" value="Submit" />
+                        <input class = "button" type="reset" value="Clear" />
+                    </p>
+                </form>
+            </div>
             <section>
                 <footer>&copy; 1nfinite Loop 2021. Blacksburg, VA 24060</footer>
             </section>
