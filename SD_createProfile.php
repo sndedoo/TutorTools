@@ -1,4 +1,6 @@
 <?php
+//resume session
+
 $firstName = "";
 $lastName = "";
 $email = "";
@@ -200,7 +202,7 @@ if (isset($_POST["submit"])) {
 
         <input type="submit" name="submit" value="Create Account"/>
         <br>
-        Already have an Account?<a href="/SD_logIn.php">Log In</a></p> 
+        Already have an Account?<a href="SD_logIn.php">Log In</a></p> 
     </form>
 </body>
 

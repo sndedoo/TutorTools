@@ -1,16 +1,22 @@
 <?php
 $email = "";
 $password = "";
-// $remember = false;
+$remember = "no";
 $error = false;
 $loginOK = null;
 
 if (isset($_POST["submit"])) {
     if(isset($_POST["stuEmail"])) $email=$_POST["stuEmail"];
     if(isset($_POST["stuPassword"])) $password=$_POST["stuPassword"];
+    if(isset($_POST["remember"])) $remember=$_POST["remember"];
+
   
     if(empty($email) || empty($password)) {
       $error=true;
+    }
+
+    if(!empty($email) && $remember == "yes") {
+      setcookie("stuEmail", $email, time()+60*60*24*7, "/");
     }
   
     if (!$error) {
@@ -42,7 +48,7 @@ if (isset($_POST["submit"])) {
           session_start();
           $_SESSION["stuEmail"] = $email;
           $_SESSION["stuPassword"] = $password;
-          setcookie("lastLoginTime", date("F j, Y, g:i a"), time()+60*60*24*2, "/");  //e.g., March 10, 2001, 5:16 pm
+          // setcookie("lastLoginTime", date("F j, Y, g:i a"), time()+60*60*24*2, "/");  
           Header("Location: TBProjectHomepage.html");
         } elseif (!$loginOK) {
           echo "<p>Make sure you have entered the correct information.</p>";
@@ -70,6 +76,7 @@ if (isset($_POST["submit"])) {
     <script src="myScripts.js"></script>
 </head>
 <body class="container-fluid">
+  <div class="wallpaper">
     <h1>Log In</h1>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <p>
@@ -78,6 +85,9 @@ if (isset($_POST["submit"])) {
         <input type="email" name="stuEmail" placeholder="Email" size="25" value="<?php
         if(!empty($email))
           echo $email;
+          elseif (isset($_COOKIE['stuEmail'])) {
+            echo $_COOKIE['stuEmail'];
+          }
       ?>">
       <?php
         if ($error=true && empty($email)) {
@@ -98,8 +108,8 @@ if (isset($_POST["submit"])) {
       ?>
         
         <br>
-        <!-- <input type="checkbox" name="student">Remember Me
-        <br> -->
+        <input type="checkbox" name="remember" value="yes"><label for="remember">Remember me</label>
+        <br>
         
         <input type="submit" name="submit" value="Login"/> 
         <br>
@@ -108,5 +118,6 @@ if (isset($_POST["submit"])) {
         Need an Account?<a href="/SD_createProfile.html">Create an Account</a>
     </p>
     </form>
+    </div>
 </body>
 </html>
