@@ -32,14 +32,14 @@ if (isset($_POST["submit"])) {
         $sql = "insert into student(Student_First, Student_Last, Student_Email, Student_Password, Street_Address, City, State) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state')";
         $result=$mydb->query($sql);
 
-        header("Location: TBProjectHomepage.html");
+        header("Location: SD_logIn.php");
         
       } elseif ($_POST['userSelect'] == 'Tutor') {
         require_once("db.php");
         $sql = "insert into tutor(Tutor_First, Tutor_Last, Tutor_Email, Tutor_Password, Tutor_Street_Address, Tutor_City, Tutor_State) values('$firstName', '$lastName', '$email', '$password', '$address', '$city', '$state')";
         $result=$mydb->query($sql);
 
-        header("Location: TBProjectHomepage.html");
+        header("Location: SD_logIn.php");
 
       }
 
@@ -61,6 +61,8 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body class="container-fluid">
+<?php include('navStudent.php');?>
+  <div class='wallpaper'>
     <h1>Create a Profile </h1>
 
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
@@ -167,7 +169,7 @@ if (isset($_POST["submit"])) {
         <option value="2025">2025</option>
         <?php
         if ($error=true && ($_POST['gradYear'] == '')) {
-          echo "<label>Error: Please enter your State.</label>";
+          echo "<label>Error: Please enter your Year of Graduation.</label>";
         }
         /*
           echo "<option value='0'> </option>";
@@ -204,6 +206,7 @@ if (isset($_POST["submit"])) {
         <br>
         Already have an Account?<a href="SD_logIn.php">Log In</a></p> 
     </form>
+    </div>
 </body>
 
 </html>

@@ -49,7 +49,7 @@ if (isset($_POST["submit"])) {
           $_SESSION["stuEmail"] = $email;
           $_SESSION["stuPassword"] = $password;
           // setcookie("lastLoginTime", date("F j, Y, g:i a"), time()+60*60*24*2, "/");  
-          Header("Location: TBProjectHomepage.html");
+          Header("Location: TBProjectHomepage.php");
         } elseif (!$loginOK) {
           echo "<p>Make sure you have entered the correct information.</p>";
         }
@@ -76,6 +76,7 @@ if (isset($_POST["submit"])) {
     <script src="myScripts.js"></script>
 </head>
 <body class="container-fluid">
+<?php include('navStudent.php');?>
   <div class="wallpaper">
     <h1>Log In</h1>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
@@ -110,12 +111,14 @@ if (isset($_POST["submit"])) {
         <br>
         <input type="checkbox" name="remember" value="yes"><label for="remember">Remember me</label>
         <br>
+
+        <!-- Add radio button with student or tutor-->
         
         <input type="submit" name="submit" value="Login"/> 
         <br>
         <a href="/SD_passwordRecovery.html">Forgot Your Password?</a>
         <br>
-        Need an Account?<a href="/SD_createProfile.html">Create an Account</a>
+        Need an Account?<a href="SD_createProfile.php">Create an Account</a>
     </p>
     </form>
     </div>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-echo "<p> Hello, ".$_SESSION["stuEmail"]."</p>";
+// echo "<p> Hello, ".$_SESSION["stuEmail"]."</p>";
 
 $fName = "";
 $lName = "";
@@ -13,10 +13,11 @@ $state = "";
 $zip = "";
 $birthday = "";
 $zip = "";
+$gradYear ="";
 $birthday = "";
 $gender = "";
 
-$studentNum = "";
+$email = $_SESSION['stuEmail'];
 $error = false;
 
 if (isset($_POST["update"])) {
@@ -28,10 +29,9 @@ if (isset($_POST["update"])) {
     if(isset($_POST["city"])) $city = $_POST["city"];
     if(isset($_POST["state"])) $state = $_POST["state"];
     if(isset($_POST["zip"])) $zip = $_POST["zip"];
+    if(isset($_POST["gradYear"])) $gradYear = $_POST["gradYear"];
     if(isset($_POST["birthday"])) $birthday = $_POST["birthday"];
     if(isset($_POST["gender"])) $gender = $_POST["gender"];
-
-    if(isset($_POST["studentNum"])) $studentNum = $_POST["studentNum"];
 
     require_once('db.php');
 
@@ -44,10 +44,22 @@ if (isset($_POST["update"])) {
         City = '$city', 
         State = '$state',
         zip = '$zip',
-        birthday = '$birthday'
+        Student_GradYr = '$gradYear',
+        birthday = '$birthday',
         gender = '$gender'
-        WHERE Student_Num = '$studentNum'";
+        WHERE Student_Email ='$email'
+        ";
         $result=$mydb->query($sql);
+
+        Header("Location: SD_viewProfile.php");
+} elseif (isset($_POST["delete"])) {
+
+    require_once('db.php');
+
+    $sql = "DELETE FROM student WHERE Student_Email ='$email'
+        ";
+        $result=$mydb->query($sql);
+        Header("Location: SD_createProfile.php");
 }
 ?>
 
@@ -55,64 +67,26 @@ if (isset($_POST["update"])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Your Profile</title>
+    <title>Edit Profile</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
-    <script>
-    </script>
 </head>
 
 <body class="container-fluid">
-<div id="navStudent">
-    <nav class="navBar">
-        <ul class="nav nav-pills">
-            <li class="pillItem"><a href="Project-Homepage.html">Home</a></li>
-            <li  role="presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="/TBStudentServiceRequest.html">Schedule Meeting</a></li>
-                    <li><a href="/TBViewStudentSchedule.html">View Student Schedule</a></li>
-                    <li><a href="/SD_profileSearch.html">Search By Major</a></li>
-                </ul>
-            </li>
-            <li role="presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="AM_CreateReview.html">Create A Review</a></li>
-                    <li><a href="AM_MyReviews.html">My Reviews</a></li>
-                    <li><a href="AM_ReviewList.html">Tutor Reviews</a></li>
-                </ul>   
-            </li>
-            <li class="pillItem"><a href="ViewStudentSchedule.html">View My Schedule</a></li>
-            <li role="presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Issues<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="KG_createIssue.php">Report a Problem</a></li>
-                    <li><a href="KG _viewIssues.html">View My Issues</a></li>
-                    
-
-                </ul>
-            </li>
-            </ul>
-            </nav>
-</div>
+<?php include('navStudent.php');?>
 
     <div class="wallpaper">
     <h1>Edit Your Profile </h1>
     <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
 
-        <br/>
+        <!-- <br/>
         <label for="photo">Upload Photo:</label>
-        <input type="file" id="photo" name="photo">
+        <input type="file" id="photo" name="photo"> -->
 
         <br>
 
@@ -126,7 +100,7 @@ if (isset($_POST["update"])) {
 
         <label for="about">About Me</label>
         <textarea id="about" name="about"
-        rows="5" cols="33"><?php if(empty($about)) echo $about; ?></textarea>
+        rows="5" cols="33"><?php if(!empty($about)) echo $about; ?></textarea>
         
         <br>
 
@@ -165,8 +139,8 @@ if (isset($_POST["update"])) {
 
         <br>
 
-        <label for="birthday">Graduation Year:</label>
-        <select name="birthday" id="birthday">
+        <label for="gradYear">Graduation Year:</label>
+        <select name="gradYear" id="gradYear">
             <option value="" selected> </option>  
             <option value="2021">2021</option>
             <option value="2022">2022</option>
@@ -190,8 +164,6 @@ if (isset($_POST["update"])) {
             <label for="other">Other</label>
 
         <br>
-        Enter Your Student ID to Verify:
-            <input type="number" id="studentNum" name="studentNum" value="<?php if(empty($studentNum)) echo $studentNum;?>">
         <br>
 
         <input type="submit" name="update" value="Save Changes">

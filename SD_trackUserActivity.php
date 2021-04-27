@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log Out</title>
+    <title>Activity Analysis</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
@@ -12,18 +11,10 @@
     <script src="myScripts.js"></script>
 </head>
 <body>
-    <?php
-    session_start();
-
-    $email = $_SESSION["stuEmail"];
-    $_SESSION = array();
+    <!-- Want to track how many times the user clicked on each profile during their session-->
+    $('a').click(function(){
     
-    //unset($_SESSION["stuEmail"]);
-
-    session_destroy();
-
-    Header("Location: SD_logIn.php");
-    ?>
-
+    });
+    <!-- Display result via graph-->
 </body>
 </html>

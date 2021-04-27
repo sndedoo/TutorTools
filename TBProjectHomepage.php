@@ -12,20 +12,20 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
     <script>
-        $(document).ready(function () {
-            $(function () {
-                $("#navStudent").load("navStudent.html");
-            });
-        });
+        // $(document).ready(function () {
+        //     $(function () {
+        //         $("#navStudent").load("navStudent.html");
+        //     });
+        // });
     </script>
     <meta author="Thomas Beamon">
     <meta descriptions="This page is the landing page when a tutor or student logs into the system">
 </head>
 
 <body>
-    <p><a href="SD_editProfile.php"></a></p>
+    <?php include('navStudent.php');?>
     <div class="container-fluid">
-        <div id="navStudent">
+        <!-- <div id="navStudent">
             <a href="TBProjectHomepage.html"><img src="Image\Tutor Tools Logo.png" id="companyLogo"></a>
         
             <nav class="navBar" id="navStudent">
@@ -74,7 +74,7 @@
                 </ul>
             </nav>
         
-        </div>
+        </div> -->
         
         <h1 id="homepageTitle">TutorTools Homepage</h1>
 
