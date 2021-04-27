@@ -25,7 +25,7 @@
     public function query($sql) {
       $result = mysqli_query($this->dbConn, $sql);
       if(!$result) {
-        die("Database query error: ".mysqli_error($this->dbConn)." (".mysqli_errno($this->dbConn).")");
+        throw new Exception("Database query error: ".mysqli_error($this->dbConn)." (".mysqli_errno($this->dbConn).")");
       }
       return $result;
     }
@@ -37,7 +37,7 @@
       }
 
       $data = array();
-      for($x=0; $x<mysql_num_rows($result);$x++){
+      for($x=0; $x<mysqli_num_rows($result);$x++){
         $data[] = mysqli_fetch_assoc($result);
       }
       

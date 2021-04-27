@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,5 +14,8 @@
 
 
 
-<body class="container-fluid">
-<?php include('navStudent.php'); include_once("SD_search.php"); include_once("SD_display.php");?>
+<body class="container-fluid"> -->
+<?php include('navStudent.php'); 
+include_once("SD_search.php"); 
+include_once("SD_display.php");
+?>

@@ -1,7 +1,7 @@
 
 
     <div id="navStudent">
-        <a href="TBProjectHomepage.html"><img src="Image\Tutor Tools Logo.png" id="companyLogo"></a>
+        <a href="TBProjectHomepage.php"><img src="Image\Tutor Tools Logo.png" id="companyLogo"></a>
             <nav class="navBar">
                 <ul class="nav nav-pills">
                     <li class="pillItem"><a href="TBProjectHomepage.php">Home</a></li>
@@ -44,7 +44,7 @@
                             <li class="pillItem"><a href="SD_editProfile.php">Edit My Profile</a></li>
                             <li class="pillItem"><a href="SD_viewProfiles.php">View All Profiles</a></li>
                             <li class="pillItem"><a href="SD_viewCourses.php">View My Courses</a></li>
-                            <li class="pillItem"><a href="SD_editCourses.php">Edit My Courses</a></li>
+                            <li class="pillItem"><a href="SD_addCourses.php">Add Courses</a></li>
                             <li class="pillItem"><a href="SD_stuNum.php">Course Analysis</a></li>
                             <li class="pillItem"><a href="SD_logOut.php">Log Out</a></li>
                         </ul>

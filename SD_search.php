@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
+    <title>Edit Your Courses</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
-</head>
-
-<body class="container-fluid">
-
-
+    
 <h1>Search by Name</h1>
    <form action="SD_search.php" method="post" enctype="multipart/form-data">
     Name:  <input type="text" name="firstName" value="" placeholder="" size="20">
@@ -59,7 +52,6 @@
     }
 
 ?>
-</body>
-</html>
+
 
 

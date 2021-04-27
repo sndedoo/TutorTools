@@ -21,54 +21,43 @@
     // if(isset($_GET["stuEmail"])) $email=$_GET["stuEmail"];
 
     require_once("db.php");
-    $sql = "SELECT * FROM student WHERE Student_Email ='".$_SESSION["stuEmail"]."'";
-
+    $sql = "SELECT * FROM enrollment 
+    INNER JOIN 
+        student ON student.Student_Email = enrollment.Student_Email
+    INNER JOIN 
+        Courses ON Courses.CourseID = enrollment.CourseID
+     WHERE enrollment.Student_Email ='".$_SESSION["stuEmail"]."'";
+    // echo $sql;
     // $sql = "SELECT * FROM student WHERE Student_Email ='".$_SESSION["stuEmail"]."'";
     // $sql = "SELECT Student_First, Student_Last, Student_GradYr  FROM student";
     $result = $mydb->query($sql);
 
-    if($row = mysqli_fetch_array($result)){
-        echo "<div class='wallpaper'><table border='1'>
+    echo "<div class='wallpaper'><table border='1'>
 
         <thead><tr>
     
-        <th>course_1</th>
-        <th>course_1_credits</th>
-        <th>course_2</th>
-        <th>course_2_credits</th>
-        <th>course_3</th>
-        <th>course_3_credits</th>
-        <th>course_4</th>
-        <th>course_4_credits</th>
-        <th>course_5</th>
-        <th>course_5_credits</th>
-        <th>course_6</th>
-        <th>course_6_credits</th>
+        <th>Course</th>
+        <th>Credits</th>
     
         
         
         
         </tr></thead>";
+
+    while($row = mysqli_fetch_array($result)){
+        
         
             echo "<tbody><tr>";
-            echo "<td>".$row['course_1']."</td>";
-            echo "<td>".$row['course_1_credits']."</td>";
-            echo "<td>".$row['course_2']."</td>";
-            echo "<td>".$row['course_2_credits']."</td>";
-            echo "<td>".$row['course_3']."</td>";
-            echo "<td>".$row['course_3_credits']."</td>";
-            echo "<td>".$row['course_4']."</td>";
-            echo "<td>".$row['course_4_credits']."</td>";
-            echo "<td>".$row['course_5']."</td>";
-            echo "<td>".$row['course_5_credits']."</td>";
-            echo "<td>".$row['course_6']."</td>";
-            echo "<td>".$row['course_6_credits']."</td>";
+            echo "<td>".$row['courseName']."</td>";
+            echo "<td>".$row['courseCredits']."</td>";
+            echo "</tr>";
     
     
             
-            echo "</tr></tbody>";
-            echo "</table></div>";
+            
         }
+        echo "</tbody>";
+        echo "</table></div>";
         ?>
     
         <p><a href="SD_editCourses.php">Edit Your Courses</a></p>

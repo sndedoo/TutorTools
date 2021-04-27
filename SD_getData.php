@@ -3,10 +3,13 @@
   $num = 0;
   if(isset($_GET['Student_Num'])) $num =$_GET['Student_Num'];
 
-  // $sql = "select Student_Num, CONCAT(Student_First, " ", Student_Last) AS 'Student Name', unitprice * unitsinstock as totalValue from student where Student_Num = $num";
-  $sql = "select Student_First, course_1_credits+ course_2_credits + course_3_credits AS Credits from student where Student_Num = $num";
+  $sql = "SELECT courseName, courseCredits FROM enrollment 
+  INNER JOIN 
+      student ON student.Student_Email = enrollment.Student_Email
+  INNER JOIN 
+      Courses ON Courses.CourseID = enrollment.CourseID
+   WHERE student.Student_Num ='$num'";
 
-  //create another associative table to display all courses
 
   
 

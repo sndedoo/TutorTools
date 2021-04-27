@@ -17,18 +17,3 @@ else {
     echo "No people found";
 }
 ?>
-
-<script>
-var count = 0;
-
-(function () {
-  var count = 0;
-
-  $('a.btn').click(function () {
-    count += 1;
-    
-});
-})();
-
-console.log(count);
-</script>

@@ -55,15 +55,6 @@ if (isset($_POST["update"])) {
 
         Header("Location: SD_viewCourses.php");
 }
-// } elseif (isset($_POST["delete"])) {
-
-//     require_once('db.php');
-
-//     $sql = "DELETE FROM student WHERE Student_Email ='$email'
-//         ";
-//         $result=$mydb->query($sql);
-//         Header("Location: SD_createProfile.php");
-// }
 ?>
 
 
