@@ -31,9 +31,9 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="true" aria-haspopup="false">Services<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="UC4.html">Search for an Appointment</a></li>
-                    <li><a href="UC2_UC3.html">Modify an Appointment</a></li>
-                    <li><a href="UC2_UC3.html">Cancel an Appointment</a></li>
+                    <li><a href="#">Search for an Appointment</a></li>
+                    <li><a href="#">Modify an Appointment</a></li>
+                    <li><a href="#">Cancel an Appointment</a></li>
                 </ul>
             </li>
             <li><a href = "#">Other Page...</a></li>
