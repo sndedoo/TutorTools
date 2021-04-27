@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>UC4: Search for bids/responses</title>
+    <title>UC5 & UC6: View service request details & analysis</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -20,7 +20,7 @@
     <!--Description of this page-->
     <div>
         <h1 class="blue"><img src="Image/Tutor Tools Logo.png" alt="Error loading image" align = "left" height="150"/>
-            Use Case 4: Search for service requests 
+            Use Case 5 & 6: View a service request details & service big data analysis 
         </h1>
     </div>    
     <!--Navigation Bar-->
@@ -32,24 +32,38 @@
                 role="button" aria-haspopup="true" aria-haspopup="false">Services<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Search for an Appointment</a></li>
-                    <li><a href="UC2_UC3.html">Modify an Appointment</a></li>
-                    <li><a href="UC2_UC3.html">Cancel an Appointment</a></li>
+                    <li><a href="#">Modify an Appointment</a></li>
+                    <li><a href="#">Cancel an Appointment</a></li>
                 </ul>
             </li>
-            <li><a href = "#">View Schedule</a></li>
-            <li><a href = "#">Other page...</a></li>
+            <li><a href = "#">Other Page...</a></li>
+            <li><a href = "#">Other Page...</a></li>
+            <li><a href= "#">Search for Service Requests*</a></li>
         </ul>
     </nav>
    
 
-    <div class="inline"><p>
+    <div class="inline">
+    <p>
         List of selected service requests *admin*
         <br>
         <br>
         List is grouped by: Name, Tutor, Status, Service / Area and Service Request / Update
     </p>
-    </div class="inline_2">
-    <div class="inline_2"><p> Profile information</p></div>
+    </div>
+    <div class="inline_2"> Profile information </div>
+
+    <p>
+        Service bid data analysis 
+        <br>
+        <br>
+        Analysis appears when the user clicks on one of the selected service requests above
+        <br>
+        <br>
+        Description of the request and feedback from the form that the student or tutor left
+    </p>
+
+    
     </div>
 </body>
 </html>
