@@ -5,8 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>UC1: Submit a bid to a service request</title>
+    <title>Service Request Submissiont</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -31,9 +30,9 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="true" aria-haspopup="false">Services<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="UC4.html">Search for an Appointment</a></li>
-                    <li><a href="UC2_UC3.html">Modify an Appointment</a></li>
-                    <li><a href="UC2_UC3.html">Cancel an Appointment</a></li>
+                    <li><a href="#">Search for an Appointment</a></li>
+                    <li><a href="#">Modify an Appointment</a></li>
+                    <li><a href="#">Cancel an Appointment</a></li>
                 </ul>
             </li>
             <li><a href = "#">View Schedule</a></li>
