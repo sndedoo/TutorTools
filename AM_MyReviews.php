@@ -50,45 +50,42 @@
                     
                     echo "<table><thead><tr><th></th></thead><tbody>";
 
-                    if($rid != "") {
-                        $sql = "UPDATE meetingevaluation SET tutor_num='$tname', meetingeval_overall='$orank', meetingeval_attitude='$arank', meetingeval_explain='$erank', meetingeval_helpful='$hrank', meetingeval_heading='$rhead', meetingeval_review='$rcomment' WHERE meetingeval_id='$rid'"; 
-                        $result = $mydb->query($sql);
-
-                        echo"<tr><td><br /><b>Tutor Name: </b><u>$tname</u>
-                            <b>&emsp;Overall Rating: </b><u>$orank</u>
-                            &emsp;<button><a href='AM_EditReview.php'>Edit</a></button>
-                            <button onclick='deleteReview()'>Delete</button>
-                            <br />&emsp;Attitude: <u>$arank</u>
-                            &nbsp;Explainability: <u>$erank</u>
-                            &nbsp;Helpfulness: <u>$hrank</u>
-                            <br />&emsp;<u>$rhead</u>
-                            <br />&emsp;$rcomment</td></tr>";
-                        echo "</tbody></table>";
-                    } else {
+                    if($rid == "") {
                         $sql = "INSERT INTO meetingevaluation(tutor_num, student_num, meetingeval_overall, meetingeval_attitude, meetingeval_explain, meetingeval_helpful, meetingeval_heading, meetingeval_review) VALUES ('$tname', '$sname', '$orank', '$arank', '$erank', '$hrank', '$rhead', '$rcomment')"; 
                         $result = $mydb->query($sql);
-                        /*
+
+                        $sql2="SELECT CONCAT(tutor_first, ' ', tutor_last) AS 'tutorname', meetingeval_overall, meetingeval_attitude, meetingeval_helpful, meetingeval_explain, meetingeval_heading, meetingeval_review FROM tutor t, meetingevaluation m WHERE t.tutor_num=m.tutor_num";
+                        $result2 = $mydb->query($sql2);
+
+                        while($row=mysqli_fetch_array($result2)){
+                            //fix variables
+                            echo"<tr><td><br /><b>Tutor Name: </b><u>".$row['tutorname']."</u>
+                                <b>&emsp;Overall Rating: </b><u>$orank</u>
+                                &emsp;<button><a href='AM_EditReview.php?rid=$rid'>Edit</a></button>
+                                <button onclick='deleteReview()'>Delete</button>
+                                <br />&emsp;Attitude: <u>$arank</u>
+                                &nbsp;Explainability: <u>$erank</u>
+                                &nbsp;Helpfulness: <u>$hrank</u>
+                                <br />&emsp;<u>$rhead</u>
+                                <br />&emsp;$rcomment</td></tr>";
+                        } echo "</tbody></table>";
+                    } else {
+                        $sql = "UPDATE meetingevaluation SET tutor_num='$tname', meetingeval_overall='$orank', meetingeval_attitude='$arank', meetingeval_explain='$erank', meetingeval_helpful='$hrank', meetingeval_heading='$rhead', meetingeval_review='$rcomment' WHERE meetingeval_id='$rid'"; 
+
+                        $sql2="SELECT CONCAT(tutor_first, ' ', tutor_last) AS tname, meetingeval_overall, meetingeval_attitude, meetingeval_helpful, meetingeval_explain, meetingeval_heading, meetingeval_review FROM tutor t, meetingevaluation m WHERE t.tutor_num=m.tutor_num";
+                        $result = $mydb->query($sql2);
+
                         while($row=mysqli_fetch_array($result)){
                             echo"<tr><td><br /><b>Tutor Name: </b><u>".$row["tname"]."</u>
                             <b>&emsp;Overall Rating: </b><u>".$row["meetingeval_overall"]."</u>
-                            &emsp;<button><a href='AM_EditReview.php'>Edit</a></button>
+                            &emsp;<button><a href='AM_EditReview.php?rid=$rid'>Edit</a></button>
                             <button onclick='deleteReview()'>Delete</button>
                             <br />&emsp;Attitude: <u>".$row["meetingeval_attitude"]."</u>
                             &nbsp;Explainability: <u>".$row["meetingeval_explain"]."</u>
                             &nbsp;Helpfulness: <u>".$row["meetingeval_helpful"]."</u>
                             <br />&emsp;<u>".$row["meetingeval_heading"]."</u>
                             <br />&emsp;".$row["meetingeval_review"]."</td></tr>";
-                        } echo "</tbody></table>";*/
-                        echo"<tr><td><br /><b>Tutor Name: </b><u>$tname</u>
-                            <b>&emsp;Overall Rating: </b><u>$orank</u>
-                            &emsp;<button><a href='AM_EditReview.php'>Edit</a></button>
-                            <button onclick='deleteReview()'>Delete</button>
-                            <br />&emsp;Attitude: <u>$arank</u>
-                            &nbsp;Explainability: <u>$erank</u>
-                            &nbsp;Helpfulness: <u>$hrank</u>
-                            <br />&emsp;<u>$rhead</u>
-                            <br />&emsp;$rcomment</td></tr>";
-                        echo "</tbody></table>";
+                        } echo "</tbody></table>";
                     }
                 ?>
 

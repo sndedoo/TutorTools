@@ -1,7 +1,7 @@
 <?php
     $rid = 0;
-    $sname = "";
-    $tname = "";
+    $sname = 0;
+    $tname = 0;
     $orank = 0;
     $arank = 0;
     $erank = 0;
@@ -9,23 +9,9 @@
     $rhead = "";
     $rcomment = "";
     $err = false; 
-       
-    if (isset($_POST["submit"])) {
-        if(isset($_POST["id"])) $rid=$_POST["id"];
-        if(isset($_POST["studentname"])) $sname=$_POST["tutorname"];
-        if(isset($_POST["tutorname"])) $tname=$_POST["tutorname"];
-        if(isset($_POST["overall"])) $orank=$_POST["overall"];
-        if(isset($_POST["attitude"])) $arank=$_POST["attitude"];
-        if(isset($_POST["explain"])) $erank=$_POST["explain"];
-        if(isset($_POST["help"])) $hrank=$_POST["help"];
-        if(isset($_POST["heading"])) $rhead=$_POST["heading"];
-        if(isset($_POST["comment"])) $rcomment=$_POST["comment"];
-        if(!empty($tname) && !empty($sname) && !empty($rhead) && !empty($rcomment)) {
-            header("HTTP/1.1 307 Temprary Redirect"); 
-            header("Location: AM_MyReviews.php");
-        } else {
-            $err = true;
-        }
+    
+    if(isset($_GET["rid"])){
+        $rid=$_GET["rid"];
     }
 ?>
 
@@ -49,12 +35,12 @@
     <body>
         <div class="container-fluid">
             <!--navigation bar-->
+            <?php include('navStudent.php');?>
             <div class="wallpaper">
                 <h1>Edit Review</h1>
                 <br /> 
                 <form align = left method="post" action="AM_MyReviews.php" autocomplete="on">
                     <p>&emsp;
-                        <input type="hidden" id="id" name="id" value="<?php echo $rid;?>"/>
                         <label for="studentname">Your Name:</label>
                         <!-- input type="text" id="studentname" name="studentname" size="25" placeholder="Enter Your Name" autofocus required/ -->
                             <?php
