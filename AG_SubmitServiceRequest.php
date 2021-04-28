@@ -9,6 +9,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <meta author="Alejandro Gonzales">
 
     <!--Module 3 style sheet link-->
     <link rel="stylesheet" href="Module3.css"/>
