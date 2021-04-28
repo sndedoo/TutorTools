@@ -19,6 +19,7 @@ table tr td {
     text-align: left;
     margin-left: 1em;
 }
+
 </style>
 <?php include ('navStudent.php') ?>
     <h1>Students</h1>

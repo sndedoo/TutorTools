@@ -54,9 +54,11 @@ table tr td {
             echo '</table>';
             echo "</div>";
             echo "</div>";
+            echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
         else {
            echo "0 results";
+           echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
     }
     else {
@@ -83,9 +85,11 @@ table tr td {
                 echo '</table>';
                 
             }
+            echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
         else {
            echo "0 results";
+           echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
     }
 ?>

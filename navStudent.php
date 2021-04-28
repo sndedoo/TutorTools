@@ -45,7 +45,7 @@
                     </li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                            aria-expanded="false">My Account<span class="caret"></span>
+                            aria-expanded="false">My Profile<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="pillItem"><a href="SD_viewProfile.php">View My Profile</a></li>
