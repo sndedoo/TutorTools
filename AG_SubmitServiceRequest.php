@@ -9,6 +9,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <meta author="Alejandro Gonzales">
 
     <!--Module 3 style sheet link-->
     <link rel="stylesheet" href="Module3.css"/>
@@ -25,14 +26,14 @@
     <!--Navigation Bar-->
     <nav> 
         <ul class = "nav nav-pills nav-justified">
-            <li><a href="#">Homepage</a></li>
+            <li><a href="TutorHomepage.html">Homepage</a></li>
             <li role = "presentation" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="true" aria-haspopup="false">Services<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Search for an Appointment</a></li>
-                    <li><a href="#">Modify an Appointment</a></li>
-                    <li><a href="#">Cancel an Appointment</a></li>
+                    <li><a href="AG_SearchServiceRequest.php">Search for an Appointment</a></li>
+                    <li><a href="AG_ModifyCancelRequest.php">Modify an Appointment</a></li>
+                    <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
                 </ul>
             </li>
             <li><a href = "#">View Schedule</a></li>
