@@ -87,7 +87,7 @@ if (isset($_POST["submit"])) {
           $_SESSION["email"] = $email;
           $_SESSION["passwrd"] = $password;
           // setcookie("lastLoginTime", date("F j, Y, g:i a"), time()+60*60*24*2, "/");  
-          Header("Location: tutorPath\TBTutorHomepage.php");
+          Header("Location: TBTutorHomepage.php");
         } elseif (!$loginOK) {
           echo "<p>Make sure you have entered the correct information.</p>";
         }
