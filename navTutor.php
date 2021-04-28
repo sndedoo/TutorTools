@@ -21,6 +21,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="SD_tutorEditProfile.php">Edit My Profile</a></li>
                         <li><a href="SD_tutorViewProfile.php">View My Profile</a></li>
+                        <li><a href="SD_logOut.php">Sign Out</a></li>
+                        
                         <li><a href="SD_logIn.php">Login</a></li>
                         <li><a href="SD_createProfile.php">Sign Up</a></li>
                     </ul>

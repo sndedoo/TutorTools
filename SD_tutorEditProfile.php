@@ -7,13 +7,8 @@ $fName = "";
 $lName = "";
 $about = "";
 $phone = "";
-// $mailAddy = "";
 $city = "";
 $state = "";
-// $zip = "";
-// $birthday = "";
-// $zip = "";
-// $gradYear ="";
 $birthday = "";
 $gender = "";
 
@@ -25,7 +20,6 @@ if (isset($_POST["update"])) {
     if(isset($_POST["lName"])) $lName = $_POST["lName"];
     if(isset($_POST["about"])) $about = $_POST["about"];
     if(isset($_POST["phone"])) $phone = $_POST["phone"];
-    if(isset($_POST["mailAddy"])) $mailAddy = $_POST["mailAddy"];
     if(isset($_POST["city"])) $city = $_POST["city"];
     if(isset($_POST["state"])) $state = $_POST["state"];
     if(isset($_POST["zip"])) $zip = $_POST["zip"];
@@ -42,9 +36,6 @@ if (isset($_POST["update"])) {
         phone = '$phone', 
         Tutor_City = '$city', 
         Tutor_State = '$state',
-        -- zip = '$zip',
-        -- Student_GradYr = '$gradYear',
-        -- birthday = '$birthday',
         gender = '$gender'
         WHERE Tutor_Email ='$email'
         ";

@@ -48,7 +48,11 @@ table tr td {
    <h3>Search results:</h3>
 
    <?php
+
+   // Use the grid system to figure out width attribute
             while($row = $result->fetch_assoc()) {
+                echo "<div class='row'>";
+                echo "<div class='col-lg-6'>";
                 echo '<h2>'.$row["Student_First"]." ".$row["Student_Last"]."'s Profile</h2>";
                 echo '<table class="table">';
                 echo '<tr><td>Email:</td><td>'.$row["Student_Email"].'</td></tr>';
@@ -63,6 +67,8 @@ table tr td {
                 // echo '<tr><td>Email:</td><td>'.$row["Student_Email"].'</td></tr>';
                 echo '</table>';
                 echo '<hr />';
+                echo "</div>";
+                echo "</div>";
                 
             }
             echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";

@@ -15,7 +15,7 @@
     <?php
     session_start();
 
-    $email = $_SESSION["stuEmail"];
+    $email = $_SESSION["email"];
     $_SESSION = array();
     
     //unset($_SESSION["stuEmail"]);

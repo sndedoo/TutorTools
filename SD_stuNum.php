@@ -1,3 +1,5 @@
+
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +14,19 @@
     <script src="myScripts.js"></script>
 </head>
 <body>
-    <?php include ('SD_container.php') ?>
+
+    <?php include ('navStudent.php') ?>
     <form action="SD_show.php" method="get">
     <label for="Student_Num">Your Student ID:</label>
     <select name="Student_Num">
 
     <?php
-    session_start();
+    
     $email = $_SESSION['email'];
     
 	require_once("db.php");
 	$sql = "SELECT Student_Num FROM student WHERE Student_Email ='$email'";
+    echo $sql;
 	$result = $mydb->query($sql);
     
     
