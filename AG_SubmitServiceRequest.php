@@ -26,14 +26,14 @@
     <!--Navigation Bar-->
     <nav> 
         <ul class = "nav nav-pills nav-justified">
-            <li><a href="#">Homepage</a></li>
+            <li><a href="TutorHomepage.html">Homepage</a></li>
             <li role = "presentation" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="true" aria-haspopup="false">Services<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Search for an Appointment</a></li>
-                    <li><a href="#">Modify an Appointment</a></li>
-                    <li><a href="#">Cancel an Appointment</a></li>
+                    <li><a href="AG_SearchServiceRequest.php">Search for an Appointment</a></li>
+                    <li><a href="AG_ModifyCancelRequest.php">Modify an Appointment</a></li>
+                    <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
                 </ul>
             </li>
             <li><a href = "#">View Schedule</a></li>
