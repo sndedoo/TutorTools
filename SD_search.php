@@ -1,29 +1,30 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Your Courses</title>
+    <title>Profiles</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
     <style>
-h1 {text-align: center;}
+h1 {text-align: left;}
 h2{
-    text-align: center;
+    text-align: left;
     font-weight: bold;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #8B1F41;
 }
 p {text-align: left;}
 table tr td {
-            text-align: left;
-            margin-left: 1em;
-        }
+    text-align: left;
+    margin-left: 1em;
+}
 </style>
-
-<h1>Search by Name</h1>
+<?php include ('navStudent.php') ?>
+    <h1>Students</h1>
+    <br>
    <form action="SD_search.php" method="post" enctype="multipart/form-data">
-    Name:  <input type="text" name="firstName" value="" placeholder="" size="20">
+    <label for="firstName"> Search By Name: </label><input type="text" name="firstName" value="" placeholder="" size="20">
     <input type="submit" value="Search" name="submit">
     </form>
 
@@ -52,7 +53,7 @@ table tr td {
    // Use the grid system to figure out width attribute
             while($row = $result->fetch_assoc()) {
                 echo "<div class='row'>";
-                echo "<div class='col-lg-6'>";
+                echo "<div class='col-xs-12 col-sm-10 col-md-8 col-lg-6'>";
                 echo '<h2>'.$row["Student_First"]." ".$row["Student_Last"]."'s Profile</h2>";
                 echo '<table class="table">';
                 echo '<tr><td>Email:</td><td>'.$row["Student_Email"].'</td></tr>';
@@ -62,9 +63,6 @@ table tr td {
                 echo '<tr><td>Birthday:</td><td>'.$row["birthday"].'</td></tr>';
                 echo '<tr><td>Graduation Year:</td><td>'.$row["Student_GradYr"].'</td></tr>';
                 echo '<tr><td>Gender:</td><td>'.$row["gender"].'</td></tr>';
-                // echo '<tr><td>Firstname:</td><td>'.$row["Student_First"].'</td></tr>';
-                // echo '<tr><td>Lastname:</td><td>'.$row["Student_Last"].'</td></tr>';
-                // echo '<tr><td>Email:</td><td>'.$row["Student_Email"].'</td></tr>';
                 echo '</table>';
                 echo '<hr />';
                 echo "</div>";
@@ -74,13 +72,10 @@ table tr td {
             echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
         else {
-           echo "0 results";
+           echo "No results";
            echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
     }
-    // echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
 ?>
-<!-- <br>
-<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p> -->
 
 

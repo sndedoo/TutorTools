@@ -61,7 +61,6 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body class="container-fluid">
-<?php include('navStudent.php');?>
   <div class='wallpaper'>
     <h1>Create a Profile </h1>
 

@@ -1,3 +1,6 @@
+<?php session_start(); include('navStudent.php');?>
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>My Courses</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
@@ -14,9 +17,8 @@
 </head>
 </head>
 <body>
-<?php include('navStudent.php');?>
     <?php
-    session_start();
+    
     // $email = $_SESSION["email"];
     // if(isset($_GET["email"])) $email=$_GET["email"];
 
