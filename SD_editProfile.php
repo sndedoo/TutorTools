@@ -17,7 +17,7 @@ $gradYear ="";
 $birthday = "";
 $gender = "";
 
-$email = $_SESSION['stuEmail'];
+$email = $_SESSION['email'];
 $error = false;
 
 if (isset($_POST["update"])) {

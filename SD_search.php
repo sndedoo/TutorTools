@@ -6,7 +6,21 @@
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
-    
+    <style>
+h1 {text-align: center;}
+h2{
+    text-align: center;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #8B1F41;
+}
+p {text-align: left;}
+table tr td {
+            text-align: left;
+            margin-left: 1em;
+        }
+</style>
+
 <h1>Search by Name</h1>
    <form action="SD_search.php" method="post" enctype="multipart/form-data">
     Name:  <input type="text" name="firstName" value="" placeholder="" size="20">
@@ -35,23 +49,32 @@
 
    <?php
             while($row = $result->fetch_assoc()) {
-                echo '<table>';
-                echo '<tr><td>Student_Num:</td><td>'.$row["Student_Num"].'</td></tr>';
-                echo '<tr><td>Firstname:</td><td>'.$row["Student_First"].'</td></tr>';
-                echo '<tr><td>Lastname:</td><td>'.$row["Student_Last"].'</td></tr>';
+                echo '<h2>'.$row["Student_First"]." ".$row["Student_Last"]."'s Profile</h2>";
+                echo '<table class="table">';
                 echo '<tr><td>Email:</td><td>'.$row["Student_Email"].'</td></tr>';
+                echo '<tr><td>City:</td><td>'.$row["City"].'</td></tr>';
+                echo '<tr><td>State:</td><td>'.$row["State"].'</td></tr>';
+                echo '<tr><td>Biography:</td><td>'.$row["About_Me"].'</td></tr>';
+                echo '<tr><td>Birthday:</td><td>'.$row["birthday"].'</td></tr>';
+                echo '<tr><td>Graduation Year:</td><td>'.$row["Student_GradYr"].'</td></tr>';
+                echo '<tr><td>Gender:</td><td>'.$row["gender"].'</td></tr>';
+                // echo '<tr><td>Firstname:</td><td>'.$row["Student_First"].'</td></tr>';
+                // echo '<tr><td>Lastname:</td><td>'.$row["Student_Last"].'</td></tr>';
+                // echo '<tr><td>Email:</td><td>'.$row["Student_Email"].'</td></tr>';
                 echo '</table>';
                 echo '<hr />';
-                echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
+                
             }
+            echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
         else {
            echo "0 results";
            echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
         }
     }
-
+    // echo "<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p>";
 ?>
-
+<!-- <br>
+<p><a href='SD_viewProfiles.php'>Back To Profiles</a></p> -->
 
 

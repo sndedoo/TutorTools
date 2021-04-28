@@ -19,7 +19,7 @@
 
     <?php
     session_start();
-    $email = $_SESSION['stuEmail'];
+    $email = $_SESSION['email'];
     
 	require_once("db.php");
 	$sql = "SELECT Student_Num FROM student WHERE Student_Email ='$email'";

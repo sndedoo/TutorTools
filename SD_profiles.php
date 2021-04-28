@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
@@ -14,19 +14,26 @@
         require_once("db.php");
         $firstname = $_GET['firstName'];
         $sql = "SELECT * FROM student WHERE Student_First='$firstname'";
+
+        
         
         $result = $mydb->query($sql);
         
         if ($result->num_rows > 0) {
             
             if($row = $result->fetch_assoc()) {
-                echo '<h1>'.$row["Student_First"]."'s Profile</h1>";
-                echo '<table>';
-                echo '<tr><td>Last Name:</td><td>'.$row["Student_Last"].'</td></tr>';
-                echo '<tr><td>Graduation Year:</td><td><img src="'.$row["Student_GradYr"].'" width="100px" /></td></tr>';
-                echo '<tr><td>Student_First:</td><td>'.$row["Student_First"].'</td></tr>';
-                echo '<tr><td>Student_Last:</td><td>'.$row["Student_Last"].'</td></tr>';
-                echo '<tr><td>Student_Email:</td><td>'.$row["Student_Email"].'</td></tr>';
+                echo '<h1>'.$row["Student_First"]." ".$row["Student_Last"]."'s Profile</h1>";
+                echo '<table class="table">';
+                echo '<tr><td>Email:</td><td>'.$row["Student_Email"].'</td></tr>';
+                echo '<tr><td>City:</td><td>'.$row["City"].'</td></tr>';
+                echo '<tr><td>State:</td><td>'.$row["State"].'</td></tr>';
+                echo '<tr><td>Biography:</td><td>'.$row["About_Me"].'</td></tr>';
+                echo '<tr><td>Birthday:</td><td>'.$row["birthday"].'</td></tr>';
+                echo '<tr><td>Graduation Year:</td><td>'.$row["Student_GradYr"].'</td></tr>';
+                echo '<tr><td>Gender:</td><td>'.$row["gender"].'</td></tr>';
+
+
+                
             }
             echo '</table>';
         }

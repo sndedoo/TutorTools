@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// echo "<p> Hello, ".$_SESSION["stuEmail"]."</p>";
+// echo "<p> Hello, ".$_SESSION["email"]."</p>";
 
 $course1 = "";
 $course2 = "";
@@ -12,7 +12,7 @@ $course6 = "";
 $error = false;
 
 
-$email = $_SESSION['stuEmail'];
+$email = $_SESSION['email'];
 // $error = false;
 
 if (isset($_POST["add"])) {

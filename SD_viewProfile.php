@@ -17,13 +17,13 @@
 <?php include('navStudent.php');?>
     <?php
     session_start();
-    // $email = $_SESSION["stuEmail"];
-    // if(isset($_GET["stuEmail"])) $email=$_GET["stuEmail"];
+    // $email = $_SESSION["email"];
+    // if(isset($_GET["email"])) $email=$_GET["email"];
 
     require_once("db.php");
-    $sql = "SELECT * FROM student WHERE Student_Email ='".$_SESSION["stuEmail"]."'";
+    $sql = "SELECT * FROM student WHERE Student_Email ='".$_SESSION["email"]."'";
 
-    // $sql = "SELECT * FROM student WHERE Student_Email ='".$_SESSION["stuEmail"]."'";
+    // $sql = "SELECT * FROM student WHERE Student_Email ='".$_SESSION["email"]."'";
     // $sql = "SELECT Student_First, Student_Last, Student_GradYr  FROM student";
     $result = $mydb->query($sql);
 
