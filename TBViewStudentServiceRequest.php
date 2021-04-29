@@ -1,8 +1,13 @@
 <?php
+
+//initializes the variables
 $classSelected = "";
 $tutorFirstNameSelected = "";
 $tutorLastNameSelected = "";
+$selection = array();
 $selection1Made = "1";
+$selection2Made = "2";
+$selection3Made = "3";
 ?>
 
 <!doctype html>
@@ -45,6 +50,8 @@ $selection1Made = "1";
 </head>
 
 <body>
+
+    <!--Creates action when submit button is clicked-->
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <nav class="navBar">
 
@@ -87,6 +94,8 @@ $selection1Made = "1";
     </br>
 
     <?php
+
+    //sets variables using post method after submit button is clicked
     if (isset($_POST["submit"])) {
         if (isset($_POST["classSelected"])) $classSelected = $_POST["classSelected"];
         if (isset($_POST["tutorFirstNameSelected"])) $tutorFirstNameSelected = $_POST["tutorFirstNameSelected"];
@@ -97,47 +106,56 @@ $selection1Made = "1";
 
         require_once("db.php");
         $count = 0;
+
+        //pulls relevant information from the database
         $sql = "SELECT Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Tutor_Class1, Tutor_Class2, Tutor_Class3, Tutor_Class4, Meeting.Meet_Time, Meeting.Meet_Location FROM Tutor JOIN Meeting ON Tutor.Meet_ID = Meeting.Meet_ID WHERE Tutor_Class1= '$classSelected' OR Tutor_Class2= '$classSelected'OR Tutor_Class3= '$classSelected'OR Tutor_Class4= '$classSelected'OR Tutor_First= '$tutorFirstNameSelected'OR Tutor_Last= '$tutorLastNameSelected'";
         $result = $mydb->query($sql);
+
+        //allows user to search by class name
         while ($row = mysqli_fetch_array($result)) {
         }
         $result = $mydb->query($sql);
         if ($classSelected != "" && ($classSelected == $row["Tutor_Class1"] || $classSelected == $row["Tutor_Class2"] || $classSelected == $row["Tutor_Class3"] || $classSelected == $row["Tutor_Class4"] || $classSelected == $row["Tutor_Class4"] || $tutorFirstNameSelected == $row["Tutor_First"] || $tutorLastNameSelected == $row["Tutor_Last"])) {
             $sql = "SELECT Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email FROM Tutor WHERE Tutor_Class1= '$classSelected' OR Tutor_Class2= '$classSelected'OR Tutor_Class3= '$classSelected'OR Tutor_Class4= '$classSelected'OR Tutor_First= '$tutorFirstNameSelected'OR Tutor_Last= '$tutorLastNameSelected'";
-            echo "<table>";
-            echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Class Requested</th><th class='orange'>Sign Up</th></tr>
-                    </thead><tbody>";
+
+            $selection = array();
             while ($row = mysqli_fetch_array($result)) {
-                echo "<tr class = returnedRow id = $count><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'>" . $classSelected . "</td><td class= 'lightOrange'><a><button name = SignUpButton1>Sign Up</button></td></tr>";
+                echo $selection[] = "<table><thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Class Requested</th><th class='orange'>Sign Up</th></tr></thead><tbody><tr class = returnedRow id = $count><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'>" . $classSelected . "</td><td class= 'lightOrange'><a href = 'TBViewTutorProfile.php'><button name = SignUpButton1>Sign Up</button></td></tr></tbody></table>";
+
+                //stores all tutors that teach the selected class into an array
+                echo "</br>";
+                echo $selection[$count];
+
                 $count++;
-                echo $selection1;
+                echo "</br>";
             }
-        
-            echo "</tbody></table>";
+            
+            //allows user to search by first name
         } else {
             $result = $mydb->query($sql);
             if ($tutorFirstNameSelected != "") {
-                echo "<table>";
-                echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr>
-                    </thead><tbody>";
-                while ($row = mysqli_fetch_array($result)) {
-                    echo "<tr class = returnedRow id = $count><td class='lightOrange'>" . $tutorFirstNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a><button name = SignUpButton2>Sign Up</button></td></tr>";
-                    $count++;
+                if ($selection2Made != "") {
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo $selection2Made = "<table><thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr></thead><tbody><tr class = returnedRow id = $count><td class='lightOrange'>" . $tutorFirstNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_Last"] . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a><button name = SignUpButton2>Sign Up</button></td></tr></tbody></table>";
+                        $count++;
+                        echo "</br>";
+                    }
                 }
-                echo "</tbody></table>";
+                echo $selection2Made;
+
+                //allows user to search by last name
             } else {
-                echo "<table>";
-                echo "<thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr>
-                        </thead><tbody>";
-                while ($row = mysqli_fetch_array($result)) {
-                    echo "<tr class = returnedRow id = $count><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $tutorLastNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a><button name = SignUpButton3>Sign Up</button></td></tr>";
-                    $count++;
+                if ($selection3Made != "") {
+
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo $selection3Made = "<table><thead> <tr><th class='orange'>First Name</th><th class='orange'>Last Name</th><th class='orange'>Graduation Year</th><th class='orange'>Tutor_Email</th><th class='orange'>Class 1</th><th class='orange'>Class 2</th><th class='orange'>Class 3</th><th class='orange'>Class 4</th><th class='orange'>Meeting Time</th><th class='orange'>Meeting Location</th><th class='orange'>Sign Up</th></tr></thead><tbody><tr class = returnedRow id = $count><td class='lightOrange'>" . $row["Tutor_First"] . "</td><td class='lightOrange'>" . $tutorLastNameSelected . "</td><td class='lightOrange'>" . $row["Tutor_GradYr"] . "</td><td class= 'lightOrange'>" . $row["Tutor_Email"] . "</td><td class='lightOrange'>" . $row["Tutor_Class1"] . "</td><td class='lightOrange'>" . $row["Tutor_Class2"] . "</td><td class='lightOrange'>" . $row["Tutor_Class3"] . "</td><td class='lightOrange'>" . $row["Tutor_Class4"] . "</td><td class= 'lightOrange'>" . $row["Meet_Time"] . "</td><td class= 'lightOrange'>" . $row["Meet_Location"] . "</td><td class= 'lightOrange'><a><button name = SignUpButton3>Sign Up</button></td></tr></tbody></table>";
+                        $count++;
+                    }
+                    echo "</br>";
                 }
-                echo "</tbody></table>";
+                echo $selection3Made;
             }
         }
-        
-        echo $selection1Made;  
     }
     ?>
 
