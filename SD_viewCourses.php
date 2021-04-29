@@ -1,9 +1,8 @@
-<?php session_start(); include('navStudent.php');?>
+<?php session_start();?>
     
     
 <!DOCTYPE html>
 <html lang="en">
-<head>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,8 +14,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
 </head>
-</head>
 <body>
+    <?php  include('navStudent.php');?>
     <?php
     
     // $email = $_SESSION["email"];
@@ -34,12 +33,13 @@
     // $sql = "SELECT Student_First, Student_Last, Student_GradYr  FROM student";
     $result = $mydb->query($sql);
 
-    echo "<div class='wallpaper'><table border='1'>
+    echo "<div class='wallpaper'>
+    <table class='table table-hover' border='1'>
 
-        <thead><tr>
+        <thead class='thead-dark'><tr>
     
-        <th>Course</th>
-        <th>Credits</th>
+        <th scope='col'>Course</th>
+        <th scope='col'>Credits</th>
     
         
         
@@ -54,14 +54,10 @@
             echo "<td>".$row['courseCredits']."</td>";
             echo "</tr>";
     
-    
-            
-            
         }
         echo "</tbody>";
         echo "</table></div>";
         ?>
     
-        <p><a href="SD_editCourses.php">Edit Your Courses</a></p>
 </body>
 </html>

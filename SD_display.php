@@ -6,7 +6,7 @@ $sql = "SELECT * FROM student";
 $result = $mydb->query($sql);
 
 if ($result->num_rows > 0) {
-    echo '<table>';
+    echo '<table class="table table-hover">';
     while($row = $result->fetch_assoc()) {
         $firstname = $row["Student_First"];
         echo '<tr><td><a class="btn" href="SD_profiles.php?firstName='.$firstname.'">'.$firstname.'</a><br /></td></tr>';
