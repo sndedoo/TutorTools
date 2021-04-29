@@ -19,9 +19,9 @@
     
     <!--Description of this page-->
     <div>
-        <h3 class="blue"><img src="Image/Tutor Tools Logo.png" alt="Error loading image" align = "left" height="150"/>
+        <h1 class="blue"><img src="Image/Tutor Tools Logo.png" alt="Error loading image" align = "left" height="150"/>
             Submit a service request
-        </h3>
+        </h1>
     </div>    
     <!--Navigation Bar-->
     <nav> 
