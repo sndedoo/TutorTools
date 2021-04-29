@@ -1,9 +1,12 @@
 
 
     <div id="navStudent">
-        <a href="TBProjectHomepage.php"><img src="Image\Tutor Tools Logo.png" id="companyLogo"></a>
+        <a href="TBProjectHomepage.php" >
+            <img src="Image\Tutor Tools Logo.png" width="200px" class="center" alt="Logo">
+        </a>
             <nav class="navBar">
                 <ul class="nav nav-pills">
+                    <!-- <li class="pillItem"><a href="TBProjectHomepage.php"><img src="Image\Tutor Tools Logo.png" height="100px" width="100px" class="center" alt="Logo"></a></li> -->
                     <li class="pillItem"><a href="TBProjectHomepage.php">Home</a></li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -54,6 +57,6 @@
                             <li class="pillItem"><a href="SD_logOut.php">Log Out</a></li>
                         </ul>
                     </li>
-                    </ul>
+                </ul>
             </nav>
     </div>

@@ -47,6 +47,7 @@ p{
     font-weight: bold;
     font-style: italic;
 }
+
 nav{
     font-weight:bold;
     background-color: #E87722;
@@ -145,9 +146,15 @@ div.basicInformation{
     margin-left: auto;
     margin-right: auto;
 }
-#companyLogo nav{
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+/* #companyLogo nav{
     height: 55px;
-    width: 80px;
+    width: 10px;
     display: inline-block;
     vertical-align:top;
-}
+} */
