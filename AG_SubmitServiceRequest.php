@@ -36,8 +36,8 @@
                     <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
                 </ul>
             </li>
-            <li><a href = "#">View Schedule</a></li>
-            <li><a href = "#">Other page...</a></li>
+            <li><a href = "TBViewStudentSchedule.php">View Schedule</a></li>
+            <li><a href = "SD_profiles.php">View My Profile</a></li>
         </ul>
     </nav>
 
