@@ -1,11 +1,13 @@
 
     <div id="navTutor">
-    <a href="TBTutorHomepage.php"><img src="Image\Tutor Tools Logo.png" id="companyLogo"></a>
+    <a href="TBTutorHomepage.php" >
+            <img src="Image\Tutor Tools Logo.png" width="200px" class="center" alt="Logo">
+        </a>
         <nav>
             <ul class="nav nav-pills">
-                <li class="pillItem"><a href="tutorPath\TBTutorHomepage.php">Home</a></li>
-                <li class="pillItem"><a href="/">View My Meetings</a></li>
-                <li class="pillItem"><a href="/">View My Reviews</a></li>
+                <li class="pillItem"><a href="TBTutorHomepage.php">Home</a></li>
+                <li class="pillItem"><a href="/">View Meetings</a></li>
+                <li class="pillItem"><a href="/">View Reviews</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="false">Issues<span class="caret"></span>

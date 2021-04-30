@@ -13,6 +13,9 @@
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
+    <style>
+        h2 {text-align: center;}
+    </style>
 </head>
 <body>
     <?php  include('navStudent.php');?>
@@ -33,7 +36,11 @@
     // $sql = "SELECT Student_First, Student_Last, Student_GradYr  FROM student";
     $result = $mydb->query($sql);
 
-    echo "<div class='wallpaper'>
+    echo "
+    <h2>My Course Schedule</h2>
+    
+    
+    <div class='wallpaper'>
     <table class='table table-hover' border='1'>
 
         <thead class='thead-dark'><tr>
@@ -58,6 +65,6 @@
         echo "</tbody>";
         echo "</table></div>";
         ?>
-    
+    <p><a href="SD_stuNum.php">View Courseload</a></p>
 </body>
 </html>

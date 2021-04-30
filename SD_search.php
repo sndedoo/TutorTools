@@ -56,7 +56,6 @@
 
    <?php
 
-   // Use the grid system to figure out width attribute
             while($row = $result->fetch_assoc()) {
                 echo "<div class='row'>";
                 echo "<div class='col-xs-12 col-sm-10 col-md-8 col-lg-6'>";
