@@ -30,6 +30,15 @@
                     <!-- <li class="pillItem"><a href="TBViewStudentSchedule.php">View My Schedule</a></li> -->
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                            aria-expanded="false">View My Schedule<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="TBViewStudentSchedule.html">My Schedule</a></li>
+                            <li><a href="AG_ModifyCancelRequest.php">Modify an Appointment</a></li>
+                            <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                             aria-expanded="false">Issues<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
