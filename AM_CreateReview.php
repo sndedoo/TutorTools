@@ -10,7 +10,7 @@
     $rcomment = "";
 
     if (isset($_POST["submit"])) {
-        if(isset($_POST["id"])) $rid=$_POST["id"];
+        if(isset($_POST["rid"])) $rid=$_POST["rid"];
         if(isset($_POST["studentname"])) $sname=$_POST["studentname"];
         if(isset($_POST["tutorname"])) $tname=$_POST["tutorname"];
         if(isset($_POST["overall"])) $orank=$_POST["overall"];
@@ -52,12 +52,14 @@
     <body>
         <div class="container-fluid">
             <!--Nav Bar-->
+            <?php include('navStudent.php');?>
+
             <div class="wallpaper">
                 <h1>Create a Review</h1>
                 <br /> 
                 <form align = left method="post" action="AM_MyReviews.php" autocomplete="on">
                     <p>&emsp;
-                        <input type="hidden" id="id" name="id" size="25"/>
+                        <input type="hidden" id="rid" name="rid" size="25"/>
                         <label for="studentname">Your Name:</label>
                         <!-- input type="text" id="studentname" name="studentname" size="25" placeholder="Enter Your Name" autofocus required/ -->
                             <?php

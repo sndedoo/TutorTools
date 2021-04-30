@@ -38,12 +38,13 @@
 
     <body>
         <div class="container-fluid">
-            <div class="wallpaper">
-                <!--navigation bar-->
+            <!--navigation bar-->
+            <?php include('navStudent.php');?>
 
+            <div class="wallpaper">                
                 <h1>Review List</h1><br />
                 <p>Find a Tutor</p>
-                <form method="get" action="showProducts.php">
+                <form method="get" action="AM_DisplayTutors.php">
                     <?php
                         require_once("db.php");
                         

@@ -12,7 +12,7 @@
     <meta author="Alejandro Gonzales">
 
     <!--Module 3 style sheet link-->
-    <link rel="stylesheet" href="Module3.css"/>
+    <link rel="stylesheet" href="Webpages.css"/>
 </head>
 <body>
     <div class="container-fluid">
@@ -20,7 +20,7 @@
     <!--Description of this page-->
     <div>
         <h1 class="blue"><img src="Image/Tutor Tools Logo.png" alt="Error loading image" align = "left" height="150"/>
-            Use Case 1: Submit a bid to a service request
+            Submit a service request
         </h1>
     </div>    
     <!--Navigation Bar-->
@@ -36,13 +36,13 @@
                     <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
                 </ul>
             </li>
-            <li><a href = "#">View Schedule</a></li>
-            <li><a href = "#">Other page...</a></li>
+            <li><a href = "TBViewStudentSchedule.php">View My Schedule</a></li>
+            <li><a href = "TBViewStudentProfile.html">View My Profile</a></li>
         </ul>
     </nav>
 
     
-
+    <!--php code here i think....-->
     <div class="inline">  
     <p> 
         Existing bids/responses on the webside... search bar here

@@ -29,9 +29,10 @@
 
     <body>
         <div class="container-fluid">
+            <!--navigation bar-->
+            <?php include('navStudent.php');?>
+            
             <div class="wallpaper">
-                <!--navigation bar-->
-
                 <h1>Review Analysis</h1><br />
                 <p>Click Here to Search for Another Tutor <button><a href='AM_ReviewList.php'>Review List</a></button></p>
                 
@@ -56,15 +57,15 @@
                 //   return d;
 
                 <?php
-                $overallrank=0;
-                if(isset($_GET['meetingeval_overall'])) $overallrank=$_GET['meetingeval_overall'];
+                $tutorid=0;
+                if(isset($_GET['tutor_num'])) $tutorid=$_GET['tutor_num'];
                 ?>
 
-                d3.json("AM_GetData.php?orank=<?php echo $overallrank;?>", function(error, data){
+                d3.json("AM_GetData.php?tid=<?php echo $tutorid;?>", function(error, data){
                 if(error) throw error;
 
                 data.forEach(function(d){
-                    d.letter = d.rate;
+                    d.letter = d.tutorname;
                     d.frequency = +d.overall;
                 })
 
