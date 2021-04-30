@@ -52,6 +52,8 @@
     <body>
         <div class="container-fluid">
             <!--Nav Bar-->
+            <?php include('navStudent.php');?>
+
             <div class="wallpaper">
                 <h1>Create a Review</h1>
                 <br /> 

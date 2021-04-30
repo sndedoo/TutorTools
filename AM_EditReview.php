@@ -36,11 +36,13 @@
         <div class="container-fluid">
             <!--navigation bar-->
             <?php include('navStudent.php');?>
+
             <div class="wallpaper">
                 <h1>Edit Review</h1>
                 <br /> 
-                <form align = left method="post" action="AM_MyReviews.php" autocomplete="on">
+                <form method="post" action="AM_MyReviews.php" autocomplete="on">
                     <p>&emsp;
+                        <input type = "hidden" name="rid" value = "<?php echo $rid;?>">
                         <label for="studentname">Your Name:</label>
                         <!-- input type="text" id="studentname" name="studentname" size="25" placeholder="Enter Your Name" autofocus required/ -->
                             <?php

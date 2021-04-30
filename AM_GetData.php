@@ -1,9 +1,13 @@
 <?php
   require_once("db.php");
-  $ovalue=0;
-  if(isset($_GET["orank"])) $ovalue = $_GET["orank"];
+  //$tutid=0;
+  //if(isset($_GET["tid"])) $tutid = $_GET["tid"];
 
-  $sql = "SELECT tutor_num, sum(meetingeval_overall)/count(meetingeval_overall) AS overall, DISTINCT meetingeval_overall AS rate FROM tutor t, meetingevaluation m WHERE t.tutor_num=m.tutor_num AND m.tutor_num=".$ovalue;
+  $sql= "SELECT CONCAT(tutor_first, ' ', tutor_last) AS 'tutorname', avg(meetingeval_overall) as overall FROM tutor t, meetingevaluation m 
+  WHERE t.tutor_num=m.tutor_num 
+  Group by tutorname";
+  //$sql = "SELECT CONCAT(tutor_first, ' ', tutor_last) AS 'tutorname', avg(meetingeval_overall) as overall, FROM meetingevaluation WHERE tutor_num=$tutid";
+  //$sql = "SELECT tutor_num, avg(meetingeval_overall) AS overall FROM tutor t, meetingevaluation m WHERE t.tutor_num=m.tutor_num;
   $result = $mydb->query($sql);
 
   $data = array();
