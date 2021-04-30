@@ -4,7 +4,7 @@
         <nav>
             <ul class="nav nav-pills">
                 <li class="pillItem"><a href="tutorPath\TBTutorHomepage.php">Home</a></li>
-                <li class="pillItem"><a href="/">View My Meetings</a></li>
+                <li class="pillItem"><a href="TBViewStudentSchedule.php">View My Meetings</a></li>
                 <li class="pillItem"><a href="AM_TutorReviews.php">View My Reviews</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
