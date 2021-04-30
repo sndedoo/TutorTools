@@ -42,7 +42,7 @@
     </nav>
 
     
-
+    <!--php code here i think....-->
     <div class="inline">  
     <p> 
         Existing bids/responses on the webside... search bar here
