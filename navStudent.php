@@ -27,7 +27,7 @@
                             <li><a href="AM_ReviewList.php">Tutor Reviews</a></li>
                         </ul>
                     </li>
-                    <li class="pillItem"><a href="TBViewStudentSchedule.php">View My Schedule</a></li>
+                    <!-- <li class="pillItem"><a href="TBViewStudentSchedule.php">View My Schedule</a></li> -->
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                             aria-expanded="false">Issues<span class="caret"></span>
