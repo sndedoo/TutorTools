@@ -32,6 +32,7 @@
                             aria-expanded="false">View My Schedule<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="TBViewStudentSchedule.html">My Schedule</a></li>
+                            <li><a href="AG_SubmitServiceRequest.php">All Appointments</a></li>
                             <li><a href="AG_ModifyCancelRequest.php">Modify an Appointment</a></li>
                             <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
                         </ul>
