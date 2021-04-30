@@ -18,6 +18,15 @@
                 </li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                            aria-expanded="false">Service Details<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="AG_SearchServiceRequest.php">All Service Requests</a></li>
+                        <li><a href="AG_ServiceDetails_Analysis.php">Service Analytics</a></li>
+                    </ul>
+                </li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="false">My Profile<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
