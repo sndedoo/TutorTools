@@ -16,7 +16,8 @@
 
     <!--CSS Sheets-->
     <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Thomas-Webpages.css" />
+    <!--<link rel="stylesheet" type="text/css" href="Webpages.css" /> -->
+    <link rel="stylesheet" type="text/css" href="KG_table.css" />
 
     <!--Javascript/Jquery-->
     <script src = "jquery-3.1.1.min.js"></script>
@@ -33,9 +34,7 @@
         
         
         <div class="container-fluid">
-            <div class="navbar-header">
-                <img src = "Image/download.png"/>
-            </div>
+            
 
             <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -86,9 +85,10 @@
                       echo "</tbody>
                       </table>";
                     ?>
-                    <input type = "button" onclick = "parent.location='KG_createIssue.php'" value = 'Create Issue'>
-                    <input type = "button" onclick = "parent.location='KG_modifyIssue.php'" value = 'Modify Issue'>
+                    
                   </div>
+                  <input type = "button" onclick = "parent.location='KG_createIssue.php'" value = 'Create Issue'>
+                    <input type = "button" onclick = "parent.location='KG_modifyIssue.php'" value = 'Modify Issue'>
             </div>
         </div>
         

@@ -1,0 +1,17 @@
+
+
+.tableFixHead {
+    overflow-y: auto;
+        height: 25%;
+      }
+      .tableFixHead thead th {
+        position: sticky;
+        top: 0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+
+      

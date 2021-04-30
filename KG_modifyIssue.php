@@ -12,7 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
 
         <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
-        
+        <link rel="stylesheet" type="text/css" href="Webpages.css" />
         <script src = "jquery-3.1.1.min.js"></script>
         <script src = "js/bootstrap.min.js"></script>
         
@@ -28,92 +28,73 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-inverse">
-        
-        
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <img src = "Image/download.png"/>
-                </div>
-    
-                <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
-                </ul>
-            </div>
+    <div id="navEmployee" style = "margin-bottom: 5%;">
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="pillItem"><a href="Project-Homepage.html">Home</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">Issues<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="KG_login.php">Login Page</a></li>
+                        <li><a href="KG_createIssue.php">Report a Problem</a></li>
+                        <li><a href="KG_issuetable.php">View Issues</a></li>
+                        <li><a href="KG_modifyIssue.php">Modify Issues</a></li>
+                    </ul>
+                </li>
+
+
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">My Profile<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
+                        <li><a href="/SD_editProfile.html">Edit My Profile</a></li>
+                        <li><a href="/SD_logIn.html">Login</a></li>
+                        <li><a href="/SD_createProfile.html">Sign Up</a></li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
+    </div>
 
 
-        <form method = "POST" action = "mailto:kirkgraham1@gmail.com" enctype="multipart/form-data" name = "emailForm"
+        <form method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" name = "ID Form"
         autocomplete="on">
             <div class = "border container-fluid">
-                <div class = "row text-center ">
-                    <div class = "col-sm-6 auto" style = width:50%>
-                        <label>Name:
-                            <input name = "name" type = "text" size = "25" required autofocus/>
+            
+                    <div class = "col-sm-12 auto text-center" style = width:50%>
+                        <label>IDs:
                         </label>
-                    </div>
-                    
-                    <div class = "col-sm-6 auto" style = width:40%>
-                        <p id = "priority" >
-                            <label>Priority:
-                                <select name = "priority">
-                                    <option selected>Low</option>
-                                    <option>Medium</option>
-                                    <option>High</option>
-                                </select>
-                            </label>
-                        </p>
-                    </div>
-                    
+                        <select id = "selectIssueID">
+                            <?php
+                                require_once("db.php");
 
-                    
+                                $sql = "select Issue_id from issue";
+                                $result = $mydb->query($sql);
+
+                                //Each option will be a product id
+                                while($row = mysqli_fetch_array($result)){
+                                    echo "<option class = idChoice>".$row['Issue_id']."</option>";
+                                }
+                            ?>
+        </select>
+                
                 </div>   
-
-                <div class = "row border"> 
-                    <div class = "col-sm-6 auto" style = width:50%>
-                        <label>Deadline:  
-                            <input name = "deadline" type = "date" />
-                        </label>
-                    </div>
                     
-                    <div class = "col-sm-6 auto" style = width:40%>
-                        <p id = "status">
-                            <label>Status:
-                                <select name = "status">
-                                    <option selected>Not Started</option>
-                                    <option>Complete</option>
-                                    <option>In Progess</option>
-                                </select>
-                            </label>
-                        </p>
-                    </div>
-            </div>
-                <div class = "row">
-                    <div>
-                        <label id ="User" style = margin-top:20px>
-                            User Input Description
-                        </label>
-                        <textarea name="user-desc" rows="10" cols="50">
-                        </textarea>
-                    </div>
-                    
-
-                    
-                </div>
+            
                 <div>
-                    <input id = "sub-button" name = "submit" type = "submit" value = "Modify">
+                    <input id = "sub-button" name = "submit" type = "submit" value = "Modify" >
                     <input type = "button" onclick = "parent.location='KG_issuetable.php'" value = 'Back'>
-                    
-            </form>
                 </div>
         </div>
         
         
         </form>
-
+        
+        
 
     </body>
 
