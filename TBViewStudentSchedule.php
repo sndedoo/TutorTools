@@ -1,3 +1,16 @@
+<?php
+global $tutorNum;
+global $tutorFirst;
+global $tutorLast;
+global $tutorGradYr;
+global $tutorEmail;
+global $meetTime;
+global $meetLocation;
+global $studentNumber;
+global $meetingNumber;
+global $deleteEntry;
+?>
+
 <!doctype html>
 <html>
 
@@ -13,29 +26,182 @@
     <script src="myScripts.js"></script>
     <meta author="Thomas Beamon">
     <meta descriptions="This page allows a student to search for a tutor that teaches the class they are looking for">
-    <script>
+    <style>
+        .orange {
+            color: white;
+            background-color: #8B1F41;
+            text-align: center;
+            border: 1px solid;
+            border-color: black;
+            padding: 5px;
+        }
 
+        .lightOrange {
+            background-color: #E87722;
+            text-align: center;
+            border: 1px solid;
+            border-color: black;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function signUpFunction() {
+            alert("You have successfully scheduled a meeting!");
+
+        }
+
+        function modifyFunction() {
+            prompt("Enter the information you would like to modify.")
+        }
+
+       
+        function deleteFunction() {
+            document.getElementById("meetingNumber").innerHTML
+
+            //only work for IE7+, Chrome, Firefox, Opera, Safari
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    deleteRecord = xmlhttp.responseText;
+
+                    xmlhttp.open("GET", "TBViewStudentSchedule.php?", true);
+                    xmlhttp.send();
+                }
+            }
+        }
     </script>
 </head>
 
 <body>
-    <nav class="navBar">
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <nav class="navBar">
 
-        <ul class="nav nav-pills">
-            <li class="pillItem"><img src="tutoring-image1.jpg" id="companyLogo" width="100" height="65" alt="Company Logo"></li>
-            <li class="pillItem"><a href="Project-Homepage.html">Homepage</a></li>
-            <li class="pillItem"><a href="Thomas-Student-Service-Request.html">New Service Request</a></li>
-            <li class="active pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
-            <li class="pillItem"><a href="Thomas-ViewStudentProfile.html">View My Profile</a></li>
-            <li class="pillItem"><a href="Thomas-EditAndBuildProfile.html">Edit/Build My Profile</a></li>
-        </ul>
-    </nav>
+            <ul class="nav nav-pills">
+                <li class="pillItem"><img src="tutoring-image1.jpg" id="companyLogo" width="100" height="65" alt="Company Logo"></li>
+                <li class="pillItem"><a href="Project-Homepage.html">Homepage</a></li>
+                <li class="pillItem"><a href="Thomas-Student-Service-Request.html">New Service Request</a></li>
+                <li class="active pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
+                <li class="pillItem"><a href="Thomas-ViewStudentProfile.html">View My Profile</a></li>
+                <li class="pillItem"><a href="Thomas-EditAndBuildProfile.html">Edit/Build My Profile</a></li>
+            </ul>
+        </nav>
+        </br>
 
+        <?php
+        echo $deleteEntry;
+        session_start();
+        $tutorIDSelected = $_SESSION["tutorID"];
+        $classSelected = $_SESSION["classSelected"];
+        echo "</br><h1>Here is the record returned from your search: </h1></br>";
+        echo $tutorNum;
+        require_once('db.php');
+        $sql = "SELECT *
+        FROM Tutor JOIN Meeting ON Tutor.Meet_ID = Meeting.Meet_ID  WHERE Tutor_Num= '$tutorIDSelected'";
+        $result = $mydb->query($sql);
+        echo "<table id = scheduleTable>
+            <thead>
+                <tr>
+                    <th class='orange'>Meeting Number</th>
+                    <th class='orange'>Tutor ID</th>
+                    <th class='orange'>First Name</th>
+                    <th class='orange'>Last Name</th>
+                    <th class='orange'>Graduation Year</th>
+                    <th class='orange'>Tutor_Email</th>
+                    <th class='orange'>Meeting Time</th>
+                    <th class='orange'>Meeting Location</th>
+                    <th class='orange'>Class Requested</th>";
+
+        while ($row = mysqli_fetch_array($result)) {
+            $meetingNumber = $row["Schedule_Num"];
+            $tutorNum = $row["Tutor_Num"];
+            $tutorFirst = $row["Tutor_First"];
+            $tutorLast = $row["Tutor_Last"];
+            $tutorGradYr = $row["Tutor_GradYr"];
+            $tutorEmail = $row["Tutor_Email"];
+            $meetTime = $row["Meet_Time"];
+            $meetLocation = $row["Meet_Location"];
+            $studentNumber = 1;
+            echo "
+            <tbody>
+                <tr>
+                    <td class='lightOrange'>" . $meetingNumber . "</td>
+                    <td class='lightOrange' name = tutorNum>" . $tutorNum . "</td>
+                    <td class='lightOrange'>" . $tutorFirst . "</td>
+                    <td class='lightOrange'>" . $tutorLast . "</td>
+                    <td class='lightOrange'>" . $tutorGradYr . "</td>
+                    <td class='lightOrange'>" . $tutorEmail . "</td>
+                    <td class='lightOrange'>" . $meetTime . "</td>
+                    <td class='lightOrange'>" . $meetLocation . "</td>
+                    <td class='lightOrange'>" . $classSelected . "</td>";
+        }
+        echo "</tr></tbody></table>";
+        ?>
+
+        </br>
+        <input type="submit" name="add" value="Add Meeting" onClick="signUpFunction()">
+        <input type="submit" name="modify" value="Modify Meeting" onClick="modifyFunction()">
+        <input type="submit" name="delete" value="Delete Meeting" onClick="deleteFunction()">
+        </br>
+        <p id="testParagraph">Test Paragraph</p>
+    </form>
     <?php
-    session_start();
+    echo "<h1>Here is your current schedule:</h1></br>";
+    require_once('db.php');
+    $sql = "SELECT * FROM UserSchedule";
+    $result = $mydb->query($sql);
 
-    echo "<p>You chose tutor id: " . $_SESSION["tutorID"] . "</p></br>
-    <p>Tutor First Name: " . $_SESSION["tutorSelected"] . "</p></br>
-    <p>You chose class: " . $_SESSION["classSelected"] . "</p></br>";
+    echo "<table id = scheduleTable>
+    <thead>
+        <tr>
+            <th class='orange'>Meeting Number</th>
+            <th class='orange'>Tutor ID</th>
+            <th class='orange'>First Name</th>
+            <th class='orange'>Last Name</th>
+            <th class='orange'>Graduation Year</th>
+            <th class='orange'>Tutor_Email</th>
+            <th class='orange'>Meeting Time</th>
+            <th class='orange'>Meeting Location</th>
+            <th class='orange'>Class Requested</th>";
+
+    while ($row = mysqli_fetch_array($result)) {
+        $meetingNumber = $row["Schedule_Num"];
+        $tutorNum = $row["Tutor_Num"];
+        $tutorFirst = $row["Tutor_First"];
+        $tutorLast = $row["Tutor_Last"];
+        $tutorGradYr = $row["Tutor_GradYr"];
+        $tutorEmail = $row["Tutor_Email"];
+        $meetTime = $row["Meet_Time"];
+        $meetLocation = $row["Meet_Location"];
+        $studentNumber = 1;
+        echo "
+    <tbody>
+        <tr>
+            <td class='lightOrange' id = meetingNumber>" . $meetingNumber . "</td>
+            <td class='lightOrange' name = tutorNum>" . $tutorNum . "</td>
+            <td class='lightOrange'>" . $tutorFirst . "</td>
+            <td class='lightOrange'>" . $tutorLast . "</td>
+            <td class='lightOrange'>" . $tutorGradYr . "</td>
+            <td class='lightOrange'>" . $tutorEmail . "</td>
+            <td class='lightOrange'>" . $meetTime . "</td>
+            <td class='lightOrange'>" . $meetLocation . "</td>
+            <td class='lightOrange'>" . $classSelected . "</td>";
+    }
+    echo "</tr></tbody></table>";
+
+
+    if (isset($_POST["add"])) {
+        require_once('db.php');
+        $sql = "INSERT INTO userschedule(Student_Num, Tutor_Num, Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Meet_Time, Meet_Location, Class_Selected)
+                VALUES ($studentNumber,'$tutorNum','$tutorFirst', '$tutorLast', '$tutorGradYr', '$tutorEmail', '$meetTime', '$meetLocation','$classSelected')";
+        $result = $mydb->query($sql);
+    } else if (isset($POST["modify"])) {
+    } else if (isset($POST["delete"])) {
+        require_once('db.php');
+        
+        $sql = "DELETE FROM UserSchedule WHERE Schedule_Num = $deleteEntry";
+        $result = $mydb->query($sql);
+    }
     ?>
 </body>
+
+</html>
