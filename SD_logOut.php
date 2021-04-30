@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,8 +10,8 @@
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
-</head>
-<body>
+</head> -->
+<!-- <body> -->
     <?php
     session_start();
 
@@ -25,5 +25,5 @@
     Header("Location: SD_logIn.php");
     ?>
 
-</body>
-</html>
+<!-- </body>
+</html> -->
