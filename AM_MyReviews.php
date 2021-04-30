@@ -85,7 +85,7 @@
                                 <b>&emsp;Overall Rating: </b><u>".$row['meetingeval_overall']."</u>
                                 &emsp;<button><a href='AM_EditReview.php?rid=".$row['meetingeval_id']."'>Edit</a></button>
                                 
-                                <button><span class='delete' data-id='<?= $rid; ?>'>Delete</span></button>
+                                <button><span class='delete' data-id='<?echo=$rid ?>'>Delete</span></button>
                                 <br />&emsp;Attitude: <u>".$row['meetingeval_attitude']."</u>
                                 &nbsp;Explainability: <u>".$row['meetingeval_explain']."</u>
                                 &nbsp;Helpfulness: <u>".$row['meetingeval_helpful']."</u>
@@ -114,7 +114,7 @@
                             var el = this;
                             
                             // Delete id
-                            var deleteid = $(this).data('rid');
+                            var deleteid = $(this).data('meetingeval_id');
 
                             var confirmalert = confirm("Are you sure you want to delete this review?");
                             if (confirmalert == true) {
@@ -122,7 +122,7 @@
                                 $.ajax({
                                     url: 'AM_DeleteReview.php',
                                     type: 'POST',
-                                    data: { id:deleteid },
+                                    data: { meetingeval_id:deleteid },
                                     success: function(response){
                                         if(response == 1){
                                             // Remove row from HTML Table
