@@ -31,14 +31,11 @@
         </ul>
     </nav>
 
-    <table id="myTable">
-        <th>
-            My Schedule
-        </th>
-        <tr>
-            <td>Row1 Cell1</td>
-            <td>Row1 Cell2</td>
-        </tr>
+    <?php
+    session_start();
 
-    </table>
+    echo "<p>You chose tutor id: " . $_SESSION["tutorID"] . "</p></br>
+    <p>Tutor First Name: " . $_SESSION["tutorSelected"] . "</p></br>
+    <p>You chose class: " . $_SESSION["classSelected"] . "</p></br>";
+    ?>
 </body>
