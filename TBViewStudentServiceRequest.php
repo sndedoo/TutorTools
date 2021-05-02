@@ -63,6 +63,8 @@ $loginOK = null;
     <!--Creates action when submit button is clicked-->
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
+
+    
         </br>
         <nav class="navBar">
 
