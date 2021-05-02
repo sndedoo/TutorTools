@@ -1,10 +1,12 @@
 
     <div id="navTutor">
-    <a href="TBTutorHomepage.php"><img src="Image\Tutor Tools Logo.png" id="companyLogo"></a>
+    <a href="TBTutorHomepage.php" >
+            <img src="Image\Tutor Tools Logo.png" width="200px" class="center" alt="Logo">
+        </a>
         <nav>
             <ul class="nav nav-pills">
-                <li class="pillItem"><a href="tutorPath\TBTutorHomepage.php">Home</a></li>
-                <li class="pillItem"><a href="/">View My Meetings</a></li>
+                <li class="pillItem"><a href="TBTutorHomepage.php">Home</a></li>
+                <li class="pillItem"><a href="TBViewStudentSchedule.php">View My Meetings</a></li>
                 <li class="pillItem"><a href="AM_TutorReviews.php">View My Reviews</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -12,6 +14,15 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="KG_createIssue.php">Report a Problem</a></li>
+                    </ul>
+                </li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                            aria-expanded="false">Service Details<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="AG_SearchServiceRequest.php">All Service Requests</a></li>
+                        <li><a href="AG_ServiceDetails_Analysis.php">Service Analytics</a></li>
                     </ul>
                 </li>
                 <li role="presentation" class="dropdown">

@@ -137,7 +137,6 @@ if (isset($_POST["update"])) {
 
     </form>
 
-    <p><a href="SD_logOut.php">Log Out</a></p>
     </div>
 </body>
 </html>

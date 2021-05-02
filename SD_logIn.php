@@ -55,7 +55,10 @@ if (isset($_POST["submit"])) {
         }
   
       } else {
-        echo "<p>The User does not exist. Please Try Again</p>";
+      echo '<script language="javascript">';
+      echo 'alert("This User does not exist. Please Try Again")';
+      echo '</script>';
+        // echo "<p>The User does not exist. Please Try Again</p>";
       }
     } elseif (!$error && $_POST['userSelect'] == 'Tutor') {
       require_once("db.php");
@@ -93,7 +96,9 @@ if (isset($_POST["submit"])) {
         }
   
       } else {
-        echo "<p>The User does not exist. Please Try Again</p>";
+        echo '<script language="javascript">';
+        echo 'alert("This User does not exist. Please Try Again")';
+        echo '</script>';
       }
     }
   }
