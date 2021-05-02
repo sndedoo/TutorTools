@@ -15,48 +15,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
 
     <!--CSS Sheets-->
-    <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
-    <!--<link rel="stylesheet" type="text/css" href="Webpages.css" /> -->
+    <link href= "css/bootstrap.min.css" rel = "stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <link rel="stylesheet" type="text/css" href="KG_table.css" />
 
     <!--Javascript/Jquery-->
     <script src = "jquery-3.1.1.min.js"></script>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="myScripts.js"></script>
+    
     
     
 </head>
 
-<body>
+<body class = "container-fluid">
 
-    <nav class="navbar navbar-inverse">
-        
-        
-        <div class="container-fluid">
-            
+<div id="navEmployee" style = "margin-bottom: 5%;">
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="pillItem"><a href="Project-Homepage.html">Home</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">Issues<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="KG_login.php">Login Page</a></li>
+                        <li><a href="KG_createIssue.php">Report a Problem</a></li>
+                        <li><a href="KG_issuetable.php">View Issues</a></li>
+                        <li><a href="KG_modifyIssue.php">Modify Issues</a></li>
+                    </ul>
+                </li>
 
-            <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
+
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">My Profile<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
+                        <li><a href="/SD_editProfile.html">Edit My Profile</a></li>
+                        <li><a href="/SD_logIn.html">Login</a></li>
+                        <li><a href="/SD_createProfile.html">Sign Up</a></li>
+                    </ul>
+                </li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
-    <div class = "container-fluid">
+    <div >
         <div class = "row">
             <div class = "col-sm-2 border">
                 <img src = "Images/pie_chart.jpg"/>
-                <p><input type = "button" onclick = "parent.location='issuetable.html'" value = 'View Analytics'></p>
+                <p><input type = "button" onclick = "parent.location='KG_Analytics.php'" value = 'View Analytics'></p>
             </div>
             <div class = "col-sm-8" style = "background-color:gray">
                 <div class="tableFixHead">
 
                   <?php 
                   echo "
-                    <table>
+                    <table class = 'issuetable'>
                       <thead>
                         <tr>
                             <th>ID</th>
@@ -88,7 +105,8 @@
                     
                   </div>
                   <input type = "button" onclick = "parent.location='KG_createIssue.php'" value = 'Create Issue'>
-                    <input type = "button" onclick = "parent.location='KG_modifyIssue.php'" value = 'Modify Issue'>
+                  <input type = "button" onclick = "parent.location='KG_modifyIssue.php'" value = 'Modify Issue'>
+                  <input type = "button" onclick = "parent.location='KG_deleteIssue.php'" value = 'Delete Issue'>
             </div>
         </div>
         
