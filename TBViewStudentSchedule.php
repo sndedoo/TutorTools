@@ -9,8 +9,8 @@ global $meetLocation;
 global $studentNumber;
 global $meetingNumber;
 global $deleteEntry;
-$modifyMeeting = "";
-global $deleteMeeting;
+global $modifyMeeting;
+$deleteMeeting = "";
 ?>
 
 <!doctype html>
@@ -81,7 +81,8 @@ global $deleteMeeting;
         </br>
 
         <?php
-        echo $deleteEntry;
+        $_SESSION["deleteMeeting"] = $deleteMeeting;
+        $_SESSION["modifyMeeting"] = $modifyMeeting;
         if (isset($_POST["deleteMeeting"])) $deleteMeeting = $_POST["deleteMeeting"];
         session_start();
         $tutorIDSelected = $_SESSION["tutorID"];
@@ -129,20 +130,18 @@ global $deleteMeeting;
 
         echo $deleteMeeting;
 
+
+        
         if (isset($_POST["add"])) {
             require_once('db.php');
-            echo $studentNumber;
+
             $sql = "INSERT INTO userschedule(Student_Num, Tutor_Num, Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Meet_Time, Meet_Location, Class_Selected)
                     VALUES ($studentNumber,'$tutorIDSelected','$tutorFirst', '$tutorLast', '$tutorGradYr', '$tutorEmail', '$meetTime', '$meetLocation','$classSelected')";
             $result = $mydb->query($sql);
         } else if (isset($POST["modify"])) {
-        } else if (isset($POST["delete"])) {
-            echo"</br>";
-            echo $deleteMeeting;
-            require_once('db.php');
-            $sql = "DELETE FROM UserSchedule WHERE Schedule_Num = 2";
+        } else if ($deleteMeeting != '') {
+            $sql = "DELETE FROM userschedule WHERE Schedule_Num = $deleteMeeting";
             $result = $mydb->query($sql);
-            
         }
         ?>
         <input type="submit" name="add" value="Add Meeting" onClick="signUpFunction()">
@@ -151,7 +150,7 @@ global $deleteMeeting;
         </br>
 
         <label>Enter the meeting number you would like to modify:
-            <input name="modifyMeeting type=" text" size="30" placeholder='e.g. "1"' autofocus="" value="<?php echo $modifyMeeting; ?>">
+            <input name="modifyMeeting" type=" text" size="30" placeholder='e.g. "1"' autofocus="" value="<?php echo $modifyMeeting; ?>">
         </label>
         <input type="submit" name="modify" value="Modify Meeting" onClick="modifyFunction()">
         <br>
@@ -207,7 +206,7 @@ global $deleteMeeting;
     }
     echo "</tr></tbody></table>";
 
-   
+
     ?>
 </body>
 
