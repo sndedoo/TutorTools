@@ -9,8 +9,11 @@ global $meetLocation;
 global $studentNumber;
 global $meetingNumber;
 global $deleteEntry;
-global $modifyMeeting;
-$deleteMeeting = "";
+global $modifyMeetingNum;
+global $modifyMeetingTime;
+global $modifyMeetingLocation;
+global $deleteMeeting;
+global $deleteAllMeeting;
 ?>
 
 <!doctype html>
@@ -22,7 +25,7 @@ $deleteMeeting = "";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>View Schedule</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Thomas-Webpages.css" />
+    <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
@@ -53,12 +56,16 @@ $deleteMeeting = "";
         }
 
         function modifyFunction() {
-            prompt("Enter the information you would like to modify.")
+            alert("You have successfully modified a meeting!")
         }
 
 
         function deleteFunction() {
             alert("You have successfully deleted a meeting!");
+        }
+
+        function deleteAllFunction() {
+            alert("You have successfully deleted all meetings!");
         }
     </script>
 </head>
@@ -70,7 +77,6 @@ $deleteMeeting = "";
         <nav class="navBar">
 
             <ul class="nav nav-pills">
-                <li class="pillItem"><img src="tutoring-image1.jpg" id="companyLogo" width="100" height="65" alt="Company Logo"></li>
                 <li class="pillItem"><a href="Project-Homepage.html">Homepage</a></li>
                 <li class="pillItem"><a href="Thomas-Student-Service-Request.html">New Service Request</a></li>
                 <li class="active pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
@@ -81,9 +87,10 @@ $deleteMeeting = "";
         </br>
 
         <?php
-        $_SESSION["deleteMeeting"] = $deleteMeeting;
-        $_SESSION["modifyMeeting"] = $modifyMeeting;
         if (isset($_POST["deleteMeeting"])) $deleteMeeting = $_POST["deleteMeeting"];
+        if (isset($_POST["modifyMeetingNum"])) $modifyMeetingNum = $_POST["modifyMeetingNum"];
+        if (isset($_POST["modifyMeetingTime"])) $modifyMeetingTime = $_POST["modifyMeetingTime"];
+        if (isset($_POST["modifyMeetingLocation"])) $modifyMeetingLocation = $_POST["modifyMeetingLocation"];
         session_start();
         $tutorIDSelected = $_SESSION["tutorID"];
         $classSelected = $_SESSION["classSelected"];
@@ -129,37 +136,77 @@ $deleteMeeting = "";
         echo "</tr></tbody></table>";
 
         echo $deleteMeeting;
+        echo "</br>";
+        echo $modifyMeetingNum;
+        echo "</br>";
+        echo $modifyMeetingTime;
+        echo "</br>";
+        echo $modifyMeetingLocation;
+        echo "</br>";
 
 
-        
         if (isset($_POST["add"])) {
             require_once('db.php');
 
             $sql = "INSERT INTO userschedule(Student_Num, Tutor_Num, Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Meet_Time, Meet_Location, Class_Selected)
                     VALUES ($studentNumber,'$tutorIDSelected','$tutorFirst', '$tutorLast', '$tutorGradYr', '$tutorEmail', '$meetTime', '$meetLocation','$classSelected')";
             $result = $mydb->query($sql);
-        } else if (isset($POST["modify"])) {
+
+        }else if ($modifyMeetingNum != ''){
+            if($modifyMeetingLocation != '' && $modifyMeetingTime != ''){
+                $sql = "UPDATE userschedule SET Meet_Time = $modifyMeetingTime, Meet_Location = $modifyMeetingLocation  WHERE Schedule_Num = $modifyMeetingNum";  
+                $result = $mydb->query($sql);
+            } else if($modifyMeetingTime != ''){
+                $sql = "UPDATE userschedule SET Meet_Time = '$modifyMeetingTime' WHERE Schedule_Num = '$modifyMeetingNum'";
+                $result = $mydb->query($sql);
+            }else if($modifyMeetingLocation != ''){
+                $sql = "UPDATE userschedule SET Meet_Location = '$modifyMeetingLocation' WHERE Schedule_Num = '$modifyMeetingNum'";
+                $result = $mydb->query($sql);
+            }
+
         } else if ($deleteMeeting != '') {
             $sql = "DELETE FROM userschedule WHERE Schedule_Num = $deleteMeeting";
             $result = $mydb->query($sql);
+
+        } else if ($deleteAllMeeting != 'Delete All Meetings') {
+            $sql = "DELETE FROM userschedule ";
+            $result = $mydb->query($sql);
         }
+
         ?>
         <input type="submit" name="add" value="Add Meeting" onClick="signUpFunction()">
         </br>
         </br>
         </br>
 
+        <h3>Modify Meeting</h3>
         <label>Enter the meeting number you would like to modify:
-            <input name="modifyMeeting" type=" text" size="30" placeholder='e.g. "1"' autofocus="" value="<?php echo $modifyMeeting; ?>">
+            <input name="modifyMeetingNum" type=" text" size="30" placeholder='e.g. "1"' autofocus="" value="<?php echo $modifyMeetingNum; ?>">
+        </label>
+        </br>
+        <label>Enter the new meeting time:
+            <input name="modifyMeetingTime" type=" text" size="30" placeholder='e.g. "2021-05-08 24:00:00"' autofocus="" value="<?php echo $modifyMeetingTime; ?>">
+        </label>
+        </br>
+        <label>Enter the new meeting location:
+            <input name="modifyMeetingLocation" type=" text" size="30" placeholder='e.g. "400 Houston apartment D"' autofocus="" value="<?php echo $modifyMeetingLocation; ?>">
         </label>
         <input type="submit" name="modify" value="Modify Meeting" onClick="modifyFunction()">
-        <br>
-
+        </br>
+        </br>
+        </br>
+        </br>
+        <h3>Delete Meeting:</h3>
         <label id="tutorLabel">Enter the meeting number you would like to delete:
-            <input name="deleteMeeting" type="text" size="30" placeholder='e.g. "2"' autofocus="" value="<?php echo $deleteMeeting; ?>">
+            <input name="deleteMeeting" type="text" size="30" placeholder='e.g. "1"' autofocus="" value="<?php echo $deleteMeeting; ?>">
         </label>
         <input type="submit" name="delete" value="Delete Meeting" onClick="deleteFunction()">
+        </br>
 
+        <label id="tutorLabel">Enter "Delete All Meetings" to delete all meetings
+            <input name="deleteAllMeeting" type="text" size="30" autofocus="" value="<?php echo $deleteAllMeeting; ?>">
+        </label>
+        <input type="submit" name="delete" value="Delete All Meetings" placeholder='Delete All Meetings' onClick="deleteAllFunction()">
         </br>
     </form>
 
