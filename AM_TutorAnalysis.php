@@ -15,15 +15,15 @@
         <meta descriptions="This page allows a student to create a review for a tutor">
         <meta charset="utf-8">
         <style>
-        .bar {
-        fill: steelblue;
-        }
-        .bar:hover {
-        fill: brown;
-        }
-        .axis--x path {
-        display: none;
-        }
+            .bar {
+                fill: steelblue;
+            }
+            .bar:hover {
+                fill: brown;
+            }
+            .axis--x path {
+                display: none;
+            }
         </style>
     </head>
 
