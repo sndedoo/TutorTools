@@ -1,17 +1,40 @@
-
+th , td{
+  text-align: center;
+  padding: 0 15px 0 15px;
+  margin-top: 5px;
+}
 
 .tableFixHead {
     overflow-y: auto;
         height: 25%;
-      }
-      .tableFixHead thead th {
-        position: sticky;
-        top: 0;
-      }
-      table {
-        border-collapse: collapse;
-        width: 100%;
-      }
+    }
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+}
+.issuetable{
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.viewTable {
+  background-color: white;
+}
+
+.viewTable th {
+  text-align: center;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.reveal {
+  visibility: visible;
+}
+
+
       
 
       
