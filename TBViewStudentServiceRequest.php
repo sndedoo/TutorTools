@@ -24,7 +24,7 @@ $loginOK = null;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Search for tutors or class</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Thomas-Webpages.css" />
+    <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
@@ -62,6 +62,8 @@ $loginOK = null;
 
     <!--Creates action when submit button is clicked-->
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+
+
 
         </br>
         <nav class="navBar">
