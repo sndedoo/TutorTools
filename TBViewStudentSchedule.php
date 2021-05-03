@@ -192,14 +192,6 @@ global $deleteAllMeeting;
         }
         echo "</tr></tbody></table>";
 
-        echo $deleteMeeting;
-        echo "</br>";
-        echo $modifyMeetingNum;
-        echo "</br>";
-        echo $modifyMeetingTime;
-        echo "</br>";
-        echo $modifyMeetingLocation;
-        echo "</br>";
 
 
         if (isset($_POST["add"])) {
