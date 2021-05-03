@@ -19,7 +19,7 @@
     <?php include('navStudent.php');?>
     <div class="container-fluid">
         
-        <h1 id="homepageTitle">TutorTools Homepage</h1>
+        <h1 id="homepageTitle">TutorTools</h1>
 
         <!--carousel-->
         <div id="carousel1" class="carousel slide" data-ride="carousel">
