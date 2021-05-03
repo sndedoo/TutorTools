@@ -11,63 +11,69 @@
     <script src="js/bootstrap.min.js"></script>
     <meta author="Alejandro Gonzales">
 
-    <!--Module 3 style sheet link-->
     <link rel="stylesheet" href="Webpages.css"/>
 </head>
 <body>
-    <div class="container-fluid">
-    
-    <!--Description of this page-->
-    <div>
-        <h1 class="blue"><img src="Image/Tutor Tools Logo.png" alt="Error loading image" align = "left" height="150"/>
-            Submit a service request
-        </h1>
-    </div>    
-    <!--Navigation Bar-->
-    <nav> 
-        <ul class = "nav nav-pills nav-justified">
-            <li><a href="TutorHomepage.html">Homepage</a></li>
-            <li role = "presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                role="button" aria-haspopup="true" aria-haspopup="false">Services<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="AG_SearchServiceRequest.php">Search for an Appointment</a></li>
-                    <li><a href="AG_ModifyCancelRequest.php">Modify an Appointment</a></li>
-                    <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
-                </ul>
-            </li>
-            <li><a href = "TBViewStudentSchedule.php">View My Schedule</a></li>
-            <li><a href = "TBViewStudentProfile.html">View My Profile</a></li>
-        </ul>
-    </nav>
+    <?php include('navStudent.php');?>
 
-    
-    <!--php code here i think....-->
-    <div class="inline">  
-    <p> 
-        Existing bids/responses on the webside... search bar here
-        <br>
-        <br>
-        Appointments associated with the profile will be listed here
-        <br>
-        <br>
-        Along with a checkbox to the right that will allow the user to select the appointment
-        <br>
-        <br>
-    </p> </div>
-    <div class="inline_2"> 
-    <p> Profile information </p>
-    </div>  
-    
+    <h1 style="text-align: left; ">All Appointments</h1>
+    <br/>
 
-    <p> 
-        Bid for a service request with submit button 
-        <br>
-        <br>
-        The button then takes them to Use Case 2 & 3 webpage with a warning message before proceeding
-    </p>
+    <script>
+    //ajax in jQuery
+    $(function(){
+      $("#Meet_Time").change(function(){
+        $.ajax({
+          url:"AG_ServicesDB.php?id=" + $("#Meet_Time").val(),
+          async:true,
+          success: function(result){
+            $("#contentArea").html(result);
+          }
+        })
+      })
+    })
+	</script>
 
-   
+<label> Submit Service Request (Meeting ID): &nbsp;&nbsp;
+    <select name="Meet_Time" id="Meet_Time">
+      <?php
+        require_once("db.php");
+        $sql = "SELECT Meet_ID FROM meeting ORDER BY Meet_ID";
+        $result = $mydb->query($sql);
+
+        while($row=mysqli_fetch_array($result)){
+          echo "<option value='".$row["Meet_ID"]."'>".$row["Meet_ID"]."</option>";
+        }
+      ?>
+    </select>
+  </label>
+  <div id="contentArea">&nbsp;</div>
+
+    <form action="AG_ModifyCancelRequest.php#service">
+      <input type="submit" name="Meet_Time" value="Submit Request"/>
+    </form>
+
+    <?php
+    $sql = "SELECT Meet_ID, Meet_Time, Meet_Location, Concat(Format(Stu_Payment,2)) AS 'Stu_Payment'
+            FROM meeting";
+    $result = $mydb->query($sql);
+
+    echo "<div class='wallpaper'>
+    <table class='table table-hover' border='1'>
+    <thead><tr>
+    <th>Meeting ID</th>
+    <th>Meeting Time</th>
+    <th>Meeting Location</th>
+    <th>Student Payment</th>
+    </tr></thead>";
+
+    while($row = mysqli_fetch_array($result)) {
+        echo "<tr>";
+        echo "<td>".$row["Meet_ID"]."</td><td>".$row["Meet_Time"]."</td><td>".$row["Meet_Location"]."</td><td>"."$".$row["Stu_Payment"]."</td>";
+        echo "</tr>";
+    }
+        echo "</table></div>";
+    ?>
     </div>
 </body>
 </html>
