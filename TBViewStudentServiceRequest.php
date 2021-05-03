@@ -48,7 +48,7 @@ $loginOK = null;
             padding: 5px;
         }
 
-        .errlabel{
+        .errlabel {
             color: red;
             font-weight: bolder;
         }
@@ -300,13 +300,12 @@ $loginOK = null;
                     $_SESSION["classSelected"] = $classSelected;
                     Header("Location:TBViewStudentSchedule.php");
                 }
-                
             }
             echo "</br>";
             if (!is_null($loginOK) && $loginOK == false) echo "<span class='errlabel'>The information entered does not match any record in our database.  Double check entries to ensure they match records.  Use search bar above to verify.</span></br>";
             if ($error && empty($classSelected)) echo "<span class='errlabel'> please enter class name</span></br>";
             if ($error && empty($tutorSelected)) echo "<span class='errlabel'> please enter tutor's first name</span></br>";
-            if ($error && empty($tutorID)) echo "<span class='errlabel'> please enter tutor's ID</span></br>"; 
+            if ($error && empty($tutorID)) echo "<span class='errlabel'> please enter tutor's ID</span></br>";
         }
         ?>
     </form>

@@ -210,7 +210,7 @@ global $deleteAllMeeting;
             $result = $mydb->query($sql);
         } else if ($modifyMeetingNum != '') {
             if ($modifyMeetingLocation != '' && $modifyMeetingTime != '') {
-                $sql = "UPDATE userschedule SET Meet_Time = $modifyMeetingTime, Meet_Location = $modifyMeetingLocation  WHERE Schedule_Num = $modifyMeetingNum";
+                $sql = "UPDATE userschedule SET Meet_Time = '$modifyMeetingTime', Meet_Location = '$modifyMeetingLocation'  WHERE Schedule_Num = '$modifyMeetingNum'";
                 $result = $mydb->query($sql);
             } else if ($modifyMeetingTime != '') {
                 $sql = "UPDATE userschedule SET Meet_Time = '$modifyMeetingTime' WHERE Schedule_Num = '$modifyMeetingNum'";
