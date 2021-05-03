@@ -1,4 +1,5 @@
 <?php
+session_start();
 global $tutorNum;
 global $tutorFirst;
 global $tutorLast;
@@ -74,16 +75,73 @@ global $deleteAllMeeting;
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
 
-        <nav class="navBar">
 
-            <ul class="nav nav-pills">
-                <li class="pillItem"><a href="Project-Homepage.html">Homepage</a></li>
-                <li class="pillItem"><a href="Thomas-Student-Service-Request.html">New Service Request</a></li>
-                <li class="active pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
-                <li class="pillItem"><a href="Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                <li class="pillItem"><a href="Thomas-EditAndBuildProfile.html">Edit/Build My Profile</a></li>
-            </ul>
-        </nav>
+
+        <div id="navStudent">
+            <a href="TBProjectHomepage.php">
+                <img src="Image\Tutor Tools Logo.png" width="200px" class="center" alt="Logo">
+            </a>
+            <nav class="navBar">
+                <ul class="nav nav-pills">
+                    <!-- <li class="pillItem"><a href="TBProjectHomepage.php"><img src="Image\Tutor Tools Logo.png" height="100px" width="100px" class="center" alt="Logo"></a></li> -->
+                    <li class="pillItem"><a href="TBProjectHomepage.php">Home</a></li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meetings<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="TBViewStudentServiceRequest.php">Schedule Meeting</a></li>
+                            <li><a href="TBViewStudentSchedule.php">View Student Schedule</a></li>
+                            <li><a href="TBViewStudentReview.php">Make a Review</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Review<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="AM_CreateReview.php">Create A Review</a></li>
+                            <li><a href="AM_MyReviews.php">My Reviews</a></li>
+                            <li><a href="AM_ReviewList.php">Tutor Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">View My Schedule<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="TBViewStudentSchedule.html">My Schedule</a></li>
+                            <li><a href="AG_SubmitServiceRequest.php">All Appointments</a></li>
+                            <li><a href="AG_ModifyCancelRequest.php">Modify an Appointment</a></li>
+                            <li><a href="AG_ModifyCancelRequest.php">Cancel an Appointment</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Issues<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="KG_createIssue.php">Report a Problem</a></li>
+
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Courses<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="pillItem"><a href="SD_addCourses.php">Add Courses</a></li>
+                            <li class="pillItem"><a href="SD_viewCourses.php">View My Courses</a></li>
+                            <li class="pillItem"><a href="SD_stuNum.php">Course Analysis</a></li>
+                        </ul>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="pillItem"><a href="SD_viewProfile.php">View My Profile</a></li>
+                            <li class="pillItem"><a href="SD_editProfile.php">Edit My Profile</a></li>
+                            <li class="pillItem"><a href="SD_viewProfiles.php">View All Profiles</a></li>
+                            <li class="pillItem"><a href="SD_logOut.php">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
         </br>
 
         <?php
@@ -91,7 +149,6 @@ global $deleteAllMeeting;
         if (isset($_POST["modifyMeetingNum"])) $modifyMeetingNum = $_POST["modifyMeetingNum"];
         if (isset($_POST["modifyMeetingTime"])) $modifyMeetingTime = $_POST["modifyMeetingTime"];
         if (isset($_POST["modifyMeetingLocation"])) $modifyMeetingLocation = $_POST["modifyMeetingLocation"];
-        session_start();
         $tutorIDSelected = $_SESSION["tutorID"];
         $classSelected = $_SESSION["classSelected"];
         echo "</br><h1>Here is the record returned from your search: </h1></br>";
@@ -151,24 +208,21 @@ global $deleteAllMeeting;
             $sql = "INSERT INTO userschedule(Student_Num, Tutor_Num, Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Meet_Time, Meet_Location, Class_Selected)
                     VALUES ($studentNumber,'$tutorIDSelected','$tutorFirst', '$tutorLast', '$tutorGradYr', '$tutorEmail', '$meetTime', '$meetLocation','$classSelected')";
             $result = $mydb->query($sql);
-
-        }else if ($modifyMeetingNum != ''){
-            if($modifyMeetingLocation != '' && $modifyMeetingTime != ''){
-                $sql = "UPDATE userschedule SET Meet_Time = $modifyMeetingTime, Meet_Location = $modifyMeetingLocation  WHERE Schedule_Num = $modifyMeetingNum";  
+        } else if ($modifyMeetingNum != '') {
+            if ($modifyMeetingLocation != '' && $modifyMeetingTime != '') {
+                $sql = "UPDATE userschedule SET Meet_Time = $modifyMeetingTime, Meet_Location = $modifyMeetingLocation  WHERE Schedule_Num = $modifyMeetingNum";
                 $result = $mydb->query($sql);
-            } else if($modifyMeetingTime != ''){
+            } else if ($modifyMeetingTime != '') {
                 $sql = "UPDATE userschedule SET Meet_Time = '$modifyMeetingTime' WHERE Schedule_Num = '$modifyMeetingNum'";
                 $result = $mydb->query($sql);
-            }else if($modifyMeetingLocation != ''){
+            } else if ($modifyMeetingLocation != '') {
                 $sql = "UPDATE userschedule SET Meet_Location = '$modifyMeetingLocation' WHERE Schedule_Num = '$modifyMeetingNum'";
                 $result = $mydb->query($sql);
             }
-
         } else if ($deleteMeeting != '') {
             $sql = "DELETE FROM userschedule WHERE Schedule_Num = $deleteMeeting";
             $result = $mydb->query($sql);
-
-        } else if ($deleteAllMeeting != 'Delete All Meetings') {
+        } else if ($deleteAllMeeting == 'Delete All Meetings') {
             $sql = "DELETE FROM userschedule ";
             $result = $mydb->query($sql);
         }

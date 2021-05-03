@@ -62,21 +62,7 @@ $loginOK = null;
 
     <!--Creates action when submit button is clicked-->
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-
-
-
         </br>
-        <nav class="navBar">
-
-            <ul class="nav nav-pills">
-                <li class="pillItem"><img src="Image/Tutor Tools Logo.png" id="companyLogo" width="100" height="65" alt="Company Logo"></li>
-                <li class="pillItem"><a href="Project-Homepage.html">Homepage</a></li>
-                <li class="active pillItem"><a href="#">New Service Request</a></li>
-                <li class="pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
-                <li class="pillItem"><a href="Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                <li class="pillItem"><a href="Thomas-EditAndBuildProfile.html">Edit/Build My Profile</a></li>
-            </ul>
-        </nav>
         <h2>Search for a class here:</h2>
         <!--Search bar for a specific class-->
         <label id="classLabel">Search for class:
