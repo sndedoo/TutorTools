@@ -14,7 +14,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
 
         <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
-        
+        <link rel="stylesheet" type="text/css" href="Webpages.css" />
+        <link rel="stylesheet" type="text/css" href="KG_table.css" />
         <script src = "jquery-3.1.1.min.js"></script>
         <script src = "js/bootstrap.min.js"></script>
         <?php 
@@ -46,48 +47,28 @@
                         {
                             echo "<p> New employee record has been created</p>";
                         }
-                    $pageOk = true;
+                    
                 }
 
-                if($pageOk){
-                    Header("Location:KG_issuetable.html");
-                }
+                
             } 
 
-            
-            
-            //Adds record to database
             
             
 ?>
 
     </head>
 
-    <body>
-        <nav class="navbar navbar-inverse">
-        
-        
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <img src = "Image/download.png"/>
-                </div>
-    
-                <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
-                </ul>
-            </div>
-        </nav>
+    <body class = "container-fluid">
+            <?php include('navEmp');?>
 
 
         <form method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" name = "emailForm"
         autocomplete="on">
-            <div class = "border container-fluid">
-                <div class = "row text-center ">
-                    <div class = "col-sm-12 auto" style = width:50%>
-                        <label>Name:
+            <div  class = "wallpaper">
+                <div class = "row ">
+                    <div class = "col-sm-12">
+                        <label>Title:
                             <input name = "issuename" type = "text" size = "25" autofocus/>
                             <?php 
                                 if ($error && empty($issueName)){
@@ -96,30 +77,31 @@
                                 }
                             ?>
                         </label>
+                            </br>
+                        <label id ="User" style = margin-top:20px>
+                            User Input Description:
+                        </label>
+                            </br>
+                            <textarea name="issuedesc" rows="10" cols="50">
+                            </textarea>
+                                <?php 
+                                if ($error && empty($issueDesc)){
+                                    echo "<label class = 'errlbl'> Error: Please enter a description for the issue product name </label>";
+                                }
+                                ?>
                     </div>
                 </div>   
                     
-            </div>
-                <div class = "row">
-                    <div>
-                        <label id ="User" style = margin-top:20px>
-                            User Input Description
-                        </label>
-                        <textarea name="issuedesc" rows="10" cols="50">
-                        </textarea>
-                        <?php 
-                    if ($error && empty($issueDesc)){
-                        echo "<label class = 'errlbl'> Error: Please enter a description for the issue product name </label>";
-                    }
-                ?>
-                    </div>
+           
+                
+                    
                     
 
                     
                 </div>
                 <div>
                     <input id = "sub-button" name = "submit" type = "submit" value = "Create" >
-                    <input type = "button" onclick = "parent.location='KG_issuetable.php'" value = 'Back'>
+                    <input type = "button" onclick = "parent.location='TBProjectHomepage.php'" value = 'Back'>
                 </div>
         </div>
         

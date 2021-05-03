@@ -1,32 +1,4 @@
 <!DOCTYPE html>
-<?php
-            
-            $issueid = "";
-            $issueName = "";
-            $issueDesc = "";
-            
-            $error = false;
-
-            if(isset($_POST["submit"])){
-                if(isset($_POST["frmissueid"])) $issueid = $_POST["frmissueid"];
-                if(isset($_POST["issuename"])) $issueName = $_POST["issuename"];
-                if(isset($_POST["issuedesc"])) $issueDesc = $_POST["issuedesc"];
-    
-    
-                if(!empty($issueName) && !empty($issueDesc)){
-                    header("HTTP/1.1 307 Temprary Redirect");
-                    header("Location: KG_modifyIssueValidation.php");
-                } else {
-                    $error = true;
-                }
-    
-    
-                
-            } 
-            
-
-        ?>
-
 <html>
     <head>
         <title> Modify Issue </title>
@@ -61,18 +33,12 @@
                 $("#selectIssueID").change(function(){
                     var issueid = $("#selectIssueID").val();
 
-    
-                    $("#frmissueid").val($("#selectIssueID").val());
-                    $('#issuedesc').html($('#issuedesc').html().trim());
-
-                    //Click counter revealing Modification form 
-
                     if(issueid  != ""){
-                        $("#modifyForm").attr("class", "reveal wallpaper");
+                        $("#buttonDelete").attr("class","reveal");
                         $("#buttonModify").attr("class", "reveal");
                     } else {
+                        $("#buttonDelete").attr("class","hidden");
                         $("#buttonModify").attr("class", "hidden");
-                        $("#modifyForm").attr("class", "hidden");
                     }
                     
                     $.ajax({
@@ -86,7 +52,13 @@
                 });
                 
                 $("#buttonModify").click(function(){
-                    
+                    $("#issueID").val($("#selectIssueID").val());
+                    clickcounter++;
+                    if(clickcounter%2 ==0){
+                        $("#modifyForm").attr("class", "reveal wallpaper");
+                    } else {
+                        $("#modifyForm").attr("class", "hidden");
+                    }
                 })
 
             })
@@ -95,7 +67,31 @@
 
         </script>
 
-        
+        <?php
+            
+            $issueid = "";
+            $issueName = "";
+            $issueDesc = "";
+            $pageOk = null;
+            $error = false;
+
+            if(isset($_POST["delete"])){
+                if(isset($_POST["selectIssueID"])) $issueid = $_POST["selectIssueID"];
+                
+                //delete record
+
+                require_once('db.php');
+                $sql = "delete from Issue where issue_id=$issueid";
+                $result = $mydb->query($sql);
+
+            } 
+            
+
+            
+
+            
+
+        ?>
     </head>
 
     <body class = "container-fluid">
@@ -133,7 +129,7 @@
 
         <div class = "wallpaper">
             <form method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" name = "ID Form"
-            >
+            autocomplete="on">
                 <div class = "border">
                 
                         <div class = "col-sm-12 auto text-center" style = width:10%>
@@ -162,47 +158,16 @@
                 <div id = "contentarea">
                     
                 </div>
-                <input id = "buttonModify" class = "hidden" name = "modify" type = "button" value = "Modify" />
+                <!--Delete button-->
+                <input id = "buttonDelete" class = "hidden" name = "delete" type = "submit" value = "Delete" />
+    
                 </form>
                 <!--
                 
                 HIDDEN ROW 
                 -->
             
-                <form method = "POST" class = "hidden" action = "<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" id = "modifyForm"
-        autocomplete="on">
-                    <div id = "modifyInfo" class = "row wallpaper">
-                        <div class = "col-sm-12">
-                            <label>ID:
-                                <input id = "frmissueid" type = "text" name = "frmissueid" />
-
-                            </label></br>
-                            <label>Title:
-                                <input name = "issuename" type = "text" size = "25" autofocus/>
-                                <?php 
-                                    if ($error && empty($issueName)){
-                                        echo "<label class = 'errlbl'> Error: Please enter a title for the issue. </label>";
-                                        
-                                    }
-                                ?>
-                            </label>
-                            </br>
-                            <label id ="User" style = margin-top:20px>
-                                User Input Description: 
-                            </label>
-                            </br>
-                            <textarea id = "issuedesc" name="issuedesc" rows="10" cols="50">
-                            </textarea>
-                                <?php 
-                                if ($error && empty($issueDesc)){
-                                    echo "<label class = 'errlbl'> Error: Please enter a description for the issue product name </label>";
-                                }
-                                ?>
-                            
-                        </div>
-                            <input id = "buttonModify" name = "submit" type = "submit" value = "Submit Changes" />
-                    </div>   
-                </form>
+                
                 <div class = "col-sm-12">
                         <input type = "button" onclick = "parent.location='KG_issuetable.php'" value = 'Back'>
                 </div>

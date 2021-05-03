@@ -9,6 +9,11 @@ global $meetLocation;
 global $studentNumber;
 global $meetingNumber;
 global $deleteEntry;
+global $modifyMeetingNum;
+global $modifyMeetingTime;
+global $modifyMeetingLocation;
+global $deleteMeeting;
+global $deleteAllMeeting;
 ?>
 
 <!doctype html>
@@ -20,7 +25,7 @@ global $deleteEntry;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>View Schedule</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="Thomas-Webpages.css" />
+    <link rel="stylesheet" type="text/css" href="Webpages.css" />
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
@@ -51,33 +56,27 @@ global $deleteEntry;
         }
 
         function modifyFunction() {
-            prompt("Enter the information you would like to modify.")
+            alert("You have successfully modified a meeting!")
         }
 
-       
+
         function deleteFunction() {
-            document.getElementById("meetingNumber").innerHTML
+            alert("You have successfully deleted a meeting!");
+        }
 
-            //only work for IE7+, Chrome, Firefox, Opera, Safari
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    deleteRecord = xmlhttp.responseText;
-
-                    xmlhttp.open("GET", "TBViewStudentSchedule.php?", true);
-                    xmlhttp.send();
-                }
-            }
+        function deleteAllFunction() {
+            alert("You have successfully deleted all meetings!");
         }
     </script>
 </head>
 
 <body>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+
+
         <nav class="navBar">
 
             <ul class="nav nav-pills">
-                <li class="pillItem"><img src="tutoring-image1.jpg" id="companyLogo" width="100" height="65" alt="Company Logo"></li>
                 <li class="pillItem"><a href="Project-Homepage.html">Homepage</a></li>
                 <li class="pillItem"><a href="Thomas-Student-Service-Request.html">New Service Request</a></li>
                 <li class="active pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
@@ -88,7 +87,10 @@ global $deleteEntry;
         </br>
 
         <?php
-        echo $deleteEntry;
+        if (isset($_POST["deleteMeeting"])) $deleteMeeting = $_POST["deleteMeeting"];
+        if (isset($_POST["modifyMeetingNum"])) $modifyMeetingNum = $_POST["modifyMeetingNum"];
+        if (isset($_POST["modifyMeetingTime"])) $modifyMeetingTime = $_POST["modifyMeetingTime"];
+        if (isset($_POST["modifyMeetingLocation"])) $modifyMeetingLocation = $_POST["modifyMeetingLocation"];
         session_start();
         $tutorIDSelected = $_SESSION["tutorID"];
         $classSelected = $_SESSION["classSelected"];
@@ -101,7 +103,6 @@ global $deleteEntry;
         echo "<table id = scheduleTable>
             <thead>
                 <tr>
-                    <th class='orange'>Meeting Number</th>
                     <th class='orange'>Tutor ID</th>
                     <th class='orange'>First Name</th>
                     <th class='orange'>Last Name</th>
@@ -112,7 +113,6 @@ global $deleteEntry;
                     <th class='orange'>Class Requested</th>";
 
         while ($row = mysqli_fetch_array($result)) {
-            $meetingNumber = $row["Schedule_Num"];
             $tutorNum = $row["Tutor_Num"];
             $tutorFirst = $row["Tutor_First"];
             $tutorLast = $row["Tutor_Last"];
@@ -124,7 +124,6 @@ global $deleteEntry;
             echo "
             <tbody>
                 <tr>
-                    <td class='lightOrange'>" . $meetingNumber . "</td>
                     <td class='lightOrange' name = tutorNum>" . $tutorNum . "</td>
                     <td class='lightOrange'>" . $tutorFirst . "</td>
                     <td class='lightOrange'>" . $tutorLast . "</td>
@@ -135,15 +134,82 @@ global $deleteEntry;
                     <td class='lightOrange'>" . $classSelected . "</td>";
         }
         echo "</tr></tbody></table>";
-        ?>
 
-        </br>
+        echo $deleteMeeting;
+        echo "</br>";
+        echo $modifyMeetingNum;
+        echo "</br>";
+        echo $modifyMeetingTime;
+        echo "</br>";
+        echo $modifyMeetingLocation;
+        echo "</br>";
+
+
+        if (isset($_POST["add"])) {
+            require_once('db.php');
+
+            $sql = "INSERT INTO userschedule(Student_Num, Tutor_Num, Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Meet_Time, Meet_Location, Class_Selected)
+                    VALUES ($studentNumber,'$tutorIDSelected','$tutorFirst', '$tutorLast', '$tutorGradYr', '$tutorEmail', '$meetTime', '$meetLocation','$classSelected')";
+            $result = $mydb->query($sql);
+
+        }else if ($modifyMeetingNum != ''){
+            if($modifyMeetingLocation != '' && $modifyMeetingTime != ''){
+                $sql = "UPDATE userschedule SET Meet_Time = $modifyMeetingTime, Meet_Location = $modifyMeetingLocation  WHERE Schedule_Num = $modifyMeetingNum";  
+                $result = $mydb->query($sql);
+            } else if($modifyMeetingTime != ''){
+                $sql = "UPDATE userschedule SET Meet_Time = '$modifyMeetingTime' WHERE Schedule_Num = '$modifyMeetingNum'";
+                $result = $mydb->query($sql);
+            }else if($modifyMeetingLocation != ''){
+                $sql = "UPDATE userschedule SET Meet_Location = '$modifyMeetingLocation' WHERE Schedule_Num = '$modifyMeetingNum'";
+                $result = $mydb->query($sql);
+            }
+
+        } else if ($deleteMeeting != '') {
+            $sql = "DELETE FROM userschedule WHERE Schedule_Num = $deleteMeeting";
+            $result = $mydb->query($sql);
+
+        } else if ($deleteAllMeeting != 'Delete All Meetings') {
+            $sql = "DELETE FROM userschedule ";
+            $result = $mydb->query($sql);
+        }
+
+        ?>
         <input type="submit" name="add" value="Add Meeting" onClick="signUpFunction()">
+        </br>
+        </br>
+        </br>
+
+        <h3>Modify Meeting</h3>
+        <label>Enter the meeting number you would like to modify:
+            <input name="modifyMeetingNum" type=" text" size="30" placeholder='e.g. "1"' autofocus="" value="<?php echo $modifyMeetingNum; ?>">
+        </label>
+        </br>
+        <label>Enter the new meeting time:
+            <input name="modifyMeetingTime" type=" text" size="30" placeholder='e.g. "2021-05-08 24:00:00"' autofocus="" value="<?php echo $modifyMeetingTime; ?>">
+        </label>
+        </br>
+        <label>Enter the new meeting location:
+            <input name="modifyMeetingLocation" type=" text" size="30" placeholder='e.g. "400 Houston apartment D"' autofocus="" value="<?php echo $modifyMeetingLocation; ?>">
+        </label>
         <input type="submit" name="modify" value="Modify Meeting" onClick="modifyFunction()">
+        </br>
+        </br>
+        </br>
+        </br>
+        <h3>Delete Meeting:</h3>
+        <label id="tutorLabel">Enter the meeting number you would like to delete:
+            <input name="deleteMeeting" type="text" size="30" placeholder='e.g. "1"' autofocus="" value="<?php echo $deleteMeeting; ?>">
+        </label>
         <input type="submit" name="delete" value="Delete Meeting" onClick="deleteFunction()">
         </br>
-        <p id="testParagraph">Test Paragraph</p>
+
+        <label id="tutorLabel">Enter "Delete All Meetings" to delete all meetings
+            <input name="deleteAllMeeting" type="text" size="30" autofocus="" value="<?php echo $deleteAllMeeting; ?>">
+        </label>
+        <input type="submit" name="delete" value="Delete All Meetings" placeholder='Delete All Meetings' onClick="deleteAllFunction()">
+        </br>
     </form>
+
     <?php
     echo "<h1>Here is your current schedule:</h1></br>";
     require_once('db.php');
@@ -172,7 +238,6 @@ global $deleteEntry;
         $tutorEmail = $row["Tutor_Email"];
         $meetTime = $row["Meet_Time"];
         $meetLocation = $row["Meet_Location"];
-        $studentNumber = 1;
         echo "
     <tbody>
         <tr>
@@ -189,18 +254,6 @@ global $deleteEntry;
     echo "</tr></tbody></table>";
 
 
-    if (isset($_POST["add"])) {
-        require_once('db.php');
-        $sql = "INSERT INTO userschedule(Student_Num, Tutor_Num, Tutor_First, Tutor_Last, Tutor_GradYr, Tutor_Email, Meet_Time, Meet_Location, Class_Selected)
-                VALUES ($studentNumber,'$tutorNum','$tutorFirst', '$tutorLast', '$tutorGradYr', '$tutorEmail', '$meetTime', '$meetLocation','$classSelected')";
-        $result = $mydb->query($sql);
-    } else if (isset($POST["modify"])) {
-    } else if (isset($POST["delete"])) {
-        require_once('db.php');
-        
-        $sql = "DELETE FROM UserSchedule WHERE Schedule_Num = $deleteEntry";
-        $result = $mydb->query($sql);
-    }
     ?>
 </body>
 
