@@ -94,10 +94,10 @@
                     </h2>
                 </li>
                 <li>
-                    <h2>How to make a profile?
+                    <h2>How to edit my profile?
                         <ul class = "question">
                             <p>
-                                Start by clicking the tab at the top of this page that says "Edit/Build My Profile" from
+                                Start by clicking the tab at the top of this page that says "My Profile" from
                                 there
                                 you
                                 should be
@@ -111,11 +111,11 @@
                     <h2>How to view my profile?
                         <ul class = "question">
                             <p>
-                                Start by clicking the tab at the top of this page that says "View My Profile" and the
+                                Start by clicking the tab at the top of this page that says "My Profile" then from the dropdown click "View My Profile" then click the click here button and the
                                 most
                                 recent
                                 profile
-                                information should be displayed.
+                                information should be displayed. Click on the button again to hide your profile information.
                             </p>
                         </ul>
                     </h2>
