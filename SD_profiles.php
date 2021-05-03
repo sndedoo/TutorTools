@@ -11,7 +11,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
     <style>
-
+        h1 {text-align: left;}
         p {text-align: left;}
         table tr td {
             text-align: left;
