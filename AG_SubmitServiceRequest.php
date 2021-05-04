@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Service Request Submissiont</title>
+    <title>Service Request Submission</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -50,7 +50,7 @@
   <div id="contentArea">&nbsp;</div>
 
     <form action="AG_ModifyCancelRequest.php#service">
-      <input type="submit" name="Meet_Time" value="Submit Request"/>
+      <input type="submit" name="Meet_Time" value="Submit Request" style="margin-left: 1%;"/>
     </form>
 
     <?php
