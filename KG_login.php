@@ -56,8 +56,8 @@
         <meta charset = "utf-8"/>
         <meta author = "Kirk Graham"/>
 
-       <!-- <link rel = "stylesheet" href = "CSS/style.css" type = "text/css"/>
-        <link rel = "stylesheet" href = "CSS/box.css" type = "text/css"/> -->
+        <link rel = "stylesheet" href = "CSS/style.css" type = "text/css"/>
+        <link rel = "stylesheet" href = "css/box.css" type = "text/css"/>
         
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
@@ -82,23 +82,21 @@
     <body>
         
         <div class = "container-fluid">
-            <div class = "row col-md-12">
-                <img src ="Image/download.png"/>
-            </div>
+            
 
             <form class = "form-inline" method = "POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" 
             autocomplete="on">
 
-                <div class = "gray" style = "padding-bottom:20px;">
+                <div class = "text-center" style = "padding-bottom:20px;">
                    
                     <div class = "space row text-center">
                         <h1 >
-                            Login
+                            Login: <br>Employee
                         </h1>
                     </div>
                         
                     
-                    <div class = "row">
+                    <div class = " row">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="email">
