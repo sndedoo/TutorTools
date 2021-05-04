@@ -48,7 +48,7 @@ $loginOK = null;
             padding: 5px;
         }
 
-        .errlabel{
+        .errlabel {
             color: red;
             font-weight: bolder;
         }
@@ -62,21 +62,7 @@ $loginOK = null;
 
     <!--Creates action when submit button is clicked-->
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-
-
-
         </br>
-        <nav class="navBar">
-
-            <ul class="nav nav-pills">
-                <li class="pillItem"><img src="Image/Tutor Tools Logo.png" id="companyLogo" width="100" height="65" alt="Company Logo"></li>
-                <li class="pillItem"><a href="Project-Homepage.html">Homepage</a></li>
-                <li class="active pillItem"><a href="#">New Service Request</a></li>
-                <li class="pillItem"><a href="Thomas-ViewStudentSchedule.html">View My Schedule</a></li>
-                <li class="pillItem"><a href="Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                <li class="pillItem"><a href="Thomas-EditAndBuildProfile.html">Edit/Build My Profile</a></li>
-            </ul>
-        </nav>
         <h2>Search for a class here:</h2>
         <!--Search bar for a specific class-->
         <label id="classLabel">Search for class:
@@ -314,13 +300,12 @@ $loginOK = null;
                     $_SESSION["classSelected"] = $classSelected;
                     Header("Location:TBViewStudentSchedule.php");
                 }
-                
             }
             echo "</br>";
             if (!is_null($loginOK) && $loginOK == false) echo "<span class='errlabel'>The information entered does not match any record in our database.  Double check entries to ensure they match records.  Use search bar above to verify.</span></br>";
             if ($error && empty($classSelected)) echo "<span class='errlabel'> please enter class name</span></br>";
             if ($error && empty($tutorSelected)) echo "<span class='errlabel'> please enter tutor's first name</span></br>";
-            if ($error && empty($tutorID)) echo "<span class='errlabel'> please enter tutor's ID</span></br>"; 
+            if ($error && empty($tutorID)) echo "<span class='errlabel'> please enter tutor's ID</span></br>";
         }
         ?>
     </form>
