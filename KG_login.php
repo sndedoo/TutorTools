@@ -39,7 +39,7 @@
         session_start();
         $_SESSION["sesPass"] = $emp_pass;
         $_SESSION["sesEmail"] = $emp_email;
-        $_SESSION["sessDate"] = date("H:is a");
+        $_SESSION["sessDate"] = '';
         Header("Location:KG_issuetable.php");
       }
       
@@ -63,7 +63,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
 
         <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
-        
+        <link rel="stylesheet" type="text/css" href="Webpages.css" />
+        <link rel="stylesheet" type="text/css" href="KG_table.css" />
         <script src = "jquery-3.1.1.min.js"></script>
         <script src = "js/bootstrap.min.js"></script>
         <style>

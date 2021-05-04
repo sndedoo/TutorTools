@@ -1,4 +1,7 @@
+
 <!doctype html>
+
+
 <head>
     <title>
         Issue Homepage
@@ -24,59 +27,31 @@
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     
-    
+    <?php 
+        session_start()
+    ?>
     
 </head>
 
 <body class = "container-fluid">
+    
+<?php include('navEmp.php');?>
 
-<div id="navEmployee" style = "margin-bottom: 5%;">
-        <nav>
-            <ul class="nav nav-pills">
-                <li class="pillItem"><a href="Project-Homepage.html">Home</a></li>
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                        aria-expanded="false">Issues<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="KG_login.php">Login Page</a></li>
-                        <li><a href="KG_createIssue.php">Report a Problem</a></li>
-                        <li><a href="KG_issuetable.php">View Issues</a></li>
-                        <li><a href="KG_modifyIssue.php">Modify Issues</a></li>
-                    </ul>
-                </li>
-
-
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                        aria-expanded="false">My Profile<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                        <li><a href="/SD_editProfile.html">Edit My Profile</a></li>
-                        <li><a href="/SD_logIn.html">Login</a></li>
-                        <li><a href="/SD_createProfile.html">Sign Up</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
-    <div >
+    <div class= "container-fluid">
         <div class = "row">
             <div class = "col-sm-2 border">
-                <img src = "Images/pie_chart.jpg"/>
+                
                 <p><input type = "button" onclick = "parent.location='KG_Analytics.php'" value = 'View Analytics'></p>
             </div>
-            <div class = "col-sm-8" style = "background-color:gray">
+            <div class = "col-sm-8 wallpaper">
                 <div class="tableFixHead">
 
                   <?php 
                   echo "
                     <table class = 'issuetable'>
-                      <thead>
-                        <tr>
-                            <th>ID</th>
+                      <thead class = 'maroon'>
+                        <tr >
+                            <th style= 'padding-left:30px'>ID</th>
                             <th>Issue Date</th>
                             <th>Issue Title</th>
                             <th>Issue Description</th>
@@ -104,9 +79,9 @@
                     ?>
                     
                   </div>
-                  <input type = "button" onclick = "parent.location='KG_createIssue.php'" value = 'Create Issue'>
-                  <input type = "button" onclick = "parent.location='KG_modifyIssue.php'" value = 'Modify Issue'>
-                  <input type = "button" onclick = "parent.location='KG_deleteIssue.php'" value = 'Delete Issue'>
+                  <input id = "create" type = "button" onclick = "parent.location='KG_createIssue.php'" value = 'Create Issue'>
+                  <input id = "modify" type = "button" onclick = "parent.location='KG_modifyIssue.php'" value = 'Modify Issue'>
+                  <input id = "delete" type = "button" onclick = "parent.location='KG_deleteIssue.php'" value = 'Delete Issue'>
             </div>
         </div>
         
