@@ -30,6 +30,10 @@
             $loginOk=false;
             $error = true;
         }
+        //COOKIES
+        if(!empty($emp_email) && $remember == "yes") {
+            setcookie("emp_email", $emp_email, time()+60*60*24*7, "/");
+          }
         
         
       }
@@ -102,7 +106,8 @@
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="email">
                             <?php if(empty($emp_email) && $error==true) {
-                                echo "<span class='errlabel'>Insert username.</span>"; }?>
+                                echo "<span class='errlabel'>Insert username.</span>"; }
+                            ?>
                             
                         </div>
                         
