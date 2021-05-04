@@ -11,10 +11,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script><script>
       var clickCount =1;
-      //default event handler
       $(function(){
         $("#img0").click(function(){
-          //get content from the server using XMLHttpRequest
           if(clickCount % 2 ==1) {
             $.ajax({
               url:"SD_viewTutorAjax.php",
