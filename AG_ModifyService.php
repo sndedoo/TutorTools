@@ -15,12 +15,39 @@
 <body>
     <?php include('navStudent.php');?>
 
+    <form method = "post" action="AG_ModifyService.php">
+        <input type="datetime-local" name="Meet_Time" value="<?php echo $Meet_ID; ?>"/><br />
+        <input type="text" name="Meet_Location" value="<?php echo $Meet_Location?>"/><br />
+        <input type="number" name="Stu_Payment" value="<?php echo $Stu_Payment?>"/><br />
+        <input type="submit" name="modify" value="Finalize Modification"/>
+    </form>
+
     <?php
-    require_once("db.php");
-    require_once("config.php");
 
+    $query=mysqli_query("SELECT * FROM meeting WHERE Meet_ID='$id'");
 
+    while($row=mysqli_fetch_array($query)){
+        $Meet_ID=$row['id'];
+        $Meet_Time=$row['Meet_Time'];
+        $Meet_Location=$row['Meet_Location'];
+        $Stu_Payment=$row['Stu_Payment'];
+    }
+
+    if(isset($_POST['modify'])){
+        $Meet_Time=$_POST['Meet_Time'];
+        $Meet_Location=$_POST['Meet_Location'];
+        $Stu_Payment=$_POST['Stu_Payment'];
+
+        mysqli_query("UPDATE meeting SET Meet_Time='$Meet_Time', Meet_Location='$Meet_Location', Stu_Payment='$Stu_Payment' WHERE Meet_ID='$id'");
+        echo "<h2>Appointment has been modified</h2>";
+    }
+    else{
+        echo "<h2>Error modifying this appointment, please try again.</h2>";
+    }
     ?>
+
+
+    <p>Want to go back?<a href="AG_ModifyCancelRequest.php"> click here </a></p>
 
 
 </body>
