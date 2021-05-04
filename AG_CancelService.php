@@ -17,7 +17,6 @@
 
     <?php
     require_once("db.php");
-    require_once("config.php");
 
     $row=$_GET['id'];
 
@@ -33,6 +32,8 @@
     }
     ?>
 
+    <p>Want to go back?<a href="AG_ModifyCancelRequest.php"> click here </a>
 
 </body>
 </html> 
+
