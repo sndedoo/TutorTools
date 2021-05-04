@@ -71,7 +71,7 @@ if (isset($_POST["submit"])) {
         <input type="text" name="firstName" placeholder="First Name" value="<?php if(!empty($firstName)) echo $firstName; ?>">
         <?php
         if ($error=true && empty($firstName)) {
-          echo "<label>Error: Please enter your first name.</label>";
+          echo "<label>Please enter your first name.</label>";
         }
       ?> 
         <br/>
@@ -81,7 +81,7 @@ if (isset($_POST["submit"])) {
         <input type="text" name="lastName" placeholder="Last Name" value="<?php if(!empty($lastName)) echo $lastName; ?>">
         <?php
         if ($error=true && empty($lastName)) {
-          echo "<label>Error: Please enter your last name.</label>";
+          echo "<label>Please enter your last name.</label>";
         }
       ?>
         <br/>
@@ -91,7 +91,7 @@ if (isset($_POST["submit"])) {
         <input type="email" name="email" placeholder="Email" value="<?php if(!empty($email)) echo $email; ?>">
         <?php
         if ($error=true && empty($email)) {
-          echo "<label>Error: Please enter your email.</label>";
+          echo "<label>Please enter your email.</label>";
         }
       ?>
         <br/>
@@ -101,7 +101,7 @@ if (isset($_POST["submit"])) {
         <input type="password" name="password" placeholder="Password" value="<?php if(!empty($password)) echo $password; ?>">
         <?php
         if ($error=true && empty($password)) {
-          echo "<label>Error: Please enter your password.</label>";
+          echo "<label>Please enter your password.</label>";
         }
       ?>
         <!-- <br/>
@@ -115,7 +115,7 @@ if (isset($_POST["submit"])) {
         <input type="text" name="address" placeholder="Street Address" size="30" value="<?php if(!empty($address)) echo $address; ?>">
         <?php
         if ($error=true && empty($address)) {
-          echo "<label>Error: Please enter your address.</label>";
+          echo "<label>Please enter your address.</label>";
         }
       ?>
         <br/>
@@ -125,7 +125,7 @@ if (isset($_POST["submit"])) {
         <input type="text" name="city" placeholder="City" value="<?php if(!empty($city)) echo $city; ?>">
         <?php
         if ($error=true && empty($city)) {
-          echo "<label>Error: Please enter your city.</label>";
+          echo "<label>Please enter your city.</label>";
         }
       ?>
         <br/>
@@ -139,7 +139,7 @@ if (isset($_POST["submit"])) {
         <option value="DC">DC</option>
         <?php
         if ($error=true && ($_POST['state'] == '')) {
-          echo "<label>Error: Please enter your State.</label>";
+          echo "<label>Please enter your State.</label>";
         }
         /*
           echo "<option value='0'> </option>";
@@ -168,7 +168,7 @@ if (isset($_POST["submit"])) {
         <option value="2025">2025</option>
         <?php
         if ($error=true && ($_POST['gradYear'] == '')) {
-          echo "<label>Error: Please enter your Year of Graduation.</label>";
+          echo "<label>Please enter your Year of Graduation.</label>";
         }
         /*
           echo "<option value='0'> </option>";
@@ -194,7 +194,7 @@ if (isset($_POST["submit"])) {
         <option value="Tutor">Tutor</option>
         <?php
         if ($error=true && ($_POST['userSelect'] == '')) {
-          echo "<label>Error: Please enter your user type.</label>";
+          echo "<label>Please enter your user type.</label>";
         }
         ?>
         </select>

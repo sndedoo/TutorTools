@@ -134,7 +134,7 @@ if (isset($_POST["submit"])) {
       ?>">
       <?php
         if ($error=true && empty($email)) {
-          echo "<label>Error: Please enter an email.</label>";
+          echo "<label>Please enter an email.</label>";
         }
       ?>
         <br/>
@@ -146,7 +146,7 @@ if (isset($_POST["submit"])) {
       ?>">
       <?php
         if ($error=true && empty($password)) {
-          echo "<label>Error: Please enter a password.</label>";
+          echo "<label>Please enter a password.</label>";
         }
       ?>
         <br>
@@ -158,7 +158,7 @@ if (isset($_POST["submit"])) {
           <option value="Tutor">Tutor</option>
         <?php
         if ($error=true && ($_POST['userSelect'] == '')) {
-          echo "<label>Error: Please enter your user type.</label>";
+          echo "<label>Please enter your user type.</label>";
         }
         ?>
         </select>

@@ -34,7 +34,7 @@
             
             <div class="wallpaper">
                 <h1>Review Analysis</h1><br />
-                <p>Click Here to Search for Another Tutor <button><a href='AM_ReviewList.php'>Review List</a></button></p>
+                <p>Click Here to View Reviews <button><a href='AM_TutorReviews.php'>Review List</a></button></p>
                 
                 <svg width="960" height="500"></svg>
                 <script src="https://d3js.org/d3.v4.min.js"></script>

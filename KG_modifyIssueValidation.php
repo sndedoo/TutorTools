@@ -9,9 +9,14 @@
     </head>
     <body>
         <?php 
-            $issueid = "";
-            $issueName = "";
-            $issueDesc = "";
+            session_start();
+            date_default_timezone_set("America/New_York");
+            $_SESSION['sessDate']= date('Y-m-d H:i:s');
+            
+            $issueid = '';
+            $issueName = '';
+            $issueDesc = '';
+            $sessionTime = $_SESSION['sessDate'];
             
             
             /*Variables above should be initialzied if POST is successful*/
@@ -19,21 +24,23 @@
             if(isset($_POST["issuename"])) $issueName = $_POST["issuename"];
             if(isset($_POST["issuedesc"])) $issueDesc = $_POST["issuedesc"];
             
+            
             require_once("db.php");
-            echo "<p>$issueid</p>";
+            echo "<p>Hello"."$issueid</p>";
                     
-            $sql = "update issue set issue_name = '$issueName', issue_comment = '$issueDesc' where issue_id = $issueid";
+            $sql = "update issue set issue_name = '$issueName', issue_comment = '$issueDesc', issue_date ='$sessionTime' where issue_id = $issueid";
             $result = $mydb->query($sql);
                 
             if($result = 1){
-                echo "<p> Updated issue record has been created</p>";
+                
                 header("HTTP/1.1 307 Temprary Redirect");
                 header("Location: KG_issueTable.php");
             }
+            
         ?>
 
 
-        <!--Adds record to database -->
+        
         
 
 

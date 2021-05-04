@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>UC4: Search for bids/responses</title>
+    <title>Search Existing Appointments</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -15,41 +15,68 @@
     <link rel="stylesheet" href="Webpages.css"/>
 </head>
 <body>
-    <div class="container-fluid">
-    
-    <!--Description of this page-->
-    <div>
-        <h1 class="blue"><img src="Image/Tutor Tools Logo.png" alt="Error loading image" align = "left" height="150"/>
-            Use Case 4: Search for service requests 
-        </h1>
-    </div>    
-    <!--Navigation Bar-->
-    <nav> 
-        <ul class = "nav nav-pills nav-justified">
-            <li><a href="#">Homepage</a></li>
-            <li role = "presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                role="button" aria-haspopup="true" aria-haspopup="false">Services<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Search for an Appointment</a></li>
-                    <li><a href="#">Modify an Appointment</a></li>
-                    <li><a href="#">Cancel an Appointment</a></li>
-                </ul>
-            </li>
-            <li><a href = "#">View Schedule</a></li>
-            <li><a href = "#">Other page...</a></li>
-        </ul>
-    </nav>
-   
+<?php include('navTutor.php');?>
 
-    <div class="inline"><p>
-        List of selected service requests *admin*
-        <br>
-        <br>
-        List is grouped by: Name, Tutor, Status, Service / Area and Service Request / Update
-    </p>
-    </div class="inline_2">
-    <div class="inline_2"><p> Profile information</p></div>
-    </div>
+<h1 style="text-align: left; ">All Appointments</h1>
+<br/>
+<p>Tutors can view existing appointments here and search for specific ones based on their location here.</p>
+
+<script>
+//ajax in jQuery
+$(function(){
+  $("#Meet_Time").change(function(){
+    $.ajax({
+      url:"AG_ServicesDB.php?id=" + $("#Meet_Time").val(),
+      async:true,
+      success: function(result){
+        $("#contentArea").html(result);
+      }
+    })
+  })
+})
+</script>
+
+    <label> View Appointments (Meeting ID): &nbsp;&nbsp;
+    <select name="Meet_Time" id="Meet_Time">
+    <?php
+        require_once("db.php");
+        $sql = "SELECT Meet_ID FROM meeting ORDER BY Meet_ID";
+        $result = $mydb->query($sql);
+
+        while($row=mysqli_fetch_array($result)){
+        echo "<option value='".$row["Meet_ID"]."'>".$row["Meet_ID"]."</option>";
+        }
+    ?>
+    </select>
+    </label>
+    <div id="contentArea">&nbsp;</div>
+
+
+    <input type="text" placeholder="Search location here..."/>
+    <input type="submit" name="Search" value="Enter"/>
+
+
+    <?php
+    $sql = "SELECT Meet_ID, Meet_Time, Meet_Location, Concat(Format(Stu_Payment,2)) AS 'Stu_Payment'
+            FROM meeting";
+    $result = $mydb->query($sql);
+
+    echo "<div class='wallpaper'>
+    <table class='table table-hover' border='1'>
+    <thead><tr>
+    <th>Meeting ID</th>
+    <th>Meeting Time</th>
+    <th>Meeting Location</th>
+    <th>Student Payment</th>
+    </tr></thead>";
+
+    while($row = mysqli_fetch_array($result)) {
+        echo "<tr>";
+        echo "<td>".$row["Meet_ID"]."</td><td>".$row["Meet_Time"]."</td><td>".$row["Meet_Location"]."</td><td>"."$".$row["Stu_Payment"]."</td>";
+        echo "</tr>";
+    }
+        echo "</table></div>";
+    ?>
+</div>
 </body>
 </html>

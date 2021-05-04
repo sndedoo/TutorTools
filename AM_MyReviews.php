@@ -15,7 +15,7 @@
         <meta descriptions="This page allows a user to review the reviews they've written">
         <style>
             td, th {
-            text-align: left;
+                text-align: left;
             }
         </style>
     </head>
