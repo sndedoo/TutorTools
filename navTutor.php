@@ -13,7 +13,7 @@
                         aria-expanded="false">Issues<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="KG_createIssue.php">Report a Problem</a></li>
+                        <li><a href="KG_createIssueUser.php">Report a Problem</a></li>
                     </ul>
                 </li>
                 <li role="presentation" class="dropdown">

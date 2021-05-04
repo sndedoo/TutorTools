@@ -1,9 +1,14 @@
 <!DOCTYPE html>
+
 <?php
-            
+            //Session variable continued. Session time equal to current date and time
+            session_start();
+
+
             $issueid = "";
             $issueName = "";
             $issueDesc = "";
+            $sessionTime = "";
             
             $error = false;
 
@@ -11,6 +16,7 @@
                 if(isset($_POST["frmissueid"])) $issueid = $_POST["frmissueid"];
                 if(isset($_POST["issuename"])) $issueName = $_POST["issuename"];
                 if(isset($_POST["issuedesc"])) $issueDesc = $_POST["issuedesc"];
+                
     
     
                 if(!empty($issueName) && !empty($issueDesc)){
@@ -39,7 +45,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
 
-        <link href= "CSS/bootstrap.min.css" rel = "stylesheet" />
+        <link href= "css/bootstrap.min.css" rel = "stylesheet" />
         <link rel="stylesheet" type="text/css" href="Webpages.css" />
         <link rel="stylesheet" type="text/css" href="KG_table.css"/>
         <script src = "jquery-3.1.1.min.js"></script>
@@ -102,7 +108,7 @@
     <div id="navEmployee" style = "margin-bottom: 5%;">
         <nav>
             <ul class="nav nav-pills">
-                <li class="pillItem"><a href="Project-Homepage.html">Home</a></li>
+                <li class="pillItem"><a href="KG_issuetable.php">Home</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="false">Issues<span class="caret"></span>
@@ -112,21 +118,12 @@
                         <li><a href="KG_createIssue.php">Report a Problem</a></li>
                         <li><a href="KG_issuetable.php">View Issues</a></li>
                         <li><a href="KG_modifyIssue.php">Modify Issues</a></li>
+                        <li><a href="KG_deleteIssue.php">Delete Issues</a></li>
                     </ul>
                 </li>
+                <li class="pillItem"><a href="KG_Analytics.php">Analytics</a></li>
 
-
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                        aria-expanded="false">My Profile<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                        <li><a href="/SD_editProfile.html">Edit My Profile</a></li>
-                        <li><a href="/SD_logIn.html">Login</a></li>
-                        <li><a href="/SD_createProfile.html">Sign Up</a></li>
-                    </ul>
-                </li>
+                
             </ul>
         </nav>
     </div>
@@ -173,10 +170,9 @@
         autocomplete="on">
                     <div id = "modifyInfo" class = "row wallpaper">
                         <div class = "col-sm-12">
-                            <label>ID:
-                                <input id = "frmissueid" type = "text" name = "frmissueid" />
-
-                            </label></br>
+                            
+                            <input class = "hidden" name = frmissueid id= "frmissueid"/>
+                            
                             <label>Title:
                                 <input name = "issuename" type = "text" size = "25" autofocus/>
                                 <?php 

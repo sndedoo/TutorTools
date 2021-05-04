@@ -15,14 +15,21 @@ th , td{
 .issuetable{
     border-collapse: collapse;
     width: 100%;
+    padding: 0 90px 0 90px;
+    margin-top: 5px;
+    background-color : white;
     
 }
 
-.viewTable {
-  background-color: white;
+.ajaxTable {
+  text-align: center;
+  padding: 0 90px 0 90px;
+  margin-top: 5px;
+  background-color : white;
 }
 
-.viewTable th {
+
+.viewTable th,td {
   text-align: center;
 }
 
