@@ -35,7 +35,28 @@
 
 <body class = "container-fluid">
     
-<?php include('navEmp.php');?>
+<div id="navEmployee" style = "margin-bottom: 5%;">
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="pillItem"><a href="KG_issuetable.php">Home</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">Issues<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="KG_login.php">Login Page</a></li>
+                        <li><a href="KG_createIssue.php">Report a Problem</a></li>
+                        <li><a href="KG_issuetable.php">View Issues</a></li>
+                        <li><a href="KG_modifyIssue.php">Modify Issues</a></li>
+                        <li><a href="KG_deleteIssue.php">Delete Issues</a></li>
+                    </ul>
+                </li>
+                <li class="pillItem"><a href="KG_Analytics.php">Analytics</a></li>
+
+                
+            </ul>
+        </nav>
+    </div>
 
     <div class= "container-fluid">
         <div class = "row">

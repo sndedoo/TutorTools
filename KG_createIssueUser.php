@@ -57,7 +57,8 @@
                     
                     if($result = 1)
                         {
-                            echo "<p> New employee record has been created</p>";
+                            echo "<p> New employee record has been created<br>
+                            Press the back button below to return to the homepage</p>";
                         }
                     
                 }
@@ -72,7 +73,7 @@
     </head>
 
     <body class = "container-fluid">
-        <?php include('navEmp.php');?>
+        
 
 
         <form method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" name = "emailForm"
@@ -114,7 +115,7 @@
                 </div>
                 <div>
                     <input id = "sub-button" name = "submit" type = "submit" value = "Create" >
-                    <input type = "button" onclick = "parent.location='TBProjectHomepage.php'" value = 'Back'>
+                    <input type = "button" onclick = "parent.location='TBProjectHomepage.php'" value = 'Home'>
                 </div>
         </div>
         

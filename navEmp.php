@@ -22,7 +22,7 @@
     <div id="navEmployee">
         <nav >
             <ul class="nav nav-pills">
-                <li class="pillItem"><a href="Project-Homepage.html">Home</a></li>
+                <li class="pillItem"><a href="KG_issuetable.php">Home</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                         aria-expanded="false">Issues<span class="caret"></span>
@@ -36,17 +36,7 @@
                 </li>
 
 
-                <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                        aria-expanded="false">My Profile<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/Thomas-ViewStudentProfile.html">View My Profile</a></li>
-                        <li><a href="/SD_editProfile.html">Edit My Profile</a></li>
-                        <li><a href="/SD_logIn.html">Login</a></li>
-                        <li><a href="/SD_createProfile.html">Sign Up</a></li>
-                    </ul>
-                </li>
+                
             </ul>
         </nav>
     </div>
