@@ -93,8 +93,8 @@
     echo "<td>".$row['Meet_Time']."</td>";
     echo "<td>".$row['Meet_Location']."</td>";
     echo "<td>"."$".$row['Stu_Payment']."</td>"; 
-    echo "<td><a href='AG_ModifyService.php?id=".$row['Meet_ID']."'><span style='color:black';>Modify</span></a></td>"; 
-    echo "<td><a href='AG_CancelService.php?id=".$row['Meet_ID']."'><span style='color:black';>Cancel</span></a></td>"; 
+    echo "<td><a href='AG_ModifyService.php?id=".$row['Meet_ID']."'><input type='submit' name='modify' value='Modify'></input></a></td>"; 
+    echo "<td><a href='AG_CancelService.php?id=".$row['Meet_ID']."'><input type='submit' name='delete' value='Cancel'></input></a></td>"; 
     echo "</tr>";
     }
     ?>
