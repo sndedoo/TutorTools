@@ -16,10 +16,16 @@
     <?php include('navStudent.php');?>
 
     <form method = "post" action="AG_ModifyService.php">
-        <input type="datetime-local" name="Meet_Time" value="<?php echo $Meet_ID; ?>"/><br />
-        <input type="text" name="Meet_Location" value="<?php echo $Meet_Location?>"/><br />
-        <input type="number" name="Stu_Payment" value="<?php echo $Stu_Payment?>"/><br />
-        <input type="submit" name="modify" value="Finalize Modification"/>
+         Appointment Meeting Time:<input type="datetime-local" name="Meet_Time" value="<?php echo $Meet_ID; ?>" style="margin-left: 1%;"/>
+        <br />
+        <p></p>
+         Appointment Meeting Location:<input type="text" name="Meet_Location" value="<?php echo $Meet_Location?>" placeholder="Location..." style="margin-left: 1%;"/>
+        <br />
+        <p></p>
+         Appointment Student Payment:<input type="number" name="Stu_Payment" value="<?php echo $Stu_Payment?>" placeholder=">$0.01" style="margin-left: 1%;"/>
+        <br />
+        <p></p>
+        <input type="submit" name="modify" value="Finalize Modification" style="margin-left: 5%;"/>
     </form>
 
     <?php
