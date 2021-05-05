@@ -10,6 +10,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <!--Module 3 style sheet link-->
     <link rel="stylesheet" href="Webpages.css"/>
@@ -20,25 +21,18 @@
 
     <div class="inline">
     <p>
-        List of selected service requests *admin*
+        List of selected service requests *admin* <br />
+        Here the tutor can look up a service request made by the user by looking for their meeting id
         <br>
         <br>
         List is grouped by: Name, Tutor, Status, Service / Area and Service Request / Update
     </p>
     </div>
-    <div class="inline_2"> Profile information </div>
 
-    <p>
-        Service bid data analysis 
-        <br>
-        <br>
-        Analysis appears when the user clicks on one of the selected service requests above
-        <br>
-        <br>
-        Description of the request and feedback from the form that the student or tutor left
-    </p>
+    <?php include('AG_Analysis.html')?>
 
-    
+</script>
     </div>
 </body>
 </html>
+
