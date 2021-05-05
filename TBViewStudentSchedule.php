@@ -15,6 +15,7 @@ global $modifyMeetingTime;
 global $modifyMeetingLocation;
 global $deleteMeeting;
 global $deleteAllMeeting;
+global $tutorReview;
 ?>
 
 <!doctype html>
@@ -31,7 +32,7 @@ global $deleteAllMeeting;
     <script src="js/bootstrap.min.js"></script>
     <script src="myScripts.js"></script>
     <meta author="Thomas Beamon">
-    <meta descriptions="This page allows a student to search for a tutor that teaches the class they are looking for">
+    <meta descriptions="This page allows a student to schedule a meeting">
     <style>
         .orange {
             color: white;
@@ -301,6 +302,10 @@ global $deleteAllMeeting;
 
 
     ?>
+    </br>
+    </br>
+    </br>
+    
 </body>
 
 </html>
