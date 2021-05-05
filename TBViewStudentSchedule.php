@@ -69,6 +69,35 @@ global $tutorReview;
         function deleteAllFunction() {
             alert("You have successfully deleted all meetings!");
         }
+
+        function getContent() {
+            var id = document.forms[0].supplierid.value;
+            var z = document.getElementById("contentArea");
+            if (id == 0) {
+                z.innerHTML = "";
+            } else {
+                try {
+                    asyncRequest = new XMLHttpRequest(); //create request object
+
+                    //register event handler
+                    asyncRequest.onreadystatechange = stateChange;
+                    var url = "TBGraphCreation";
+                    asyncRequest.open('GET', url, true); // prepare the request
+                    asyncRequest.send(null); // send the request
+                } catch (exception) {
+                    alert("Request failed");
+                }
+
+            }
+
+            function stateChange() {
+                // if request completed successfully
+                if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
+                    document.getElementById("contentArea").innerHTML =
+                        asyncRequest.responseText; // places text in contentArea
+                }
+            }
+        }
     </script>
 </head>
 

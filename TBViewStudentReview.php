@@ -1,18 +1,13 @@
-<?php
-global $tutorFirstNameSelected;
-?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-    <title>Create/Vew tutor Review</title>
-    <link rel="stylesheet" type="text/css" href="Webpages.css" />
+    <title>PHP Ajax</title>
     <script>
         var asyncRequest;
 
         function getContent() {
-            var id = document.forms[0].firstNameSelected.value;
+            var id = document.forms[0].supplierid.value;
             var z = document.getElementById("contentArea");
             if (id == 0) {
                 z.innerHTML = "";
@@ -22,13 +17,15 @@ global $tutorFirstNameSelected;
 
                     //register event handler
                     asyncRequest.onreadystatechange = stateChange;
-                    var url = "graphCreation.php?id=" + id;
+                    var url = "TBGraphCreation";
                     asyncRequest.open('GET', url, true); // prepare the request
                     asyncRequest.send(null); // send the request
                 } catch (exception) {
                     alert("Request failed");
                 }
+
             }
+
             function stateChange() {
                 // if request completed successfully
                 if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
@@ -42,20 +39,15 @@ global $tutorFirstNameSelected;
 
 <body>
     <form>
-        <select name="firstNameSelected" onchange="getContent()">
-            <?php
-            require_once("db.php");
-            $sql = "SELECT Tutor_First FROM Tutor";
-            $result = $mydb->query($sql);
-            echo "<option id = 'tutorFirstNameSelected' value =''>" . 'Select A Tutor' . "</option>";
-            while ($row = mysqli_fetch_array($result)) {
-                $tutorFirstNameSelected = $row["Tutor_First"];
-                echo "<option id = 'tutorFirstNameSelected' value ='$tutorFirstNameSelected'>" . $tutorFirstNameSelected . "</option>";
-            }
-            ?>
+        <select name="supplierid" onchange="getContent()">
+            <option value="">Select a supplier ID</option>
+            <option value="Senya">Senya</option>
+            <option value="2">Cam</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
     </form>
     <div id="contentArea">&nbsp;</div>
-
 </body>
 
 </html>

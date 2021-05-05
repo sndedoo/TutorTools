@@ -1,7 +1,7 @@
 <?php
   require_once("db.php");
 
-  $sql = "select year(emp_hiredate) as hireyear, count(emp_id) as empCount from Employee group by hireyear order by hireyear";
+  $sql = "select tutor(Tutor_First) as FirstName, count(Meet_ID) as empCount from tutor";
 
   $result = $mydb->query($sql);
 
