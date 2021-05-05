@@ -15,8 +15,8 @@
 <body>
    <?php include('navStudent.php');?>
 
-   <h1 style="text-align: left;">Modify or Cancel an Appointment</h1>
-   <p>Here you can view all appointments and can modify or cancel an existing appointment.</p>
+   <h1 style="text-align: left;">Search Existing Appointments</h1>
+   <p>Here you can view all appointments and can search for appointments based on location.</p>
    <br/>
    <h2>All Appointments</h2>
 
@@ -51,19 +51,13 @@
         })
         </script>
 
-        <label id="service">View Specific Appointment (Meeting ID): &nbsp;&nbsp;
-        <select name="Meet_Time" id="Meet_Time">
-        <?php
-            require_once("db.php");
-            $sql = "SELECT Meet_ID FROM meeting ORDER BY Meet_ID";
-            $result = $mydb->query($sql);
+            <p>Search for appointment based on location: <input type="text" placeholder="Location..." name="Location"/>
+            <input type="submit" name="Submit" value="View"/></p>
 
-            while($row=mysqli_fetch_array($result)){
-            echo "<option value='".$row["Meet_ID"]."'>".$row["Meet_ID"]."</option>";
-            }
+        <?php
+            //Code that pulls up rows relating to the search the user makes. 
         ?>
-        </select>
-        </label>
+        
         <div id="contentArea">&nbsp;</div>
     <!----------------------------------------------------------------------------------->
     <?php
@@ -83,7 +77,7 @@
     echo "<div class='wallpaper'>";
     echo "<table class='table table-hover' border='1'>";
     echo "<thead>";
-    echo "<th>Meeting ID</th><th>Meeting Time</th><th>Meeting Location</th><th>Student Payment</th><th>Modify Appointment</th><th>Cancel Appointment</th>";
+    echo "<th>Meeting ID</th><th>Meeting Time</th><th>Meeting Location</th><th>Student Payment</th>";
     echo "</thead>";
 
     while($row = mysqli_fetch_assoc($result)){
@@ -93,8 +87,6 @@
     echo "<td>".$row['Meet_Time']."</td>";
     echo "<td>".$row['Meet_Location']."</td>";
     echo "<td>"."$".$row['Stu_Payment']."</td>"; 
-    echo "<td><a href='AG_ModifyService.php?id=".$row['Meet_ID']."'><input type='submit' name='modify' value='Modify'></input></a></td>"; 
-    echo "<td><a href='AG_CancelService.php?id=".$row['Meet_ID']."'><input type='submit' name='delete' value='Cancel'></input></a></td>"; 
     echo "</tr>";
     }
     ?>
