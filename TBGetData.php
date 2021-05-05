@@ -1,7 +1,7 @@
 <?php
   require_once("db.php");
 
-  $sql = "select tutor(Tutor_First) as FirstName, count(Meet_ID) as empCount from tutor";
+  $sql = "SELECT Meet_Location, count(Schedule_Num) AS meetCount FROM userSchedule GROUP BY Meet_Location";
 
   $result = $mydb->query($sql);
 

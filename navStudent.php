@@ -15,7 +15,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="TBViewStudentServiceRequest.php">Schedule Meeting</a></li>
                             <li><a href="TBViewStudentSchedule.php">View Student Schedule</a></li>
-                            <li><a href="TBViewStudentReview.php">Make a Review</a></li>
+                            <li><a href="TBGetData.php">View Student Data</a></li>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown">
