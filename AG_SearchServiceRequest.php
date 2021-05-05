@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="Webpages.css"/>
 </head>
 <body>
-   <?php include('navStudent.php');?>
+   <?php include('navTutor.php');?>
 
    <h1 style="text-align: left;">Search Existing Appointments</h1>
    <p>Here you can view all appointments and can search for appointments based on location.</p>
