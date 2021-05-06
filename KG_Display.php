@@ -3,9 +3,11 @@
 <html>
     <head>
         <title>
-            Display Products
+            Display
         </title>
-	    <meta charset=UTF-8/>
+	    <meta charset = "utf-8"/>
+        <meta author = "Kirk Graham"/>
+
         <link rel="stylesheet" type="text/css" href="KG_table.css"/>
     </head>
 
