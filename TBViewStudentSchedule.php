@@ -70,34 +70,7 @@ global $tutorReview;
             alert("You have successfully deleted all meetings!");
         }
 
-        function getContent() {
-            var id = document.forms[0].supplierid.value;
-            var z = document.getElementById("contentArea");
-            if (id == 0) {
-                z.innerHTML = "";
-            } else {
-                try {
-                    asyncRequest = new XMLHttpRequest(); //create request object
-
-                    //register event handler
-                    asyncRequest.onreadystatechange = stateChange;
-                    var url = "TBGraphCreation";
-                    asyncRequest.open('GET', url, true); // prepare the request
-                    asyncRequest.send(null); // send the request
-                } catch (exception) {
-                    alert("Request failed");
-                }
-
-            }
-
-            function stateChange() {
-                // if request completed successfully
-                if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
-                    document.getElementById("contentArea").innerHTML =
-                        asyncRequest.responseText; // places text in contentArea
-                }
-            }
-        }
+        
     </script>
 </head>
 
@@ -121,7 +94,7 @@ global $tutorReview;
                         <ul class="dropdown-menu">
                             <li><a href="TBViewStudentServiceRequest.php">Schedule Meeting</a></li>
                             <li><a href="TBViewStudentSchedule.php">View Student Schedule</a></li>
-                            <li><a href="TBViewStudentReview.php">Make a Review</a></li>
+                            <li><a href="TBGraphCreation.php">Review my schedule</a></li>
                         </ul>
                     </li>
                     <li role="presentation" class="dropdown">
@@ -242,7 +215,7 @@ global $tutorReview;
                 $result = $mydb->query($sql);
             }
         } else if ($deleteMeeting != '') {
-            $sql = "DELETE FROM userschedule WHERE Schedule_Num = $deleteMeeting";
+            $sql = "DELETE FROM userschedule WHERE Schedule_Num = '$deleteMeeting'";
             $result = $mydb->query($sql);
         } else if ($deleteAllMeeting == 'Delete All Meetings') {
             $sql = "DELETE FROM userschedule ";
