@@ -31,7 +31,7 @@
             $error = true;
         }
         //COOKIES
-        if(!empty($emp_email) && $remember == "yes") {
+        if(!empty($emp_email) ) {
             setcookie("emp_email", $emp_email, time()+60*60*24*7, "/");
           }
         
